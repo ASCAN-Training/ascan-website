@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title>Mithical</title>
+    <title>Ascan</title>
     <meta name="description" content="">
 
     <base src="/">
