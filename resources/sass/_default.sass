@@ -1,0 +1,79 @@
+//default styles for site
+html, body
+  font-family: $lexend-font
+  font-weight: 300
+  margin: 0
+  color: $text-color
+  line-height: 1.5
+  border: none
+  letter-spacing: normal
+  font-kerning: none
+  text-rendering: optimizeSpeed
+  height: 100%
+  overflow-scrolling: revert
+  width: 100%
+  font-size: get-vw(16px)
+  background-color: $bg-color
+
+a
+  text-decoration: none
+  color: inherit
+  transition: color .3s ease, opacity .3s ease
+
+.svg-container
+  position: absolute
+  left: 0
+  bottom: 0
+  width: 0
+  height: 0
+  opacity: 0
+  visibility: hidden
+  z-index: -1
+
+.ajax-content
+  display: none
+
+
+.disabled,
+[disabled]
+  pointer-events: none !important
+  opacity: .5 !important
+  box-shadow: none !important
+
+*::selection
+  background: rgba(91, 158, 112, .2)
+  text-shadow: none
+
+.icon
+  display: flex
+
+.main-wrapper > header,
+.main-wrapper > footer
+  flex-shrink: 0
+
+.container-main
+  max-width: 1160px
+  margin: 0 auto
+
+p, ul
+  padding: 0
+  margin: 0
+
+button
+  overflow: visible
+  background: none
+  appearance: none
+
+h1, h2, h3, h4, h5, h6, p
+  margin: 0
+
+a:focus,
+.btn:focus
+  outline: 2px dashed $orange
+
+\:root
+  --vh: 1vh
+  --headerHeight: 100px
+
+h1, h2, h3, h4,h5,h6
+  font-weight: 600
