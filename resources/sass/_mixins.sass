@@ -5,86 +5,111 @@ $mobile-width: 320
 $tablet-width: 768
 
 @function get-vw($px)
-    $vw-context: ($layout-width*.01) * 1px
-    @return ($px/$vw-context) * 1vw
+  $vw-context: ($layout-width*.01) * 1px
+  @return ($px/$vw-context) * 1vw
 
 @function get-vh($px)
-    $vw-context: ($layout-height*.01) * 1px
-    @return ($px/$vw-context) * 1vh
+  $vw-context: ($layout-height*.01) * 1px
+  @return ($px/$vw-context) * 1vh
 
 @function get-t-vw($px)
-    $vw-context: ($tablet-width*.01) * 1px
-    @return ($px/$vw-context) * 1vw
+  $vw-context: ($tablet-width*.01) * 1px
+  @return ($px/$vw-context) * 1vw
 
 @function get-m-vw($px)
-    $vw-context: ($mobile-width*.01) * 1px
-    @return ($px/$vw-context) * 1vw
+  $vw-context: ($mobile-width*.01) * 1px
+  @return ($px/$vw-context) * 1vw
 
 @function get-calc-vw($percent, $operator, $px)
-    $vw-context: ($layout-width*.01) * 1px
-    @return unquote(('calc(' + $percent + ' ' + $operator+ ' ' + ($px/$vw-context) * 1vw +')'))
+  $vw-context: ($layout-width*.01) * 1px
+  @return unquote(('calc(' + $percent + ' ' + $operator+ ' ' + ($px/$vw-context) * 1vw +')'))
 
 @function get-calc-mvw($percent, $operator, $px)
-    $vw-context: ($mobile-width*.01) * 1px
-    @return unquote(('calc(' + $percent + ' ' + $operator+ ' ' + ($px/$vw-context) * 1vw +')'))
+  $vw-context: ($mobile-width*.01) * 1px
+  @return unquote(('calc(' + $percent + ' ' + $operator+ ' ' + ($px/$vw-context) * 1vw +')'))
 
 @function get-calc-tvw($percent, $operator, $px)
-    $vw-context: ($tablet-width*.01) * 1px
-    @return unquote(('calc(' + $percent + ' ' + $operator+ ' ' + ($px/$vw-context) * 1vw +')'))
+  $vw-context: ($tablet-width*.01) * 1px
+  @return unquote(('calc(' + $percent + ' ' + $operator+ ' ' + ($px/$vw-context) * 1vw +')'))
 
 @mixin fontFace($font-family, $file-path, $weight: normal, $style: normal)
-    @font-face
-        font-family: $font-family
-        src: url('#{$file-path}.eot')
-        src: url('#{$file-path}.woff') format('woff'), url('#{$file-path}.woff2') format('woff2'), url('#{$file-path}.ttf') format('truetype'), url('#{$file-path}.svg##{$font-family}') format('svg')
-        font-weight: $weight
-        font-style: $style
+  @font-face
+    font-family: $font-family
+    src: url('#{$file-path}.eot')
+    src: url('#{$file-path}.woff') format('woff'), url('#{$file-path}.woff2') format('woff2'), url('#{$file-path}.ttf') format('truetype'), url('#{$file-path}.svg##{$font-family}') format('svg')
+    font-weight: $weight
+    font-style: $style
 
 
 //использование миксина  +mediaSize(value)
 @mixin mediaSize($media)
-    @if $media == desktop
-        @media (min-width: 1601px)
-            @content
-    @if $media == float
-        @media (min-width: 1201px) and (max-width: 1600px)
-            @content
-    @else
-        @media (max-width: $media+px)
-            @content
+  @if $media == desktop
+    @media (min-width: 1601px)
+      @content
+  @if $media == float
+    @media (min-width: 1201px) and (max-width: 1600px)
+      @content
+  @else
+    @media (max-width: $media+px)
+      @content
 
 //использование миксина  +mediaSize(value)
 @mixin mediaMinWidth($media)
-    @media (min-width: $media+px)
-        @content
+  @media (min-width: $media+px)
+    @content
 
 @mixin letterSpace($spacing)
-    letter-spacing: ($spacing / 1000) * 1em
+  letter-spacing: ($spacing / 1000) * 1em
 
 @mixin placeholder
-    &::-webkit-input-placeholder
-        @content
-    &:-moz-placeholder
-        @content
-    &::-moz-placeholder
-        @content
-    &:-ms-input-placeholder
-        @content
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
 
 @mixin scrollbar
-    &::-webkit-scrollbar
-        width: 5px
-        height: 5px
-    &::-webkit-scrollbar-track
-        background: rgba(0, 0, 0, 0.1)
-    &::-webkit-scrollbar-thumb
-        background: rgba(0, 0, 0, 1)
+  &::-webkit-scrollbar
+    width: 5px
+    height: 5px
+  &::-webkit-scrollbar-track
+    background: rgba(0, 0, 0, 0.1)
+  &::-webkit-scrollbar-thumb
+    background: rgba(0, 0, 0, 1)
 
 @mixin invisibleScrollbar
-    &::-webkit-scrollbar
-        width: 5px
-        height: 5px
-    &::-webkit-scrollbar-track
-        background: transparent
-    &::-webkit-scrollbar-thumb
-        background: transparent
+  &::-webkit-scrollbar
+    width: 5px
+    height: 5px
+  &::-webkit-scrollbar-track
+    background: transparent
+  &::-webkit-scrollbar-thumb
+    background: transparent
+
+
+@function strip-unit($value)
+  @return $value / ($value * 0 + 1)
+
+$min-vw: 600px
+$max-vw: 1200px
+$base-fz: 16px
+
+@mixin fluid-type($min-font-size, $max-font-size, $property-name: 'font-size')
+  $u1: unit($min-vw)
+  $u2: unit($max-vw)
+  $u3: unit($min-font-size)
+  $u4: unit($max-font-size)
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4
+    &
+      #{$property-name}: $min-font-size
+      @media screen and (min-width: $min-vw)
+        #{$property-name}: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}))
+      @media screen and (min-width: $max-vw)
+        #{$property-name}: $max-font-size
+
+@function calcEm($targetValue, $font-size)
+  @return strip-unit($targetValue) / strip-unit($font-size) + em

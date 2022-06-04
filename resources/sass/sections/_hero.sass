@@ -1,0 +1,41 @@
+.hero__content
+  width: 55%
+  +fluid-type(44px, 80px, 'margin-top')
+
+.hero__content h1
+  +fluid-type(32px, 72px)
+  +fluid-type(42px, 86px, 'line-height')
+  color: white
+
+.attention,
+.draw-underline
+  position: relative
+  display: inline-block
+
+.attention .icon
+  color: $blue
+  position: absolute
+  left: calc(100% - .05em)
+  top: .05em
+  width: 0.5em
+  height: 0.5em
+
+.draw-underline .icon
+  position: absolute
+  color: $blue
+  width: 100%
+  bottom: -.15em
+  left: 0
+  height: .35em
+
+
+.hero__actions
+  +fluid-type(20px, 68px, 'margin-top')
+  display: flex
+  align-items: center
+  +fluid-type(16px, 18px)
+
+.hero__actions .btn
+  flex-shrink: 0
+  width: 220px
+  +fluid-type(20px, 68px, 'margin-right')

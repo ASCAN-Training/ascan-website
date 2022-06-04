@@ -9,9 +9,8 @@
 export const createEvent = (elements, event, callback) => {
     getElements(elements).forEach((item) => {
         return item.addEventListener(event, callback, false);
-    })
+    });
 };
-
 
 export function isExist(elements, callback) {
     if (getElements(elements)) {
@@ -22,8 +21,7 @@ export function isExist(elements, callback) {
 }
 
 export const getElements = (parameter) => {
-    if ((typeof parameter === "string" && typeof parameter !== "object") || parameter.constructor === String) {
-
+    if ((typeof parameter === 'string' && typeof parameter !== 'object') || parameter.constructor === String) {
         try {
             if (document.querySelectorAll(parameter).length > 0) {
                 return Array.from(document.querySelectorAll(parameter));
@@ -32,7 +30,7 @@ export const getElements = (parameter) => {
             }
         } catch (e) {
             console.warn(e);
-            return false
+            return false;
         }
     } else {
         if (parameter.constructor === NodeList) {
@@ -53,7 +51,6 @@ export const toggleAction = (elem, className, timeline) => {
     }
 };
 
-
 /*********************
  *** Check device gesture
  *
@@ -73,7 +70,6 @@ export const toggleAction = (elem, className, timeline) => {
 //     return mq(query);
 // }
 
-
 /*********************
  *** Set browser cookie
  *
@@ -83,13 +79,13 @@ export const toggleAction = (elem, className, timeline) => {
  * @returns {undefined}
  *********************/
 export function createCookie(name, value, days) {
-    let expires = "";
+    let expires = '';
     if (days) {
         let date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        expires = '; expires=' + date.toUTCString();
     }
-    document.cookie = name + "=" + value + expires + "; path=/";
+    document.cookie = name + '=' + value + expires + '; path=/';
 }
 
 /*********************
@@ -99,11 +95,11 @@ export function createCookie(name, value, days) {
  * @returns {string | null}
  //  *********************/
 export function readCookie(name) {
-    let nameEQ = name + "=";
+    let nameEQ = name + '=';
     let ca = document.cookie.split(';');
     for (let i = 0; i < ca.length; i++) {
         let c = ca[i];
-        while (c.charAt(0) === " ") c = c.substring(1, c.length);
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
         if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
@@ -116,7 +112,5 @@ export function readCookie(name) {
  * @returns {undefined}
  *********************/
 export function eraseCookie(name) {
-    createCookie(name, "", -1);
+    createCookie(name, '', -1);
 }
-
-

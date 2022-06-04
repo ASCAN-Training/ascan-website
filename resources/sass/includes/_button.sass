@@ -1,0 +1,39 @@
+.btn .value
+  padding: 20px
+  color: white
+  font-weight: 600
+  +fluid-type(14px, 16px)
+  border-radius: 8px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  width: 100%
+  height: 100%
+
+.btn-primary
+  position: relative
+  transition: transform .15s linear
+
+.btn:focus
+  outline: none
+
+.btn-primary:hover .value,
+.btn-primary:focus .value
+  transform: none
+
+.btn-primary .value
+  background: linear-gradient(270deg, #F67668 0%, #F79576 100%)
+  transform: translate(-12px, -12px)
+  transition: inherit
+
+.btn-primary:after
+  content: ''
+  position: absolute
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  border: 2px solid rgba(59, 62, 72, 0.5)
+  border-radius: 8px
+  z-index: -1

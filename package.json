@@ -9,7 +9,9 @@
     "watch-poll": "npm run watch -- --watch-poll",
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "lint": "eslint ./resources",
+    "lint:fix": "eslint --fix --ext .js  ./resources"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.5.5",
@@ -28,13 +30,17 @@
     "sass": "^1.15.3",
     "sass-loader": "^7.1.0",
     "sort-css-media-queries": "1.4.3",
-    "vue-template-compiler": "^2.5.22"
+    "vue-template-compiler": "^2.5.22",
+    "eslint": "^8.16.0",
+    "prettier": "^2.6.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "babel-eslint": "^10.1.0"
   },
   "dependencies": {
     "gsap": "^3.8.0"
   },
   "browserslist": [
-    "defaults",
-    "cover 99.5%"
+    "last 5 version"
   ]
 }

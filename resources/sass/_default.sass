@@ -12,8 +12,9 @@ html, body
   height: 100%
   overflow-scrolling: revert
   width: 100%
-  font-size: get-vw(16px)
+  font-size: $base-fz
   background-color: $bg-color
+  z-index: 0
 
 a
   text-decoration: none
@@ -52,7 +53,8 @@ a
   flex-shrink: 0
 
 .container-main
-  max-width: 1160px
+  padding: 0 20px
+  max-width: calc(1160px + 20px * 2)
   margin: 0 auto
 
 p, ul
@@ -77,3 +79,11 @@ a:focus,
 
 h1, h2, h3, h4,h5,h6
   font-weight: 600
+  color: white
+
+.icon
+  display: inline-flex
+
+section
+  position: relative
+  z-index: 0

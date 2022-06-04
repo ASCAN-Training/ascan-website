@@ -7,10 +7,10 @@
 <body>
 
 <div class="main-wrapper">
-    <header></header>
+    <?php include('template-parts/generic/header.php') ?>
 
     <main>
-
+        <?php include('template-parts/sections/hero-section.php') ?>
     </main>
 
     <footer></footer>
