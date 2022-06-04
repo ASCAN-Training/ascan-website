@@ -26,18 +26,21 @@
                 <div class="hero__cards">
                     <?php
                     $img_url = 'image/notepad-cards/notepad-img1.svg';
+                    $img_alt = 'img';
                     $title = '1,023';
                     $content = 'ASCANS<br>graduated';
                     include(__DIR__ . '/../cards/notepad-card.php')
                     ?>
                     <?php
                     $img_url = 'image/notepad-cards/notepad-img2.svg';
+                    $img_alt = 'img';
                     $title = '349';
                     $content = 'Space explorers trained';
                     include(__DIR__ . '/../cards/notepad-card.php')
                     ?>
                     <?php
                     $img_url = 'image/notepad-cards/notepad-img3.svg';
+                    $img_alt = 'img';
                     $title = '0$';
                     $content = 'Yes, our Training is completely free!';
                     include(__DIR__ . '/../cards/notepad-card.php')
