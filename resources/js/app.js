@@ -209,6 +209,68 @@ createEvent(document, 'DOMContentLoaded', function () {
         });
     });
 
+    isExist('.grad', (canvases) => {
+        canvases.forEach((canvas) => {
+            const ctx = canvas.getContext('2d')
+            const colors = ["rgba(165, 171, 190, 0.12)"]
+            function randomIntFromRange(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min)
+            }
+            function Circle(x, y, radius, xAngle, color) {
+                this.x = x
+                this.y = y
+                this.xAngle = xAngle;
+                this.radius = radius
+                this.radians = Math.random() * Math.PI * 2
+                this.velocity = 0.005
+                this.distanceFromCenter = randomIntFromRange(radius / 2, canvas.width / 2)
+
+                this.draw = () => {
+                    ctx.beginPath()
+                    ctx.ellipse(this.x, this.y, this.radius, this.radius + this.radius * 1.3, this.xAngle, 0, 2 * Math.PI);
+                    ctx.fillStyle = color
+                    ctx.fill()
+                    ctx.closePath()
+                }
+
+                this.update = () => {
+                    this.radians += this.velocity
+                    this.x = x + Math.cos(this.radians) * this.distanceFromCenter
+                    this.y = y + Math.sin(this.radians) * (canvas.height / 4)
+                    this.xAngle = this.xAngle + this.velocity / 2;
+                    this.draw()
+                }
+            }
+            
+            let particles
+
+            function init() {
+                canvas.width = innerWidth
+                canvas.height = innerHeight
+
+                particles = []
+
+                for (let i = 0; i < colors.length; i++) {
+                    particles.push(new Circle(randomIntFromRange(innerWidth / 2 - 100, innerWidth / 2 + 100), randomIntFromRange(innerHeight / 2 - 50, innerHeight / 2 + 50), 200, randomIntFromRange(1,12), colors[i]))
+                }
+            }
+
+            function animate() {
+                requestAnimationFrame(animate)
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(particle => {
+                    particle.update()
+                });
+            }
+
+            addEventListener('resize', init)
+
+            init()
+            animate()
+        })
+    })
+
     // isExist('.counter', (counters) => {
     //     counters.forEach((counter) => {
     //

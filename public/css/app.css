@@ -232,6 +232,13 @@ input::-ms-clear, ::-webkit-inner-spin-button {
   font-style: normal;
 }
 
+html {
+  background-image: url("../image/grid.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 html, body {
   font-family: "Lexend", sans-serif;
   font-weight: 300;
@@ -247,7 +254,6 @@ html, body {
   overflow-scrolling: revert;
   width: 100%;
   font-size: 16px;
-  background-color: #1B1F2C;
   z-index: 0;
 }
 
@@ -504,6 +510,17 @@ section + section {
 
 .title-animation > * {
   display: inline-block;
+}
+
+.grad {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  -webkit-filter: blur(50px);
+          filter: blur(50px);
 }
 
 .header-inner {

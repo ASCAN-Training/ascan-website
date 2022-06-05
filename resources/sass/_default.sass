@@ -1,4 +1,10 @@
 //default styles for site
+html
+  background-image: url("../image/grid.jpg")
+  background-repeat: no-repeat
+  background-size: cover
+  background-attachment: fixed
+
 html, body
   font-family: $lexend-font
   font-weight: 300
@@ -13,7 +19,7 @@ html, body
   overflow-scrolling: revert
   width: 100%
   font-size: $base-fz
-  background-color: $bg-color
+  //background-color: $bg-color
   z-index: 0
 
 a
@@ -186,3 +192,12 @@ section + section
 
 .title-animation > *
   display: inline-block
+
+.grad
+  position: fixed
+  left: 0
+  top: 0
+  bottom: 0
+  right: 0
+  z-index: -1
+  filter: blur(50px)

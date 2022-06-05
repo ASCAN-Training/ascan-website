@@ -5,7 +5,10 @@
 
 
 <body>
-
+<canvas class="grad"></canvas>
+<!--<div class="flying-light">
+    <span></span>
+</div>-->
 <div class="main-wrapper">
     <?php include('template-parts/generic/header.php') ?>
 
