@@ -241,7 +241,7 @@ createEvent(document, 'DOMContentLoaded', function () {
                     this.draw()
                 }
             }
-            
+
             let particles
 
             function init() {
