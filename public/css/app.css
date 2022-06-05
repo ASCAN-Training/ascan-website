@@ -498,6 +498,10 @@ section + section {
   transform: translateZ(0);
 }
 
+.title-animation {
+  visibility: hidden;
+}
+
 .title-animation > * {
   display: inline-block;
 }

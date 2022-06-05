@@ -175,6 +175,7 @@ createEvent(document, 'DOMContentLoaded', function () {
                         trigger: title,
                         start: "top 80%"
                     },
+                    onStart: () => title.style.visibility = 'visible',
                     onComplete: () => onAnimComplete()
                 });
             });
