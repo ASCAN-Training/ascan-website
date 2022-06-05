@@ -1,0 +1,69 @@
+.footer-subscribe__main
+  position: relative
+
+.footer-subscribe
+  +fluid-type(32px, 80px, 'margin-top')
+  display: grid
+  grid-template-columns: 1.83fr 1fr
+  justify-content: space-between
+  +fluid-type(20px, 140px, 'grid-gap')
+
+.footer-subscribe__title svg
+  color: $blue
+
+.footer-subscribe .subscribe-form
+  +fluid-type(32px, 46px, 'margin-top')
+
+.subscribe-form
+  position: relative
+  height: 60px
+
+.subscribe-form label
+  height: 100%
+
+.subscribe-form label input
+  padding-right: 140px
+
+.subscribe-form .btn
+  position: absolute
+  right: 0
+  top: 0
+  padding: 0
+  height: 100%
+  display: flex
+  align-items: center
+  width: 120px
+
+.subscribe-success
+  visibility: hidden
+  opacity: 0
+  position: absolute
+  left: 0
+  top: 0
+
+.subscribe-success h5
+  +fluid-type(20px, 24px)
+
+.subscribe-success p
+  margin-top: 12px
+
+.subscribe-progress
+  display: flex
+  width: 100%
+  height: 80px
+  position: relative
+  margin-top: 26px
+
+.subscribe-progress .orange
+  stroke-dasharray: 752
+  stroke-dashoffset: 752
+  transition: stroke-dashoffset 1s linear
+
+.subscribe-progress .orange.active
+  stroke-dashoffset: 0
+
+.subscribe-progress .counter
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)

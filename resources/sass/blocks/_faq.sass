@@ -1,0 +1,82 @@
+.faq__question
+  border-bottom: 2px solid $border-color
+  position: relative
+
+.faq__question:before
+  content: ''
+  position: absolute
+  left: 0
+  bottom: -2px
+  width: 0
+  max-width: 360px
+  height: 2px
+  background-color: white
+  transition: width .2s linear
+
+.faq__question.active:before
+  width: 100%
+
+.faq__question__button
+  +fluid-type(20px, 24px)
+  font-weight: 500
+  display: flex
+  align-items: flex-start
+  width: 100%
+  color: white
+  text-align: left
+  +fluid-type(20px, 24px, 'padding-top')
+  +fluid-type(20px, 24px, 'padding-bottom')
+
+.faq__question__button:hover .icon,
+.faq__question__button:focus .icon,
+.faq__question.active .icon
+  background-color: white
+
+.faq__question__button:hover .icon:after,
+.faq__question__button:focus .icon:after,
+.faq__question__button:focus .icon:before,
+.faq__question__button:hover .icon:before
+  background-color: $bg-color
+
+.faq__question.active .icon:after
+  transform: translate(-50%, -50%)
+  background-color: $bg-color
+
+.faq__question__button .icon
+  +fluid-type(32px, 44px, 'width')
+  +fluid-type(32px, 44px, 'height')
+  +fluid-type(32px, 44px)
+  background-color: $slight-white-bg
+  border-radius: 50%
+  position: relative
+  flex-shrink: 0
+  margin-left: auto
+  display: flex
+  transition: background-color .2s linear
+
+.faq__question__button .icon:after,
+.faq__question__button .icon:before
+  content: ''
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  width: 0.363em
+  height: 2px
+  background-color: white
+  border-radius: 10px
+  transition: background-color .2s linear, transform .2s linear
+
+.faq__question__button .icon:after
+  transform: translate(-50%, -50%) rotate(-90deg)
+  transform-origin: center
+
+.faq__question.active .faq__question__content
+  height: auto
+
+.faq__question__content
+  overflow: hidden
+  height: 0
+
+.faq__question__content p
+  +fluid-type(20px, 32px, 'margin-bottom')

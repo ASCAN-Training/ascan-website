@@ -113,3 +113,6 @@ $base-fz: 16px
 
 @function calcEm($targetValue, $font-size)
   @return strip-unit($targetValue) / strip-unit($font-size) + em
+
+@function calcRem($fz)
+  @return strip-unit($fz) / strip-unit($base-fz) + rem

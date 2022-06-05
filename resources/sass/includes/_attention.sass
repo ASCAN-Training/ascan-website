@@ -1,0 +1,40 @@
+.attention,
+.draw-underline
+  position: relative
+  display: inline-block
+
+.attention .icon
+  color: $green
+  position: absolute
+  left: calc(100% - .05em)
+  top: -.1em
+  width: 0.5em
+  height: 0.5em
+  opacity: 0
+
+.attention--left .icon
+  left: auto
+  top: -.2em
+  right: calc(100% - .05em)
+
+.attention--left .icon svg
+  transform: scaleX(-1)
+
+.draw-underline .icon
+  position: absolute
+  color: $green
+  width: 100%
+  bottom: -.15em
+  left: 0
+  height: .35em
+  stroke-dasharray: 311
+  stroke-dashoffset: 311
+
+//.draw-underline
+//  background-image: url("../image/draw-underline.svg")
+//  background-repeat: no-repeat
+//  background-size: 100% .35em
+//  background-position: 0% 100%
+//  overflow: visible
+//  padding-bottom: 15px
+//  margin-bottom: -15px

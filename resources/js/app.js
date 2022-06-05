@@ -7,11 +7,13 @@ import {
 } from './functions';
 
 import gsap from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {ScrollToPlugin} from 'gsap/ScrollToPlugin';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import {SplitText} from "./libs/SplitText.js";
 
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
 
 let screenWidth = 0;
 let vh = 0;
@@ -41,8 +43,201 @@ createEvent(window, 'resize', function (e) {
 
 createEvent(document, 'DOMContentLoaded', function () {
     loadAndResize();
+    isExist('.notepad', (notepads) => {
+        notepads.forEach((notepad) => {
+            const buttons = notepad.querySelectorAll('.notepad__button');
+            const pages = notepad.querySelectorAll('.notepad__page-content');
+            buttons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const activePage = notepad.querySelector('.notepad__page-content.active');
+                    const activeButton = notepad.querySelector('.notepad__button.active');
+                    const selectedModule = button.getAttribute('data-module');
+                    const target = [...pages].find((page) => page.getAttribute('data-module') === selectedModule);
+                    if (target === activePage) return;
+                    const tl = gsap.timeline({paused: true});
+                    gsap.to(activePage, {
+                        y: 30, autoAlpha: 0, display: 'none', duration: 0.2, onComplete: () => {
+                            activePage.classList.remove('active');
+                            tl.play();
+                        }
+                    });
+                    tl.fromTo(
+                        target,
+                        {y: 30, autoAlpha: 0, display: 'none'},
+                        {
+                            y: 0,
+                            autoAlpha: 1,
+                            display: 'block',
+                            duration: 0.2,
+                            onComplete: () => target.classList.add('active')
+                        },
+                    );
+                    activeButton.classList.remove('active');
+                    button.classList.add('active');
+                });
+            });
+        });
+    });
+
+    isExist('.faq', (faqs) => {
+        faqs.forEach((faq) => {
+            const questions = faq.querySelectorAll('.faq__question');
+            questions.forEach((question) => {
+                const button = question.querySelector('button');
+                const content = question.querySelector('.faq__question__content');
+                if (question.classList.contains('active')) {
+                    gsap.set(content, {height: 'auto'})
+                } else {
+                    gsap.set(content, {height: 0})
+                }
+                const expand = () => {
+                    gsap.to(content, {height: "auto", duration: .2});
+                    button.setAttribute('aria-expanded', 'true')
+                    content.setAttribute('aria-hidden', 'false')
+                };
+                const collapse = () => {
+                    gsap.to(content, {height: 0, duration: .2});
+                    button.setAttribute('aria-expanded', 'false')
+                    content.setAttribute('aria-hidden', 'true')
+                }
+                button.addEventListener('click', () => {
+                    question.classList.contains('active') ? collapse() : expand();
+                    question.classList.toggle('active')
+                });
+            });
+        });
+    });
+
+    isExist('.footer-subscribe__main', (subscribs) => {
+        subscribs.forEach((subscribe) => {
+            const initialBox = subscribe.querySelector('.subscribe-initial');
+            const successBox = subscribe.querySelector('.subscribe-success');
+            const loader = successBox.querySelector('svg .orange')
+            const counter = subscribe.querySelector('.counter .value');
+            const form = subscribe.querySelector('form');
+            const tl = gsap.timeline({paused: true});
+            tl.to(initialBox, {y: 30, autoAlpha: 0, duration: .3});
+            tl.fromTo(successBox, {y: 30, autoAlpha: 0}, {
+                y: 0,
+                autoAlpha: 1,
+                duration: .3,
+                onComplete: () => {
+                    animateValue(counter, 0, 100, 1000)
+                    loader.classList.toggle('active')
+                },
+                onReverseComplete: () => {
+                    loader.classList.toggle('active')
+                    counter.textContent = '0'
+                }
+            });
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                form.reset();
+                tl.play();
+                setTimeout(() => tl.reverse(), 10000)
+            });
+        });
+    });
+
+    isExist('.draw-underline', (underlines) => {
+        underlines.forEach((underline) => {
+
+        });
+    });
+
+    isExist('.title-animation', (titles) => {
+
+        titles.forEach((title) => {
+            document.fonts.ready.then(function () {
+                const mySplitText = new SplitText(title, {type: "lines,words,chars", linesClass: "split-line"});
+                const onAnimComplete = () => {
+                    mySplitText.revert();
+                    const attention = title.querySelector('.attention .icon');
+                    const underline = title.querySelector('.draw-underline .icon');
+                    if (attention) {
+                        gsap.fromTo(attention, {scale: .5, autoAlpha: 0}, {
+                            scale: 1,
+                            autoAlpha: 1,
+                            ease: "back.out(3)",
+                            duration: .5
+                        });
+                    }
+                    if (underline) {
+                        gsap.to(underline, {strokeDashoffset: 0, duration: .3, ease: "none"})
+                    }
+                };
+                gsap.from(mySplitText.words, {
+                    duration: 0.4,
+                    opacity: 0,
+                    y: 100,
+                    stagger: 0.05,
+                    scrollTrigger: {
+                        trigger: title,
+                        start: "top 80%"
+                    },
+                    onComplete: () => onAnimComplete()
+                });
+            });
+        });
+    });
+
+    isExist('.title-simple-animation', (titles) => {
+        titles.forEach((title) => {
+            const attention = title.querySelector('.attention .icon');
+            const underline = title.querySelector('.draw-underline .icon');
+            if (attention) {
+                gsap.fromTo(attention, {scale: .5, autoAlpha: 0}, {
+                    scale: 1,
+                    autoAlpha: 1,
+                    ease: "back.out(3)",
+                    duration: .5,
+                    scrollTrigger: {
+                        trigger: title,
+                        start: "top 80%"
+                    },
+                });
+            }
+            if (underline) {
+                gsap.to(underline, {
+                    strokeDashoffset: 0, duration: .3, ease: "none", scrollTrigger: {
+                        trigger: title,
+                        start: "top 80%"
+                    },
+                })
+            }
+        });
+    });
+
+    // isExist('.counter', (counters) => {
+    //     counters.forEach((counter) => {
+    //
+    //     });
+    // });
 });
-createEvent(document, 'DOMContentLoaded', function () {});
+createEvent(document, 'DOMContentLoaded', function () {
+});
+
+function animateValue(target, start, end, duration) {
+    let startTimestamp = null;
+    //const numberOfDigits = end.toString().length;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        let num = Math.floor(progress * (end - start) + start);
+        const numLength = num.toString().length;
+        //const diff = numberOfDigits - numLength;
+        //let append = '';
+        //for (let i = 0; i < diff; i++) {
+        //    append += '0';
+        //}
+        //num = append + num;
+        target.textContent = num;
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
 
 // function getRandomDigit(min, max) {
 //     return Math.random() * (max - min) + min;

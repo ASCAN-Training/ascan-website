@@ -1,39 +1,93 @@
-.btn .value
+.btn
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  text-align: center
+
+.btn-primary .value,
+.btn-secondary .value
   padding: 20px
   color: white
   font-weight: 600
   +fluid-type(14px, 16px)
   border-radius: 8px
-  display: inline-flex
-  align-items: center
-  justify-content: center
-  text-align: center
   width: 100%
   height: 100%
+
+.btn-secondary .value
+  border: 2px solid $border-color
+  transition: border-color .2s linear
+
+.btn-secondary:hover .value,
+.btn-secondary:focus .value
+  border-color: white
 
 .btn-primary
   position: relative
   transition: transform .15s linear
+  padding-bottom: 12px
+  padding-right: 12px
 
 .btn:focus
   outline: none
 
 .btn-primary:hover .value,
 .btn-primary:focus .value
-  transform: none
+  transform: translate(12px, 12px)
+  background: $orange
+
+.btn-primary:hover .value:before,
+.btn-primary:focus .value:before
+  opacity: 1
 
 .btn-primary .value
   background: linear-gradient(270deg, #F67668 0%, #F79576 100%)
-  transform: translate(-12px, -12px)
   transition: inherit
+  width: 100%
+  height: 100%
+  position: relative
+  z-index: 0
+
+.btn-primary--simple:hover .value,
+.btn-primary--simple:focus .value
+  transform: none
+
+.btn-primary--simple:after
+  display: none
+
+.btn-primary--simple
+  padding: 0
+
+.btn-primary .value:before
+  content: ''
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  top: 0
+  background: $orange
+  opacity: 0
+  z-index: -1
+  pointer-events: none
+  border-radius: inherit
+  transition: opacity .2s ease
 
 .btn-primary:after
   content: ''
   position: absolute
-  width: 100%
-  height: 100%
+  width: calc(100% - 12px)
+  height: calc(100% - 12px)
   top: 0
   left: 0
   border: 2px solid rgba(59, 62, 72, 0.5)
   border-radius: 8px
   z-index: -1
+  transform: translate(12px, 12px)
+
+.btn-tertiary
+  font-weight: 600
+  transition: color .2s linear
+
+.btn-tertiary:hover,
+.btn-tertiary:focus
+  color: $green

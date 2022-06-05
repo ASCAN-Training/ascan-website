@@ -1,10 +1,17 @@
+<?php
+$menu_items = array('Home', 'About', 'Training', 'Academy', ' FAQ', 'Support or Contact')
+?>
 <nav>
     <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Training</a></li>
-        <li><a href="#">Academy</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Support or Contact</a></li>
+        <?php foreach ($menu_items as $menu_item) { ?>
+            <li>
+                <a href="#">
+                    <?php echo $menu_item ?>
+                    <span class="icon">
+                        <?php include(__DIR__.'/../svg/menu-hover.php') ?>
+                    </span>
+                </a>
+            </li>
+        <?php } ?>
     </ul>
 </nav>

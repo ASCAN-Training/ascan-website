@@ -13,15 +13,39 @@
   height: 36px
   object-fit: contain
 
-.header-inner > nav
-  font-size: 16px
-
-.header-inner > nav ul
+.header-inner > nav ul,
+.footer__menu > nav ul
   display: flex
   align-items: center
 
-.header-inner > nav ul li + li
+.header-inner > nav ul li + li,
+.footer__menu > nav ul li + li
   +fluid-type(20px, 40px, 'margin-left')
+
+header nav li a,
+footer nav li a
+  position: relative
+  outline: none
+
+header nav li a:hover .icon,
+header nav li a:focus .icon,
+footer nav li a:hover .icon,
+footer nav li a:focus .icon
+  stroke-dashoffset: 330
+
+header nav li a .icon,
+footer nav li a .icon
+  position: absolute
+  width: 56px
+  height: 20px
+  left: 50%
+  transform: translateX(-50%)
+  top: calc(100% + 5px)
+  color: $orange
+  stroke-dasharray: 165
+  stroke-dashoffset: 165
+  transition: stroke-dashoffset .25s ease-in-out
+  pointer-events: none
 
 .header__cta
   font-size: 18px
@@ -35,12 +59,13 @@
   top: -4px
   width: 16px
   height: 16px
-  color: $blue
+  color: $green
   transition: color .3s ease
 
 .header__cta:hover,
 .header__cta:focus
-  color: $blue
+  color: $green
+  outline: none
 
 .header__cta:hover .icon,
 .header__cta:focus .icon

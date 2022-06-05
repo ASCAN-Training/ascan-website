@@ -2,17 +2,16 @@
     <div class="container-main">
         <div class="hero">
             <div class="hero__content">
-                <h1>Get your first <span class="draw-underline">
-                        free NFT
-                        <span class="icon"><svg><use xlink:href="#draw-line"></use></svg></span>
-                    </span> with
-                    <span class="attention">the
-                        <span class="icon">
-                            <?php
-                            include(__DIR__ . '/../svg/lines.php')
-                            ?>
-                        </span>
-                    </span>
+                <h1 class="title-animation">Get your first
+                    <?php
+                    $value = 'free NFT';
+                    include(__DIR__ . '/../includes/draw-underline.php')
+                    ?>
+                    with
+                    <?php
+                    $value = 'the';
+                    include(__DIR__ . '/../includes/attention.php')
+                    ?>
                     ASCAN Training
                 </h1>
                 <div class="hero__actions">

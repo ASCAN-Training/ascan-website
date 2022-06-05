@@ -1,0 +1,100 @@
+.notepad
+  display: grid
+  grid-template-columns: 1fr 1fr
+  +fluid-type(12px, 40px, 'grid-gap')
+  +fluid-type(32px, 60px, 'margin-top')
+
+.notepad-page
+  position: relative
+  +fluid-type(32px, 60px, 'padding-top')
+  +fluid-type(32px, 60px, 'padding-bottom')
+  +fluid-type(20px, 60px, 'padding-left')
+  +fluid-type(20px, 60px, 'padding-right')
+
+.notepad-page:before
+  content: ''
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  top: 0
+  border: 2px solid $border-color
+  border-radius: inherit
+  pointer-events: none
+
+.notepad__page-name
+  padding: 8px 16px
+  border-radius: 50px
+  background: linear-gradient(0deg, #1B1F2C, #1B1F2C), #FFFFFF
+  display: inline-block
+  margin-bottom: 12px
+
+.notepad__button
+  position: relative
+  font-weight: 500
+  color: white
+  +fluid-type(20px, 24px)
+  display: flex
+  align-items: center
+  justify-content: space-between
+  width: 100%
+  +fluid-type(12px, 20px, 'padding-top')
+  +fluid-type(12px, 20px, 'padding-bottom')
+  border-bottom: 2px solid $border-color
+
+.notepad__button:hover .icon,
+.notepad__button.active .icon,
+.notepad__button:focus .icon
+  background-color: white
+  color: $text-black
+
+.notepad__button:hover:before,
+.notepad__button.active:before,
+.notepad__button:focus:before
+  width: 68%
+
+.notepad__button:before
+  content: ''
+  position: absolute
+  bottom: -2px
+  left: 0
+  height: 2px
+  width: 0
+  background-color: white
+  transition: width .2s linear
+
+.notepad__button .icon
+  +fluid-type(32px, 44px, 'width')
+  +fluid-type(32px, 44px, 'height')
+  border-radius: 50%
+  display: flex
+  align-items: center
+  justify-content: center
+  background-color: $slight-white-bg
+  transition: background-color .2s ease
+
+.notepad__button .icon svg
+  +fluid-type(16px, 20px, 'width')
+  +fluid-type(16px, 20px, 'height')
+  transition: inherit
+
+.notepad-page .notepad__rings
+  top: 54px
+  bottom: 54px
+
+.notepad-page .notepad__rings .ring
+  height: 24px
+  transform: translateX(10px)
+
+.notepad__page-content.active
+  display: block
+
+.notepad__page-content
+  display: none
+
+.notepad__page-title
+  +fluid-type(20px, 32px, 'margin-top')
+
+.notepad__page-description
+  +fluid-type(12px, 32px, 'margin-top')
+  +fluid-type(16px, 18px)

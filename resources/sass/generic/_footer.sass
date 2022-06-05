@@ -1,0 +1,59 @@
+footer
+  +fluid-type(80px, 160px, 'margin-top')
+  +fluid-type(40px, 140px, 'padding-bottom')
+
+.footer__menu
+  display: flex
+  align-items: center
+  justify-content: space-between
+  +fluid-type(20px, 32px, 'padding-top')
+  +fluid-type(20px, 32px, 'padding-bottom')
+  border-top: 2px solid $border-color
+
+.footer__bottom
+  +fluid-type(32px, 80px, 'margin-top')
+  display: flex
+  justify-content: space-between
+
+.footer__socials__listing
+  display: grid
+  grid-template-columns: repeat(4, auto)
+  +fluid-type(16px, 20px, 'grid-gap')
+  +fluid-type(20px, 32px, 'margin-top')
+
+.social-button
+  display: flex
+  align-items: center
+  justify-content: center
+  border-radius: 4px
+  background-color: $tile-bg
+  width: 56px
+  height: 56px
+  transition: background-color .2s ease
+
+.social-button:hover,
+.social-button:focus
+  background-color: white
+
+.social-button:hover img,
+.social-button:focus img
+  filter: brightness(0) saturate(100%) invert(10%) sepia(34%) saturate(535%) hue-rotate(188deg) brightness(96%) contrast(96%)
+
+.social-button img
+  width: 24px
+  height: 24px
+  object-fit: contain
+
+.footer__tech-links ul
+  display: flex
+  flex-wrap: wrap
+  +fluid-type(20px, 40px, 'grid-column-gap')
+  +fluid-type(20px, 36px, 'grid-row-gap')
+  max-width: 360px
+
+.footer__tech-links a
+  text-decoration: underline
+
+.footer__tech-links a:hover,
+.footer__tech-links a:focus
+  color: white

@@ -1,0 +1,18 @@
+.safe-start__heading .section-title
+  max-width: 660px
+  margin: 0 auto
+
+.safe-start__heading .section-subtitle
+  max-width: 560px
+  margin-left: auto
+  margin-right: auto
+
+.safe-start__listing
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  +fluid-type(32px, 60px, 'margin-top')
+  +fluid-type(16px, 40px, 'grid-gap')
+
+.safe-start__listing > *:nth-child(3n),
+.safe-start__listing > *:nth-child(3n+1)
+  margin-top: 50px
