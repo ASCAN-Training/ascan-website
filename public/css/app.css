@@ -1805,6 +1805,7 @@ footer {
   height: .35em;
   stroke-dasharray: 311;
   stroke-dashoffset: 311;
+  z-index: -1;
 }
 
 .default-input input {
