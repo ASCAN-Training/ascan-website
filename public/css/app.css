@@ -412,45 +412,6 @@ section + section {
   border: 0;
 }
 
-.notepad__rings {
-  position: absolute;
-  top: 24px;
-  bottom: 24px;
-  right: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  overflow: hidden;
-}
-
-.notepad__rings--left {
-  right: auto;
-  left: 0;
-  -webkit-transform: scaleX(-1);
-      -ms-transform: scaleX(-1);
-          transform: scaleX(-1);
-}
-
-.notepad__rings .ring {
-  width: 40px;
-  height: 14px;
-  border-radius: 50px;
-  border: 2px solid rgba(59, 62, 72, 0.5);
-  background-color: #1B1F2C;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  -webkit-transform: translateX(28px);
-      -ms-transform: translateX(28px);
-          transform: translateX(28px);
-}
-
 .ordered-list {
   margin: 0;
   padding: 0;
@@ -521,6 +482,15 @@ section + section {
   z-index: -1;
   -webkit-filter: blur(50px);
           filter: blur(50px);
+}
+
+.clip-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none;
 }
 
 .header-inner {
@@ -1029,6 +999,10 @@ footer {
 
 .notepad-page {
   position: relative;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  -webkit-filter: drop-shadow(0px -2px 0px #353945) drop-shadow(0px 2px 0px #353945) drop-shadow(-2px 0px 0px #353945) drop-shadow(2px 0px 0px #353945);
+          filter: drop-shadow(0px -2px 0px #353945) drop-shadow(0px 2px 0px #353945) drop-shadow(-2px 0px 0px #353945) drop-shadow(2px 0px 0px #353945);
 }
 
 .notepad-page {
@@ -1047,16 +1021,21 @@ footer {
   padding-right: 20px;
 }
 
-.notepad-page:before {
-  content: '';
+.notepad-left .notepad-circles {
+  -webkit-transform: scaleX(-1);
+      -ms-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+.notepad-circles {
   position: absolute;
   left: 0;
+  top: 0;
   right: 0;
   bottom: 0;
-  top: 0;
-  border: 2px solid #353945;
-  border-radius: inherit;
-  pointer-events: none;
+  -webkit-clip-path: url("#notepad-clippath");
+          clip-path: url("#notepad-clippath");
+  z-index: -1;
 }
 
 .notepad__page-name {
@@ -1481,22 +1460,13 @@ footer {
 }
 
 .notepad-card {
-  background-color: #232733;
   padding: 20px;
   position: relative;
-  border-radius: 8px;
-}
-
-.notepad-card:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  border: 2px solid rgba(59, 62, 72, 0.5);
-  border-radius: inherit;
-  pointer-events: none;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  z-index: 0;
+  -webkit-filter: drop-shadow(0px -2px 0px #353945) drop-shadow(0px 2px 0px #353945) drop-shadow(-2px 0px 0px #353945) drop-shadow(2px 0px 0px #353945);
+          filter: drop-shadow(0px -2px 0px #353945) drop-shadow(0px 2px 0px #353945) drop-shadow(-2px 0px 0px #353945) drop-shadow(2px 0px 0px #353945);
 }
 
 .notepad-card__icon {
@@ -1515,6 +1485,19 @@ footer {
 .notepad-card__content {
   margin-top: 14px;
   font-size: .875rem;
+}
+
+.notepad-card__circles {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-clip-path: url("#notepad-card-clippath");
+          clip-path: url("#notepad-card-clippath");
+  z-index: -1;
+  border-radius: 8px;
+  background-color: #232733;
 }
 
 .what-is-card {

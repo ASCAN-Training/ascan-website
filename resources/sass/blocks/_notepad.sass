@@ -10,17 +10,20 @@
   +fluid-type(32px, 60px, 'padding-bottom')
   +fluid-type(20px, 60px, 'padding-left')
   +fluid-type(20px, 60px, 'padding-right')
+  transform: translateZ(0)
+  filter: drop-shadow(0px -2px 0px $border-color) drop-shadow(0px 2px 0px $border-color) drop-shadow(-2px 0px 0px $border-color) drop-shadow(2px 0px 0px $border-color)
 
-.notepad-page:before
-  content: ''
+.notepad-left .notepad-circles
+  transform: scaleX(-1)
+
+.notepad-circles
   position: absolute
   left: 0
+  top: 0
   right: 0
   bottom: 0
-  top: 0
-  border: 2px solid $border-color
-  border-radius: inherit
-  pointer-events: none
+  clip-path: url("#notepad-clippath")
+  z-index: -1
 
 .notepad__page-name
   padding: 8px 16px
