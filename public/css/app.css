@@ -362,6 +362,9 @@ section {
 
 .section-title {
   text-align: center;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-title {
@@ -491,6 +494,15 @@ section + section {
   width: 0 !important;
   height: 0 !important;
   pointer-events: none;
+}
+
+.img-in-text {
+  display: inline-block;
+}
+
+.img-in-text img {
+  pointer-events: none;
+  max-height: 0.8em;
 }
 
 .header-inner {
@@ -728,6 +740,14 @@ footer {
   margin-top: 44px;
 }
 
+.hero-texted .hero__content {
+  max-width: 960px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 .hero__content h1 {
   color: white;
 }
@@ -760,10 +780,10 @@ footer {
 .hero__actions .btn {
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  width: 220px;
+  min-width: 220px;
 }
 
-.hero__actions .btn {
+.hero__actions:not(.hero__actions--column) .btn {
   margin-right: 20px;
 }
 
@@ -776,6 +796,25 @@ footer {
 }
 
 .hero__cards {
+  margin-top: 32px;
+}
+
+.hero__actions--column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.hero__actions--column > *:last-child {
   margin-top: 32px;
 }
 
@@ -843,11 +882,6 @@ footer {
 
 .simple-cta h3 {
   font-size: 40px;
-}
-
-.simple-cta h3 img {
-  pointer-events: none;
-  max-height: 0.8em;
 }
 
 .simple-cta .btn {
@@ -980,6 +1014,57 @@ footer {
 
 .decorated-cta .btn {
   margin-top: 32px;
+}
+
+.roadmap-box .roadmap {
+  margin-top: 32px;
+}
+
+.team-box {
+  position: relative;
+  z-index: 0;
+}
+
+.team-box .section-title {
+  line-height: 1.2;
+  pointer-events: none;
+}
+
+.team-box .section-title {
+  font-size: 40px;
+}
+
+.team-members {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.team-members .team-member {
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+  z-index: -1;
+  pointer-events: all;
+}
+
+.team-members svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .notepad {
@@ -1455,6 +1540,59 @@ footer {
           transform: translate(-50%, -50%);
 }
 
+.roadmap .roadmap-card {
+  position: sticky;
+  margin-bottom: 20px;
+}
+
+.roadmap .roadmap-card {
+  bottom: 32px;
+}
+
+.roadmap .roadmap-card:first-child {
+  opacity: 1;
+}
+
+.roadmap .roadmap-card:nth-child(1) {
+  z-index: 9;
+}
+
+.roadmap .roadmap-card:nth-child(2) {
+  z-index: 8;
+}
+
+.roadmap .roadmap-card:nth-child(3) {
+  z-index: 7;
+}
+
+.roadmap .roadmap-card:nth-child(4) {
+  z-index: 6;
+}
+
+.roadmap .roadmap-card:nth-child(5) {
+  z-index: 5;
+}
+
+.roadmap .roadmap-card:nth-child(6) {
+  z-index: 4;
+}
+
+.roadmap .roadmap-card:nth-child(7) {
+  z-index: 3;
+}
+
+.roadmap .roadmap-card:nth-child(8) {
+  z-index: 2;
+}
+
+.roadmap .roadmap-card:nth-child(9) {
+  z-index: 1;
+}
+
+.roadmap .roadmap-card:nth-child(10) {
+  z-index: 0;
+}
+
 .why-get-tile__content {
   margin-top: 12px;
 }
@@ -1629,6 +1767,115 @@ footer {
   margin-top: 50px;
 }
 
+.roadmap-card {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 50px 2px 50px 1fr;
+  grid-template-columns: 1fr 2px 1fr;
+  grid-gap: 50px;
+  position: relative;
+}
+
+.roadmap-card {
+  padding: 20px;
+}
+
+.roadmap-card {
+  padding-right: 20px;
+}
+
+.roadmap-card__divider {
+  height: 100%;
+  background: #353945;
+}
+
+.roadmap-card__image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
+
+.roadmap-card__main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.roadmap-card__page {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.roadmap-card__title {
+  max-width: 80%;
+}
+
+.roadmap-card__title {
+  margin-top: 20px;
+}
+
+.roadmap-card__content {
+  margin-top: 12px;
+}
+
+.team-member {
+  border-radius: 8px;
+  position: relative;
+  max-width: 110px;
+  max-height: 110px;
+}
+
+.team-member img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
+
+.team-member__content {
+  position: absolute;
+  left: 60px;
+  top: 80px;
+  background-color: #232733;
+  border: 1px solid #353945;
+  border-radius: 0px 16px 16px 16px;
+  width: 196px;
+  opacity: 0;
+  padding: 16px;
+  pointer-events: none;
+}
+
+.team-member__name {
+  font-weight: 500;
+}
+
+.team-member__name {
+  font-size: 18px;
+}
+
+.team-member__description {
+  margin-top: 12px;
+}
+
+.team-member:hover .team-member__content {
+  opacity: 1;
+  pointer-events: all;
+}
+
 .btn {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -1770,7 +2017,8 @@ footer {
 }
 
 .attention,
-.draw-underline {
+.draw-underline,
+.highlight-ellipse {
   position: relative;
   display: inline-block;
 }
@@ -1806,6 +2054,20 @@ footer {
   height: .35em;
   stroke-dasharray: 311;
   stroke-dashoffset: 311;
+  z-index: -1;
+}
+
+.highlight-ellipse .icon {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #818BD5;
+  width: 105%;
+  stroke-dasharray: 753;
+  stroke-dashoffset: 753;
   z-index: -1;
 }
 
@@ -1926,10 +2188,13 @@ label {
   .hero__actions {
     font-size: calc(16px + 2 * ((100vw - 600px) / 600));
   }
-  .hero__actions .btn {
+  .hero__actions:not(.hero__actions--column) .btn {
     margin-right: calc(20px + 48 * ((100vw - 600px) / 600));
   }
   .hero__cards {
+    margin-top: calc(32px + 28 * ((100vw - 600px) / 600));
+  }
+  .hero__actions--column > *:last-child {
     margin-top: calc(32px + 28 * ((100vw - 600px) / 600));
   }
   .what-is-ascan .section-title {
@@ -2003,6 +2268,12 @@ label {
   }
   .decorated-cta .btn {
     margin-top: calc(32px + 28 * ((100vw - 600px) / 600));
+  }
+  .roadmap-box .roadmap {
+    margin-top: calc(32px + 28 * ((100vw - 600px) / 600));
+  }
+  .team-box .section-title {
+    font-size: calc(40px + 44 * ((100vw - 600px) / 600));
   }
   .notepad {
     grid-gap: calc(12px + 28 * ((100vw - 600px) / 600));
@@ -2094,6 +2365,9 @@ label {
   .subscribe-success h5 {
     font-size: calc(20px + 4 * ((100vw - 600px) / 600));
   }
+  .roadmap .roadmap-card {
+    bottom: calc(32px + 28 * ((100vw - 600px) / 600));
+  }
   .why-get-tile__content {
     margin-top: calc(12px + 8 * ((100vw - 600px) / 600));
   }
@@ -2156,6 +2430,21 @@ label {
   }
   .numbered-card .btn {
     margin-top: calc(50px + -18 * ((100vw - 600px) / 600));
+  }
+  .roadmap-card {
+    padding: calc(20px + 20 * ((100vw - 600px) / 600));
+  }
+  .roadmap-card {
+    padding-right: calc(20px + 80 * ((100vw - 600px) / 600));
+  }
+  .roadmap-card__title {
+    margin-top: calc(20px + 34 * ((100vw - 600px) / 600));
+  }
+  .roadmap-card__content {
+    margin-top: calc(12px + 20 * ((100vw - 600px) / 600));
+  }
+  .team-member__name {
+    font-size: calc(18px + 10 * ((100vw - 600px) / 600));
   }
   .btn-primary .value,
   .btn-secondary .value {
@@ -2246,10 +2535,13 @@ label {
   .hero__actions {
     font-size: 18px;
   }
-  .hero__actions .btn {
+  .hero__actions:not(.hero__actions--column) .btn {
     margin-right: 68px;
   }
   .hero__cards {
+    margin-top: 60px;
+  }
+  .hero__actions--column > *:last-child {
     margin-top: 60px;
   }
   .what-is-ascan .section-title {
@@ -2323,6 +2615,12 @@ label {
   }
   .decorated-cta .btn {
     margin-top: 60px;
+  }
+  .roadmap-box .roadmap {
+    margin-top: 60px;
+  }
+  .team-box .section-title {
+    font-size: 84px;
   }
   .notepad {
     grid-gap: 40px;
@@ -2414,6 +2712,9 @@ label {
   .subscribe-success h5 {
     font-size: 24px;
   }
+  .roadmap .roadmap-card {
+    bottom: 60px;
+  }
   .why-get-tile__content {
     margin-top: 20px;
   }
@@ -2476,6 +2777,21 @@ label {
   }
   .numbered-card .btn {
     margin-top: 32px;
+  }
+  .roadmap-card {
+    padding: 40px;
+  }
+  .roadmap-card {
+    padding-right: 100px;
+  }
+  .roadmap-card__title {
+    margin-top: 54px;
+  }
+  .roadmap-card__content {
+    margin-top: 32px;
+  }
+  .team-member__name {
+    font-size: 28px;
   }
   .btn-primary .value,
   .btn-secondary .value {

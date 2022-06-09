@@ -1,0 +1,29 @@
+.roadmap .roadmap-card
+  position: sticky
+  +fluid-type(32px, 60px, 'bottom')
+  margin-bottom: 20px
+
+.roadmap .roadmap-card:first-child
+  opacity: 1
+
+@for $i from 1 through 10
+  .roadmap .roadmap-card:nth-child(#{$i})
+    z-index: 10 - $i
+    //transform: translateY($i * 20px)
+//
+//@for $i from 1 through 10
+//  .roadmap .roadmap-card.count-#{$i}
+//    bottom: calc(#{$i} * 20px + 60px)
+
+//.roadmap-box
+//  overflow: hidden
+//  position: relative
+//
+//.roadmap
+//  position: relative
+//  height: 2008px
+//
+//.roadmap .roadmap-card
+//  position: absolute
+//  left: 0
+//  bottom: 0

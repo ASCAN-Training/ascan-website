@@ -10,10 +10,12 @@ import gsap from 'gsap';
 import {ScrollToPlugin} from 'gsap/ScrollToPlugin';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {SplitText} from "./libs/SplitText.js";
+import {MotionPathPlugin} from './libs/MotionPathPlugin.js'
 
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText);
+gsap.registerPlugin(MotionPathPlugin);
 
 let screenWidth = 0;
 let vh = 0;
@@ -152,21 +154,31 @@ createEvent(document, 'DOMContentLoaded', function () {
                 const mySplitText = new SplitText(title, {type: "lines,words,chars", linesClass: "split-line"});
                 const onAnimComplete = () => {
                     mySplitText.revert();
-                    const attention = title.querySelector('.attention .icon');
-                    const underline = title.querySelector('.draw-underline .icon');
-                    if (attention) {
-                        gsap.fromTo(attention, {scale: .5, autoAlpha: 0}, {
+                    const attentions = title.querySelectorAll('.attention .icon');
+                    const underlines = title.querySelectorAll('.draw-underline .icon');
+                    const highlightEllipses = title.querySelectorAll('.highlight-ellipse .icon');
+                    if (attentions.length) {
+                        gsap.fromTo(attentions, {scale: .5, autoAlpha: 0}, {
                             scale: 1,
                             autoAlpha: 1,
                             ease: "back.out(3)",
                             duration: .5
                         });
                     }
-                    if (underline) {
-                        gsap.to(underline, {strokeDashoffset: 0, duration: .3, ease: "none"})
+                    if (underlines.length) {
+                        gsap.to(underlines, {strokeDashoffset: 0, duration: .3, ease: "none"})
+                    }
+                    if (highlightEllipses.length) {
+                        gsap.to(highlightEllipses, {strokeDashoffset: 0, duration: .3, ease: "none"})
                     }
                 };
-                gsap.from(mySplitText.words, {
+                const splittedArray = mySplitText.words;
+                splittedArray.forEach((word, idx) => {
+                    if (word.nextElementSibling?.classList.contains('img-in-text')) {
+                        splittedArray.splice(idx + 1, 0, word.nextElementSibling);
+                    }
+                });
+                gsap.from(splittedArray, {
                     duration: 0.4,
                     opacity: 0,
                     y: 100,
@@ -186,6 +198,7 @@ createEvent(document, 'DOMContentLoaded', function () {
         titles.forEach((title) => {
             const attention = title.querySelector('.attention .icon');
             const underline = title.querySelector('.draw-underline .icon');
+            const highlightEllipse = title.querySelector('.highlight-ellipse .icon');
             if (attention) {
                 gsap.fromTo(attention, {scale: .5, autoAlpha: 0}, {
                     scale: 1,
@@ -206,6 +219,14 @@ createEvent(document, 'DOMContentLoaded', function () {
                     },
                 })
             }
+            if (highlightEllipse) {
+                gsap.to(highlightEllipse, {
+                    strokeDashoffset: 0, duration: .3, ease: "none", scrollTrigger: {
+                        trigger: title,
+                        start: "top 80%"
+                    },
+                })
+            }
         });
     });
 
@@ -213,9 +234,11 @@ createEvent(document, 'DOMContentLoaded', function () {
         canvases.forEach((canvas) => {
             const ctx = canvas.getContext('2d')
             const colors = ["rgba(165, 171, 190, 0.12)"]
+
             function randomIntFromRange(min, max) {
                 return Math.floor(Math.random() * (max - min + 1) + min)
             }
+
             function Circle(x, y, radius, xAngle, color) {
                 this.x = x
                 this.y = y
@@ -251,7 +274,7 @@ createEvent(document, 'DOMContentLoaded', function () {
                 particles = []
 
                 for (let i = 0; i < colors.length; i++) {
-                    particles.push(new Circle(randomIntFromRange(innerWidth / 2 - 100, innerWidth / 2 + 100), randomIntFromRange(innerHeight / 2 - 50, innerHeight / 2 + 50), 200, randomIntFromRange(1,12), colors[i]))
+                    particles.push(new Circle(randomIntFromRange(innerWidth / 2 - 100, innerWidth / 2 + 100), randomIntFromRange(innerHeight / 2 - 50, innerHeight / 2 + 50), 200, randomIntFromRange(1, 12), colors[i]))
                 }
             }
 
@@ -269,13 +292,97 @@ createEvent(document, 'DOMContentLoaded', function () {
             init()
             animate()
         })
-    })
+    });
+
+    // isExist('.roadmap', (roadmaps) => {
+    //     roadmaps.forEach((roadmap) => {
+    //         let cards = roadmap.querySelectorAll('.roadmap-card');
+    //         // cards.forEach((card, idx) => card.classList.add(`count-${cards.length}`))
+    //         let tl = gsap.timeline({
+    //             scrollTrigger:{
+    //                 trigger: roadmap,
+    //                 pin:true,
+    //                 //start:'top top',
+    //                 //end:'+=2500',
+    //                 scrub: true,
+    //                 pinSpacing: false
+    //             },
+    //             defaults:{duration:1, ease:'none'}
+    //         });
+    //         cards.forEach((card, idx) => {
+    //             gsap.set(card, {bottom: '1506px'})
+    //             tl.to(card,  {
+    //                 bottom: 502 * (cards.length - (idx+1)) + 'px',
+    //             });
+    //         })
+    //     });
+    // });
 
     // isExist('.counter', (counters) => {
     //     counters.forEach((counter) => {
     //
     //     });
     // });
+
+    isExist('.team-members', (blocks) => {
+        blocks.forEach((block) => {
+            const path = block.querySelector('.ellipse-path');
+            const cards = block.querySelectorAll('.team-member');
+            const tl = gsap.timeline();
+            const blinkTl = gsap.timeline();
+            const oldProps = {
+                scale: 1,
+                opacity: 1
+            }
+
+            cards.forEach((card, idx) => {
+
+                tl.to(card, {
+                    duration: 20,
+                    repeat: -1,
+                    delay: (20 / cards.length + idx * 20 / cards.length) - 20 / cards.length * (cards.length + 1),
+                    ease: "none",
+                    motionPath: {
+                        path: path,
+                        align: path,
+                        alignOrigin: [.5, .5],
+                    },
+                }, 0);
+                blinkTl.from(card, {
+                    opacity: 0.5,
+                    scale: .8,
+                    duration: 3,
+                    repeat: -1,
+                    ease: "none",
+                    yoyo: true
+                });
+                card.addEventListener('mouseenter', () => {
+                    tl.pause();
+                    blinkTl.pause();
+                    oldProps.opacity = gsap.getProperty(card, 'opacity');
+                    oldProps.scale = gsap.getProperty(card, 'scale');
+                    console.log(oldProps.scale)
+                    gsap.to(card, {
+                        scale: 1,
+                        opacity: 1,
+                        duration: .2,
+                        zIndex: 1
+                    });
+                });
+                card.addEventListener('mouseleave', () => {
+                    tl.play();
+                    blinkTl.play();
+                    gsap.to(card, {
+                        scale: oldProps.scale,
+                        opacity: oldProps.opacity,
+                        duration: .2,
+                        zIndex: -1
+                    });
+                });
+            });
+        });
+    });
+
 });
 createEvent(document, 'DOMContentLoaded', function () {
 });
@@ -300,6 +407,10 @@ function animateValue(target, start, end, duration) {
         }
     };
     window.requestAnimationFrame(step);
+}
+
+function showTitleParts(underlines, attentions, ellipses, isWithScrollTrigger) {
+
 }
 
 // function getRandomDigit(min, max) {

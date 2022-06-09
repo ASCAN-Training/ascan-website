@@ -1,0 +1,34 @@
+.team-box
+  position: relative
+  z-index: 0
+
+.team-box .section-title
+  +fluid-type(40px, 84px)
+  line-height: 1.2
+  pointer-events: none
+
+.team-members
+  position: absolute
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  pointer-events: none
+
+.team-members .team-member
+  position: absolute
+  left: 0
+  top: 0
+  transform-origin: center center
+  z-index: -1
+  pointer-events: all
+
+.team-members svg
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  width: 120%
+  height: 120%
+  visibility: hidden
+  pointer-events: none

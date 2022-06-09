@@ -1,5 +1,6 @@
 .attention,
-.draw-underline
+.draw-underline,
+.highlight-ellipse
   position: relative
   display: inline-block
 
@@ -29,4 +30,15 @@
   height: .35em
   stroke-dasharray: 311
   stroke-dashoffset: 311
+  z-index: -1
+
+.highlight-ellipse .icon
+  position: absolute
+  left: 50%
+  top: 60%
+  transform: translate(-50%, -50%)
+  color: $blue
+  width: 105%
+  stroke-dasharray: 753
+  stroke-dashoffset: 753
   z-index: -1

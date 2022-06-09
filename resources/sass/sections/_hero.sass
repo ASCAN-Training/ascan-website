@@ -2,11 +2,17 @@
   width: 55%
   +fluid-type(44px, 80px, 'margin-top')
 
+.hero-texted .hero__content
+  max-width: 960px
+  width: 100%
+  margin-left: auto
+  margin-right: auto
+  text-align: center
+
 .hero__content h1
   +fluid-type(32px, 72px)
   +fluid-type(42px, 86px, 'line-height')
   color: white
-
 
 .hero__actions
   +fluid-type(20px, 68px, 'margin-top')
@@ -16,7 +22,9 @@
 
 .hero__actions .btn
   flex-shrink: 0
-  width: 220px
+  min-width: 220px
+
+.hero__actions:not(.hero__actions--column) .btn
   +fluid-type(20px, 68px, 'margin-right')
 
 .hero__cards
@@ -24,3 +32,14 @@
   grid-template-columns: repeat(3, 172px)
   grid-gap: 22px
   +fluid-type(32px, 60px, 'margin-top')
+
+.hero__actions--column
+  flex-direction: column
+  align-items: center
+  justify-content: flex-start
+  max-width: 560px
+  margin: 0 auto
+
+.hero__actions--column > *:last-child
+  +fluid-type(32px, 60px, 'margin-top')
+
