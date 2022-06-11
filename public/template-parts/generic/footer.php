@@ -13,6 +13,9 @@
             </a>
         </div>
         <?php include(__DIR__ . '/../blocks/footer-subscribe.php') ?>
+        <div class="footer__navigation">
+            <?php include('navigation.php') ?>
+        </div>
         <div class="footer__bottom">
             <div class="footer__socials">
                 <p>Follow our updates:</p>

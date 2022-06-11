@@ -1,7 +1,6 @@
 <section>
     <div class="container-main">
         <div class="why-get-block">
-            <div class="why-get-block__decor"></div>
             <div class="why-get-block__main">
                 <h2 class="section-title section-title--left title-animation">
                     Why you
@@ -44,6 +43,7 @@
                     </ol>
                 </div>
             </div>
+            <div class="why-get-block__decor"></div>
         </div>
     </div>
 </section>

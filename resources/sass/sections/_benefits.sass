@@ -1,14 +1,22 @@
 .benefits
   display: grid
   grid-template-columns: 1fr 1fr
+  +mediaSize($small-tablet)
+    grid-template-columns: minmax(0, 1fr)
 
 .benefits__actions
   display: flex
   align-items: center
   +fluid-type(32px, 60px, 'margin-top')
+  +mediaSize($mobile)
+    flex-direction: column
+    align-items: center
 
 .benefits__actions .btn-tertiary
   +fluid-type(20px, 66px, 'margin-left')
+  +mediaSize($mobile)
+    margin-left: 0
+    margin-top: 36px
 
 .benefits__actions .btn-primary
   +fluid-type(180px, 220px, 'min-width')

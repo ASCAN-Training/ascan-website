@@ -31,7 +31,7 @@ $modules = array(
 </svg>
 <div class="notepad">
     <div class="notepad-page notepad-left">
-        <div class="notepad-circles tile-bg tile-bg--no-border"></div>
+        <div class="notepad-circles"></div>
         <div class="notepad__page-name">Training Information</div>
         <?php foreach ($modules as $key => $module) { ?>
             <div data-module="<?php echo $key ?>"
@@ -42,7 +42,7 @@ $modules = array(
         <?php } ?>
     </div>
     <div class="notepad-page notepad-right">
-        <div class="notepad-circles tile-bg tile-bg--no-border"></div>
+        <div class="notepad-circles"></div>
         <div class="notepad__page-name">Module content</div>
         <?php foreach ($modules as $key => $module) { ?>
             <button class="notepad__button <?php echo $key === 0 ? 'active' : '' ?>" type="button"

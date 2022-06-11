@@ -7,12 +7,15 @@
   grid-template-columns: 1.83fr 1fr
   justify-content: space-between
   +fluid-type(20px, 140px, 'grid-gap')
+  +mediaSize($small-tablet)
+    grid-template-columns: minmax(0, 1fr)
 
 .footer-subscribe__title svg
   color: $blue
 
 .footer-subscribe .subscribe-form
   +fluid-type(32px, 46px, 'margin-top')
+  min-width: 320px
 
 .subscribe-form
   position: relative

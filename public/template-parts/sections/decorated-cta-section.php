@@ -1,7 +1,7 @@
 <section>
     <div class="container-main">
         <div class="decorated-cta tile-bg">
-            <h2 class="section-title">
+            <h2 class="section-title title-animation">
                 <?php
                 $value = 'Ready';
                 $class = 'attention--left';

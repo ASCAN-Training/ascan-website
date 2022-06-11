@@ -2,11 +2,30 @@
   +fluid-type(32px, 60px, 'padding-top')
   +fluid-type(32px, 60px, 'padding-bottom')
   +fluid-type(20px, 100px, 'padding-right')
-  display: grid
-  grid-template-columns: 1fr 52.8%
+  +fluid-type(320px, 500px, 'padding-left')
   background-color: $tile-bg
   border-radius: 16px
   border: 2px solid rgba(59, 62, 72, 0.5)
+  position: relative
+  +mediaSize($small-tablet)
+    display: flex
+    flex-direction: column
+    padding-left: 20px
+
+.why-get-block .why-get-block__decor
+  +fluid-type(320px, 400px, 'width')
+  position: absolute
+  left: 0
+  top: 0
+  background-color: red
+  bottom: 0
+  +mediaSize($small-tablet)
+    height: 320px
+    margin-top: 20px
+    position: static
+  +mediaSize($mobile)
+    width: 100%
+
 
 .why-get-block .section-title
   +fluid-type(32px, 60px, 'margin-bottom')
@@ -15,6 +34,9 @@
   display: grid
   grid-template-columns: 1fr 1fr
   +fluid-type(20px, 40px, 'grid-gap')
+  +mediaSize($small-tablet)
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))
+
 
 .why-get-block__listing li::before
   margin-bottom: 20px

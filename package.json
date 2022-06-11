@@ -38,7 +38,8 @@
     "babel-eslint": "^10.1.0"
   },
   "dependencies": {
-    "gsap": "^3.8.0"
+    "gsap": "^3.8.0",
+    "lodash.debounce": "^4.0.8"
   },
   "browserslist": [
     "last 5 version"

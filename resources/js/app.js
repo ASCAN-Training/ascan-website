@@ -17,6 +17,8 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(MotionPathPlugin);
 
+const _debounce = require('lodash.debounce');
+
 let screenWidth = 0;
 let vh = 0;
 let headerHeight = 0;
@@ -55,7 +57,7 @@ createEvent(document, 'DOMContentLoaded', function () {
                     const activeButton = notepad.querySelector('.notepad__button.active');
                     const selectedModule = button.getAttribute('data-module');
                     const target = [...pages].find((page) => page.getAttribute('data-module') === selectedModule);
-                    if (target === activePage) return;
+                    if (target === activePage || !activePage) return;
                     const tl = gsap.timeline({paused: true});
                     gsap.to(activePage, {
                         y: 30, autoAlpha: 0, display: 'none', duration: 0.2, onComplete: () => {
@@ -70,10 +72,9 @@ createEvent(document, 'DOMContentLoaded', function () {
                             y: 0,
                             autoAlpha: 1,
                             display: 'block',
-                            duration: 0.2,
+                            duration: .3,
                             onComplete: () => target.classList.add('active')
-                        },
-                    );
+                        });
                     activeButton.classList.remove('active');
                     button.classList.add('active');
                 });
@@ -375,6 +376,62 @@ createEvent(document, 'DOMContentLoaded', function () {
                 }
             })
             overlay.addEventListener('click', () => burger.click())
+        })
+    });
+
+    isExist('.scroll-snap', (sliders) => {
+        sliders.forEach((slider) => {
+            const carousel = slider.querySelector('.scroll-snap__elements')
+            const elems = slider.querySelectorAll('.scroll-snap__elements > *');
+            const indicators = slider.querySelectorAll('.scroll-snap__indicator');
+
+            const objects = {};
+
+            indicators.forEach((indicator, idx) => {
+                objects[`item-${idx}`] = {
+                    element: elems[idx],
+                    indicator: indicator,
+                    isActive: idx === 0
+                }
+                indicator.addEventListener('click', () => {
+                    carousel.scrollTo(carousel.scrollLeft + elems[idx].getBoundingClientRect().left, null);
+                });
+            });
+
+            const setActive = (entry) => {
+                Object.values(objects).forEach((object) => {
+                    if (object.element === entry.target && !object.isActive) {
+                        const prevActive = Object.values(objects).find((object) => object.isActive);
+                        prevActive.isActive = false;
+                        prevActive.indicator.classList.remove('active');
+                        object.isActive = true;
+                        object.indicator.classList.add('active');
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(function (entries, observer) {
+                if (!entries.find((entry) => entry.intersectionRatio < 1)) {
+                    slider.classList.add('no-scroll')
+                } else {
+                    slider.classList.remove('no-scroll')
+                }
+                let activated = entries.reduce(function (max, entry) {
+                    return (entry.intersectionRatio > max.intersectionRatio) ? entry : max;
+                });
+                if (activated.intersectionRatio > 0) {
+                    setActive(activated)
+                }
+            }, {
+                root: carousel, threshold: 0.9
+            });
+            elems.forEach((el) => observer.observe(el));
+
+            const debounceReobserve = _debounce(() => {
+                elems.forEach((el) => observer.unobserve(el));
+                elems.forEach((el) => observer.observe(el));
+            }, 100)
+            window.addEventListener('resize', debounceReobserve);
         })
     })
 

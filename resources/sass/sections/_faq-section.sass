@@ -7,6 +7,12 @@
 .faq-block
   display: grid
   grid-template-columns: 1fr 58.6%
+  +mediaSize($small-tablet)
+    grid-template-columns: minmax(0, 1fr)
 
 .faq-block .faq
   +fluid-type(20px, 64px, 'margin-top')
+
+.faq__decor
+  +mediaSize($small-tablet)
+    display: none

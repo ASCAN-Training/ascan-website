@@ -3,6 +3,8 @@
   grid-template-columns: 1fr 1fr
   +fluid-type(12px, 40px, 'grid-gap')
   +fluid-type(32px, 60px, 'margin-top')
+  +mediaSize($mobile)
+    grid-template-columns: minmax(0, 1fr)
 
 .notepad-page
   position: relative
@@ -10,11 +12,14 @@
   +fluid-type(32px, 60px, 'padding-bottom')
   +fluid-type(20px, 60px, 'padding-left')
   +fluid-type(20px, 60px, 'padding-right')
-  transform: translateZ(0)
-  filter: drop-shadow(0px -2px 0px $border-color) drop-shadow(0px 2px 0px $border-color) drop-shadow(-2px 0px 0px $border-color) drop-shadow(2px 0px 0px $border-color)
+
+.notepad-right .notepad-circles
+  transform: scaleX(-1)
 
 .notepad-left .notepad-circles
-  transform: scaleX(-1)
+  +mediaSize($mobile)
+    transform: scaleY(-1)
+
 
 .notepad-circles
   position: absolute
@@ -22,8 +27,13 @@
   top: 0
   right: 0
   bottom: 0
-  clip-path: url("#notepad-clippath")
   z-index: -1
+  background-image: url("../image/backgrounds/notepad-horizontal.png")
+  background-repeat: no-repeat
+  background-size: 100% 100%
+  background-position: center center
+  +mediaSize($mobile)
+    background-image: url("../image/backgrounds/notepad-vertical.png")
 
 .notepad__page-name
   padding: 8px 16px

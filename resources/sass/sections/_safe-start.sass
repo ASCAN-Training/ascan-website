@@ -8,10 +8,13 @@
   margin-right: auto
 
 .safe-start__listing
-  display: grid
-  grid-template-columns: repeat(3, 1fr)
+  display: flex
   +fluid-type(32px, 60px, 'margin-top')
   +fluid-type(16px, 40px, 'grid-gap')
+
+.safe-start__listing > *
+  flex-grow: 1
+  width: 33.33%
 
 .safe-start__listing > *:nth-child(3n),
 .safe-start__listing > *:nth-child(3n+1)
