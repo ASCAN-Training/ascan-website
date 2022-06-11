@@ -51,6 +51,7 @@ createEvent(document, 'DOMContentLoaded', function () {
         notepads.forEach((notepad) => {
             const buttons = notepad.querySelectorAll('.notepad__button');
             const pages = notepad.querySelectorAll('.notepad__page-content');
+            const mobileBreakPoint = window.matchMedia('(max-width: 600px)');
             buttons.forEach((button) => {
                 button.addEventListener('click', () => {
                     const activePage = notepad.querySelector('.notepad__page-content.active');
@@ -60,20 +61,27 @@ createEvent(document, 'DOMContentLoaded', function () {
                     if (target === activePage || !activePage) return;
                     const tl = gsap.timeline({paused: true});
                     gsap.to(activePage, {
-                        y: 30, autoAlpha: 0, display: 'none', duration: 0.2, onComplete: () => {
+                        y: 30, opacity: 0, duration: 0.3, onComplete: () => {
                             activePage.classList.remove('active');
-                            tl.play();
+                            target.classList.add('active');
+                            setTimeout(() => {
+                                tl.play();
+                            }, 100)
                         }
                     });
+                    tl.play();
                     tl.fromTo(
                         target,
-                        {y: 30, autoAlpha: 0, display: 'none'},
+                        {y: 100, opacity: 0,},
                         {
                             y: 0,
-                            autoAlpha: 1,
-                            display: 'block',
-                            duration: .3,
-                            onComplete: () => target.classList.add('active')
+                            opacity: 1,
+                            duration: .5,
+                            onComplete: () => {
+                                if (mobileBreakPoint.matches) {
+                                    gsap.to(window, {scrollTo: {y: notepad, offsetY: 0}, duration: .5})
+                                }
+                            }
                         });
                     activeButton.classList.remove('active');
                     button.classList.add('active');
@@ -365,7 +373,6 @@ createEvent(document, 'DOMContentLoaded', function () {
             showMenuTl.set(canvas, {zIndex: 1000}, 0);
             burger.addEventListener('click', () => {
                 if (!header.classList.contains('mobile-menu--show')) {
-                    gsap.to(mobileMenu, {y: 0});
                     showMenuTl.play();
                     onOpenModal();
                     header.classList.toggle('mobile-menu--show');
@@ -411,7 +418,8 @@ createEvent(document, 'DOMContentLoaded', function () {
             };
 
             const observer = new IntersectionObserver(function (entries, observer) {
-                if (!entries.find((entry) => entry.intersectionRatio < 1)) {
+                if (entries.length === elems.length && !entries.find((entry) => entry.intersectionRatio < 1)) {
+                    console.log(entries, entries.length === elems.length)
                     slider.classList.add('no-scroll')
                 } else {
                     slider.classList.remove('no-scroll')
