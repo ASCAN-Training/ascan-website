@@ -148,7 +148,6 @@ createEvent(document, 'DOMContentLoaded', function () {
     });
 
     isExist('.title-animation', (titles) => {
-
         titles.forEach((title) => {
             document.fonts.ready.then(function () {
                 const mySplitText = new SplitText(title, {type: "lines,words,chars", linesClass: "split-line"});
@@ -294,40 +293,11 @@ createEvent(document, 'DOMContentLoaded', function () {
         })
     });
 
-    // isExist('.roadmap', (roadmaps) => {
-    //     roadmaps.forEach((roadmap) => {
-    //         let cards = roadmap.querySelectorAll('.roadmap-card');
-    //         // cards.forEach((card, idx) => card.classList.add(`count-${cards.length}`))
-    //         let tl = gsap.timeline({
-    //             scrollTrigger:{
-    //                 trigger: roadmap,
-    //                 pin:true,
-    //                 //start:'top top',
-    //                 //end:'+=2500',
-    //                 scrub: true,
-    //                 pinSpacing: false
-    //             },
-    //             defaults:{duration:1, ease:'none'}
-    //         });
-    //         cards.forEach((card, idx) => {
-    //             gsap.set(card, {bottom: '1506px'})
-    //             tl.to(card,  {
-    //                 bottom: 502 * (cards.length - (idx+1)) + 'px',
-    //             });
-    //         })
-    //     });
-    // });
-
-    // isExist('.counter', (counters) => {
-    //     counters.forEach((counter) => {
-    //
-    //     });
-    // });
-
     isExist('.team-members', (blocks) => {
         blocks.forEach((block) => {
             const path = block.querySelector('.ellipse-path');
             const cards = block.querySelectorAll('.team-member');
+            const animDuration = 40;
             const tl = gsap.timeline();
             const blinkTl = gsap.timeline();
             const oldProps = {
@@ -338,9 +308,9 @@ createEvent(document, 'DOMContentLoaded', function () {
             cards.forEach((card, idx) => {
 
                 tl.to(card, {
-                    duration: 20,
+                    duration: animDuration,
                     repeat: -1,
-                    delay: (20 / cards.length + idx * 20 / cards.length) - 20 / cards.length * (cards.length + 1),
+                    delay: (animDuration / cards.length + idx * animDuration / cards.length) - animDuration / cards.length * (cards.length + 1),
                     ease: "none",
                     motionPath: {
                         path: path,
@@ -383,6 +353,31 @@ createEvent(document, 'DOMContentLoaded', function () {
         });
     });
 
+    isExist('.burger', (burgers) => {
+        burgers.forEach((burger) => {
+            const header = document.querySelector('header');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = header.querySelector('.overlay');
+            const showMenuTl = gsap.timeline({paused: true});
+            const canvas = document.querySelector('.grad');
+            showMenuTl.fromTo(mobileMenu, {height: 0}, {height: 'auto', duration: .3})
+            showMenuTl.set(canvas, {zIndex: 1000}, 0);
+            burger.addEventListener('click', () => {
+                if (!header.classList.contains('mobile-menu--show')) {
+                    gsap.to(mobileMenu, {y: 0});
+                    showMenuTl.play();
+                    onOpenModal();
+                    header.classList.toggle('mobile-menu--show');
+                } else {
+                    showMenuTl.reverse();
+                    onCloseModal();
+                    header.classList.toggle('mobile-menu--show');
+                }
+            })
+            overlay.addEventListener('click', () => burger.click())
+        })
+    })
+
 });
 createEvent(document, 'DOMContentLoaded', function () {
 });
@@ -417,12 +412,20 @@ function showTitleParts(underlines, attentions, ellipses, isWithScrollTrigger) {
 //     return Math.random() * (max - min) + min;
 // }
 //
-// function onOpenModal() {
-//     document.documentElement.style.overflow = 'hidden';
-//     document.documentElement.style.marginRight = `${window.site.scrollBarWidth}px`;
-// }
-//
-// function onCloseModal() {
-//     document.documentElement.style.overflow = '';
-//     document.documentElement.style.marginRight = '';
-// }
+let scrollPosition = 0;
+
+function onOpenModal() {
+    scrollPosition = window.pageYOffset;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = '100%';
+}
+
+function onCloseModal() {
+    document.body.style.removeProperty('overflow');
+    document.body.style.removeProperty('position');
+    document.body.style.removeProperty('top');
+    document.body.style.removeProperty('width');
+    window.scrollTo(0, scrollPosition);
+}

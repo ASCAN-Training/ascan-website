@@ -3,15 +3,24 @@
   position: relative
   transform: translateZ(0)
   z-index: 0
-  filter: drop-shadow(0px -2px 0px $border-color) drop-shadow(0px 2px 0px $border-color) drop-shadow(-2px 0px 0px $border-color) drop-shadow(2px 0px 0px $border-color)
+  //filter: drop-shadow(0px -2px 0px $border-color) drop-shadow(0px 2px 0px $border-color) drop-shadow(-2px 0px 0px $border-color) drop-shadow(2px 0px 0px $border-color)
+  +mediaSize($mobile)
+    padding-right: calc(20px + 32px + 20px)
 
 .notepad-card__icon
   +fluid-type(32px, 36px, 'width')
   +fluid-type(32px, 36px, 'height')
+  +mediaSize($mobile)
+    position: absolute
+    right: 20px
+    top: 50%
+    transform: translateY(-50%)
 
 .notepad-card__title
   margin-top: 16px
   line-height: 1.15
+  +mediaSize($mobile)
+    margin-top: 0
 
 .notepad-card__content
   margin-top: 14px
@@ -23,7 +32,13 @@
   top: 0
   right: 0
   bottom: 0
-  clip-path: url("#notepad-card-clippath")
+  //clip-path: url("#notepad-card-clippath")
   z-index: -1
   border-radius: 8px
-  background-color: $tile-bg
+  background-image: url("../image/backgrounds/notepad-card.png")
+  background-repeat: no-repeat
+  background-size: 100% 100%
+  background-position: center center
+  //background-color: $tile-bg
+  +mediaSize(600)
+    background-image: url("../image/backgrounds/notepad-card-mobile.png")

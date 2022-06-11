@@ -1,5 +1,5 @@
 <div class="footer-subscribe">
-    <h3 class="footer-subscribe__title section-title section-title--left title-animation">
+    <h3 class="footer-subscribe__title section-title section-title--no-center section-title--left title-animation">
         <?php
         $value = 'Subscribe';
         $class = 'attention--left';

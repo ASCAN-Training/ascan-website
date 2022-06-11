@@ -1,3 +1,17 @@
+header
+  z-index: 100
+  position: relative
+  +mediaSize($tablet)
+
+header:before
+  content: ''
+  position: absolute
+  height: 2px
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: $border-color
+
 .header-inner
   +fluid-type(18px, 32px, 'padding-top')
   +fluid-type(18px, 32px, 'padding-bottom')
@@ -7,6 +21,9 @@
   justify-content: space-between
   font-size: 1rem
   border-bottom: 2px solid rgba(59, 62, 72, 0.5)
+  position: relative
+  +mediaSize($tablet)
+    border-bottom: 0
 
 .header__logo
   width: 136px
@@ -17,6 +34,8 @@
 .footer__menu > nav ul
   display: flex
   align-items: center
+  +mediaSize($tablet)
+    display: none
 
 .header-inner > nav ul li + li,
 .footer__menu > nav ul li + li
@@ -52,6 +71,9 @@ footer nav li a .icon
   font-weight: 600
   color: white
   position: relative
+  margin-right: 16px
+  +mediaSize($tablet)
+    display: none
 
 .header__cta .icon
   position: absolute

@@ -38,7 +38,7 @@ $members = array(
     ]
 )
 ?>
-<section>
+<section class="team-section">
     <div class="container-main">
         <div class="team-box">
             <h2 class="section-title title-animation">

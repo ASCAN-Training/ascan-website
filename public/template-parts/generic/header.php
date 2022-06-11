@@ -11,6 +11,10 @@
                     <svg><use xlink:href="#lines"></use></svg>
                 </span>
             </a>
+            <button type="button" aria-label="Toggle mobile menu" class="burger">
+                <?php include(__DIR__.'/../includes/burger.php') ?>
+            </button>
         </div>
     </div>
+    <?php include('mobile-menu.php') ?>
 </header>

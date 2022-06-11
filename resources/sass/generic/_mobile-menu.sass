@@ -1,0 +1,124 @@
+.burger-line
+  fill: none
+  stroke: white
+  stroke-width: 5
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1)
+
+.burger-line1
+  stroke-dasharray: 60, 207
+  stroke-width: 5
+
+.burger-line2
+  stroke-dasharray: 50, 60
+  stroke-width: 5
+
+.burger-line3
+  stroke-dasharray: 35, 207
+  stroke-width: 5
+
+header.mobile-menu--show .burger-line1
+  stroke-dasharray: 90, 207
+  stroke-dashoffset: -134
+  stroke-width: 5
+
+header.mobile-menu--show .burger-line2
+  stroke-dasharray: 1, 60
+  stroke-dashoffset: -30
+  stroke-width: 5
+
+header.mobile-menu--show .burger-line3
+  stroke-dasharray: 90, 207
+  stroke-dashoffset: -134
+  stroke-width: 5
+
+.burger
+  display: none
+  width: 40px
+  height: 40px
+  +mediaSize($tablet)
+    display: flex
+
+.mobile-menu
+  display: none
+  position: absolute
+  left: 0
+  right: 0
+  top: 100%
+  background-image: url("../image/grid.jpg")
+  background-repeat: no-repeat
+  background-size: cover
+  background-attachment: fixed
+  background-color: $bg-color
+  overflow: hidden
+  height: 0
+  pointer-events: none
+  will-change: height
+  +mediaSize($tablet)
+    display: block
+
+.overlay
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  backdrop-filter: blur(10px)
+  z-index: -1
+  opacity: 0
+  transition: opacity .2s linear
+  pointer-events: none
+  +mediaSize($mobile)
+    display: none
+
+.mobile-menu--show .mobile-menu
+  pointer-events: all
+
+.mobile-menu--show .overlay
+  opacity: 1
+  pointer-events: all
+
+.mobile-menu__inner
+  display: flex
+  flex-direction: column
+  align-items: center
+  text-align: center
+  max-height: 100vh
+  max-height: calc(var(--vh, 1vh) * 100 - var(--headerHeight))
+  overflow: auto
+  +mediaSize($mobile)
+    height: 100vh
+    height: calc(var(--vh, 1vh) * 100 - var(--headerHeight))
+
+.mobile-menu nav
+  margin-top: 32px
+  margin-bottom: 40px
+  flex-grow: 1
+
+.mobile-menu nav a
+  font-size: 24px
+  font-weight: 500
+  color: white
+
+.mobile-menu nav li + li
+  margin-top: 16px
+
+.mobile-menu__actions
+  flex-shrink: 0
+.mobile-menu__actions .btn
+  min-width: 180px
+
+.mobile-menu__socials
+  padding: 22px 0
+  margin-top: 32px
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  border-top: 2px solid $border-color
+  border-bottom: 2px solid $border-color
+  grid-gap: 20px
+  width: 100%
+  flex-shrink: 0
+
+.mobile-menu__inner > *
+  padding-left: 20px
+  padding-right: 20px

@@ -59,8 +59,8 @@ a
   flex-shrink: 0
 
 .container-main
-  padding: 0 20px
-  max-width: calc(1160px + 20px * 2)
+  padding: 0 $default-gap
+  max-width: calc(1160px + #{$default-gap} * 2)
   margin: 0 auto
 
 p, ul
@@ -82,6 +82,8 @@ a:focus,
 \:root
   --vh: 1vh
   --headerHeight: 100px
+  +mediaSize($tablet)
+    --headerHeight: 98px
 
 h1, h2, h3, h4,h5,h6
   font-weight: 600
@@ -101,6 +103,10 @@ section
   max-width: 960px
   margin-left: auto
   margin-right: auto
+
+.section-title--no-center
+  margin-left: 0
+  margin-right: 0
 
 .section-title--left
   text-align: left
@@ -204,6 +210,7 @@ section + section
   right: 0
   z-index: -1
   filter: blur(50px)
+  pointer-events: none
 
 .clip-svg
   position: absolute

@@ -17,6 +17,8 @@
         <?php include('template-parts/sections/roadmap-section.php') ?>
         <?php include('template-parts/sections/what-is-section.php') ?>
         <?php include('template-parts/sections/team-section.php') ?>
+        <?php include('template-parts/sections/discover-web3.php') ?>
+        <?php include('template-parts/sections/cta-litepaper.php') ?>
     </main>
 
     <?php include('template-parts/generic/footer.php') ?>

@@ -13,6 +13,15 @@
   border-radius: 8px
   width: 100%
   height: 100%
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  +mediaSize($tablet)
+    padding: 16px
+
+.btn .value .icon
+  margin-right: 8px
 
 .btn-secondary .value
   border: 2px solid $border-color
@@ -27,6 +36,9 @@
   transition: transform .15s linear
   padding-bottom: 12px
   padding-right: 12px
+  +mediaSize($tablet)
+    padding-bottom: 8px
+    padding-right: 8px
 
 .btn:focus
   outline: none
@@ -35,6 +47,8 @@
 .btn-primary:focus .value
   transform: translate(12px, 12px)
   background: $orange
+  +mediaSize($tablet)
+    transform: translate(8px, 8px)
 
 .btn-primary:hover .value:before,
 .btn-primary:focus .value:before
@@ -83,6 +97,10 @@
   border-radius: 8px
   z-index: -1
   transform: translate(12px, 12px)
+  +mediaSize($tablet)
+    width: calc(100% - 8px)
+    height: calc(100% - 8px)
+    transform: translate(8px, 8px)
 
 .btn-tertiary
   font-weight: 600
@@ -91,3 +109,4 @@
 .btn-tertiary:hover,
 .btn-tertiary:focus
   color: $green
+

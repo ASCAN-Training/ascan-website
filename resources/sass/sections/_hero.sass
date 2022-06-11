@@ -1,5 +1,5 @@
 .hero__content
-  width: 55%
+  max-width: 640px
   +fluid-type(44px, 80px, 'margin-top')
 
 .hero-texted .hero__content
@@ -13,12 +13,18 @@
   +fluid-type(32px, 72px)
   +fluid-type(42px, 86px, 'line-height')
   color: white
+  +mediaSize($mobile)
+    text-align: center
 
 .hero__actions
   +fluid-type(20px, 68px, 'margin-top')
   display: flex
   align-items: center
   +fluid-type(16px, 18px)
+  +mediaSize($mobile)
+    flex-direction: column-reverse
+    justify-content: center
+    text-align: center
 
 .hero__actions .btn
   flex-shrink: 0
@@ -26,12 +32,25 @@
 
 .hero__actions:not(.hero__actions--column) .btn
   +fluid-type(20px, 68px, 'margin-right')
+  +mediaSize($mobile)
+    margin-right: 0
+    margin-top: 32px
 
 .hero__cards
   display: grid
   grid-template-columns: repeat(3, 172px)
   grid-gap: 22px
   +fluid-type(32px, 60px, 'margin-top')
+  +mediaSize($mobile)
+    grid-template-columns: minmax(0, 1fr)
+    grid-gap: 12px
+
+.hero__cards .notepad-card:first-child .notepad-card__circles
+  +mediaSize($mobile)
+    transform: scaleY(-1)
+.hero__cards .notepad-card:not(:first-child):not(:last-child) .notepad-card__circles
+  +mediaSize($mobile)
+    background-image: url("../image/backgrounds/notepad-card-bothside.png")
 
 .hero__actions--column
   flex-direction: column
@@ -42,4 +61,5 @@
 
 .hero__actions--column > *:last-child
   +fluid-type(32px, 60px, 'margin-top')
+
 

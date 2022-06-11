@@ -1,7 +1,35 @@
 .what-is-ascan__listing
-  display: grid
-  grid-template-columns: repeat(3, 1fr)
+  display: flex
+  position: relative
   grid-gap: 40px
+  scroll-snap-type: x mandatory
+  -webkit-overflow-scrolling: touch
+  white-space: nowrap
+  overflow-x: scroll
+  scroll-behavior: smooth
+  +mediaSize($tablet)
+    width: calc(100% + #{$default-gap * 2})
+    margin-left: -$default-gap
+    grid-gap: 16px
+
+.what-is-ascan__listing:before,
+.what-is-ascan__listing:after
+  content: ''
+  display: inline-block
+  left: 0
+  bottom: 0
+  height: 20px
+  width: $default-gap - 16px
+  flex-shrink: 0
+  pointer-events: none
+
+.what-is-ascan__listing > *
+  flex-grow: 1
+  width: 33.33%
+  scroll-snap-align: center
+  white-space: normal
+  +mediaSize($tablet)
+
 
 .what-is-ascan .section-title
   +fluid-type(32px, 60px, 'margin-bottom')

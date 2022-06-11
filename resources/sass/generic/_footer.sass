@@ -44,6 +44,9 @@ footer
   height: 24px
   object-fit: contain
 
+.footer__tech-links
+  display: block
+
 .footer__tech-links ul
   display: flex
   flex-wrap: wrap
@@ -51,9 +54,16 @@ footer
   +fluid-type(20px, 36px, 'grid-row-gap')
   max-width: 360px
 
+.footer__tech-links ul li
+  line-height: 1
+
 .footer__tech-links a
   text-decoration: underline
 
 .footer__tech-links a:hover,
 .footer__tech-links a:focus
   color: white
+
+.footer__menu .header__cta
+  +mediaSize($tablet)
+    display: flex
