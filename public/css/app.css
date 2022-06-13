@@ -3587,6 +3587,9 @@ label {
 }
 
 @media (max-width: 600px) {
+  .grad {
+    display: none;
+  }
   .footer__navigation ul {
     -ms-grid-columns: 1fr 16px 1fr;
     grid-template-columns: 1fr 1fr;

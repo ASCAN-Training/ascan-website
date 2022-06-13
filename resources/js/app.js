@@ -371,7 +371,7 @@ createEvent(document, 'DOMContentLoaded', function () {
             const canvas = document.querySelector('.grad');
             const menuItems = mobileMenu.querySelectorAll('li a');
             showMenuTl.fromTo(mobileMenu, { opacity: 0}, { opacity: 1, duration: .2})
-            showMenuTl.set(canvas, {zIndex: 1000}, 0);
+            //showMenuTl.set(canvas, {zIndex: 1000}, 0);
             showMenuTl.fromTo(menuItems, {yPercent: 100}, {yPercent: 0, duration: .1, stagger: 0.05})
             burger.addEventListener('click', () => {
                 if (!header.classList.contains('mobile-menu--show')) {
