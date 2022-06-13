@@ -369,8 +369,10 @@ createEvent(document, 'DOMContentLoaded', function () {
             const overlay = header.querySelector('.overlay');
             const showMenuTl = gsap.timeline({paused: true});
             const canvas = document.querySelector('.grad');
-            showMenuTl.fromTo(mobileMenu, {height: 0}, {height: 'auto', duration: .3})
+            const menuItems = mobileMenu.querySelectorAll('li a');
+            showMenuTl.fromTo(mobileMenu, { opacity: 0}, { opacity: 1, duration: .2})
             showMenuTl.set(canvas, {zIndex: 1000}, 0);
+            showMenuTl.fromTo(menuItems, {yPercent: 100}, {yPercent: 0, duration: .1, stagger: 0.05})
             burger.addEventListener('click', () => {
                 if (!header.classList.contains('mobile-menu--show')) {
                     showMenuTl.play();
@@ -391,9 +393,7 @@ createEvent(document, 'DOMContentLoaded', function () {
             const carousel = slider.querySelector('.scroll-snap__elements')
             const elems = slider.querySelectorAll('.scroll-snap__elements > *');
             const indicators = slider.querySelectorAll('.scroll-snap__indicator');
-
             const objects = {};
-
             indicators.forEach((indicator, idx) => {
                 objects[`item-${idx}`] = {
                     element: elems[idx],
@@ -401,21 +401,36 @@ createEvent(document, 'DOMContentLoaded', function () {
                     isActive: idx === 0
                 }
                 indicator.addEventListener('click', () => {
-                    carousel.scrollTo(carousel.scrollLeft + elems[idx].getBoundingClientRect().left, null);
+                    const elPos = carousel.scrollLeft + elems[idx].getBoundingClientRect().left - (elems[idx].getBoundingClientRect().width / 2);
+                    carousel.scrollTo(elPos, null);
                 });
             });
+            let isIndicatorsShown = true;
 
-            const setActive = (entry) => {
+            const updateIndicators = () => {
+                let allVisible = true;
                 Object.values(objects).forEach((object) => {
-                    if (object.element === entry.target && !object.isActive) {
-                        const prevActive = Object.values(objects).find((object) => object.isActive);
-                        prevActive.isActive = false;
-                        prevActive.indicator.classList.remove('active');
-                        object.isActive = true;
-                        object.indicator.classList.add('active');
+                    if (isElementInViewport(object.element)) {
+                        object.indicator.classList.add('active')
+                    } else {
+                        allVisible = false;
+                        object.indicator.classList.remove('active')
                     }
                 });
-            };
+                allVisible ? slider.classList.add('no-scroll') : slider.classList.remove('no-scroll');
+            }
+            updateIndicators();
+            carousel.addEventListener('scroll', _debounce(updateIndicators, 15));
+
+            // const setActive = (entry) => {
+            //     Object.values(objects).forEach((object) => {
+            //         if (object.element === entry.target && !object.isActive) {
+            //             const prevActive = Object.values(objects).find((object) => object.isActive);
+            //             prevActive.isActive = false;
+            //             object.isActive = true;
+            //         }
+            //     });
+            // };
 
             const observer = new IntersectionObserver(function (entries, observer) {
                 if (entries.length === elems.length && !entries.find((entry) => entry.intersectionRatio < 1)) {
@@ -424,20 +439,21 @@ createEvent(document, 'DOMContentLoaded', function () {
                 } else {
                     slider.classList.remove('no-scroll')
                 }
-                let activated = entries.reduce(function (max, entry) {
-                    return (entry.intersectionRatio > max.intersectionRatio) ? entry : max;
-                });
-                if (activated.intersectionRatio > 0) {
-                    setActive(activated)
-                }
+                // let activated = entries.reduce(function (max, entry) {
+                //     return (entry.intersectionRatio > max.intersectionRatio) ? entry : max;
+                // });
+                // if (activated.intersectionRatio > 0) {
+                //     setActive(activated)
+                // }
             }, {
                 root: carousel, threshold: 0.9
             });
-            elems.forEach((el) => observer.observe(el));
+            //elems.forEach((el) => observer.observe(el));
 
             const debounceReobserve = _debounce(() => {
-                elems.forEach((el) => observer.unobserve(el));
-                elems.forEach((el) => observer.observe(el));
+                updateIndicators();
+                //elems.forEach((el) => observer.unobserve(el));
+                //elems.forEach((el) => observer.observe(el));
             }, 100)
             window.addEventListener('resize', debounceReobserve);
         })
@@ -493,4 +509,14 @@ function onCloseModal() {
     document.body.style.removeProperty('top');
     document.body.style.removeProperty('width');
     window.scrollTo(0, scrollPosition);
+}
+
+function isElementInViewport(el) {
+
+    const rect = el.getBoundingClientRect();
+
+    return (
+        rect.left >= 0 &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
 }

@@ -3,9 +3,18 @@
   +fluid-type(32px, 60px, 'padding-bottom')
   +fluid-type(20px, 60px, 'padding-left')
   +fluid-type(20px, 60px, 'padding-right')
+  +mediaSize($small-tablet)
+    padding-bottom: 240px
 
 .cta-litepaper__content
   max-width: 400px
+  +mediaSize($small-tablet)
+    max-width: 100%
+    text-align: center
+
+.cta-litepaper__content .section-title
+  +mediaSize($small-tablet)
+    text-align: center
 
 .cta-litepaper__content .cta-litepaper__subtitle
   margin-top: 20px

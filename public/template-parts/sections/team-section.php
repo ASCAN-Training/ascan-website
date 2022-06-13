@@ -65,16 +65,20 @@ $members = array(
                     <?php include(__DIR__ . '/../cards/team-member.php'); ?>
                 <?php } ?>
             </div>
-
-            <!--<div class="deform">
-                <?php /*foreach ($members as $member) { */ ?>
-                    <div class="rotate">
-                        <div class="counterrotate">
-                            <?php /*include(__DIR__ . '/../cards/team-member.php'); */ ?>
-                        </div>
-                    </div>
-                <?php /*} */ ?>
-            </div>-->
+            <div class="scroll-snap">
+                <div class="scroll-snap__elements team-member__scrollsnap">
+                    <?php foreach ($members as $member) { ?>
+                        <?php include(__DIR__ . '/../cards/team-member.php'); ?>
+                    <?php } ?>
+                </div>
+                <div class="scroll-snap__indicators">
+                    <?php
+                    foreach ($members as $key => $member) { ?>
+                        <button type="button" aria-label="Select <?php echo $key + 1 ?> slide"
+                                class="scroll-snap__indicator <?php echo $key === 0 ? 'active' : '' ?>"></button>
+                    <?php } ?>
+                </div>
+            </div>
         </div>
     </div>
 </section>

@@ -1,2 +1,6 @@
 .roadmap-box .roadmap
   +fluid-type(32px, 60px, 'margin-top')
+
+@for $i from 1 through 10
+  .roadmap-count-#{$i}
+    padding-bottom: $i * 20px

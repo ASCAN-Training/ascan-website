@@ -2,10 +2,12 @@
   display: grid
   grid-template-columns: 1fr 2fr
   +fluid-type(20px, 40px, 'grid-gap')
+  +mediaSize($small-tablet)
+    grid-template-columns: minmax(0, 1fr)
 
 .discover-web3__content .ordered-list
   display: grid
-  grid-template-columns: 1fr 1fr
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))
   +fluid-type(20px, 40px, 'grid-gap')
 
 .discover-web3__content .ordered-list .why-get-tile

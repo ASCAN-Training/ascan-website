@@ -6,16 +6,14 @@
 
 <body>
 <canvas class="grad"></canvas>
+<!--<div class="flying-light">
+    <span></span>
+</div>-->
 <div class="main-wrapper">
     <?php include('template-parts/generic/header.php') ?>
 
     <main>
-        <?php include('template-parts/sections/hero-texted-section.php') ?>
-        <?php include('template-parts/sections/roadmap-section.php') ?>
-        <?php include('template-parts/sections/what-is-section.php') ?>
-        <?php include('template-parts/sections/team-section.php') ?>
-        <?php include('template-parts/sections/discover-web3.php') ?>
-        <?php include('template-parts/sections/cta-litepaper.php') ?>
+        <?php include('template-parts/sections/get-in-touch-section.php') ?>
     </main>
 
     <?php include('template-parts/generic/footer.php') ?>

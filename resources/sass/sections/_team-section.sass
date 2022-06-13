@@ -1,5 +1,7 @@
 .team-section
   padding: 100px 0
+  +mediaSize($mobile)
+    padding: 0
 
 .team-box
   position: relative
@@ -17,6 +19,8 @@
   right: 0
   bottom: 0
   pointer-events: none
+  +mediaSize($mobile)
+    display: none
 
 .team-members .team-member
   position: absolute
@@ -36,3 +40,16 @@
   height: 120%
   visibility: hidden
   pointer-events: none
+
+.team-box .scroll-snap
+  display: none
+  +mediaSize($mobile)
+    display: block
+    margin-top: 32px
+
+.team-member__scrollsnap
+  display: flex
+
+.team-member__scrollsnap > *
+  width: 152px
+  flex-shrink: 0

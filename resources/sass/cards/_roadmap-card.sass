@@ -5,10 +5,16 @@
   +fluid-type(20px, 40px, 'padding')
   +fluid-type(20px, 100px, 'padding-right')
   position: relative
+  +mediaSize($small-tablet)
+    grid-template-columns: minmax(0, 1fr)
+    padding: 20px
+    grid-gap: 20px
 
 .roadmap-card__divider
   height: 100%
   background: $border-color
+  +mediaSize($small-tablet)
+    height: 2px
 
 .roadmap-card__image img
   width: 100%
@@ -26,10 +32,14 @@
   font-weight: 600
   font-size: 36px
   line-height: 1
+  +mediaSize($small-tablet)
+    display: none
 
 .roadmap-card__title
   max-width: 80%
   +fluid-type(20px, 54px, 'margin-top')
+  +mediaSize($small-tablet)
+    margin-top: 0
 
 .roadmap-card__content
   +fluid-type(12px, 32px, 'margin-top')

@@ -26,7 +26,7 @@ $roadmap_cards = array(
     ]
 )
 ?>
-<div class="roadmap">
+<div class="roadmap roadmap-count-<?php echo count($roadmap_cards) ?>">
     <?php
     foreach ($roadmap_cards as $key => $card) {
         include(__DIR__ . '/../cards/roadmap-card.php');

@@ -58,6 +58,9 @@
   justify-content: flex-start
   max-width: 560px
   margin: 0 auto
+  +mediaSize($mobile)
+    flex-direction: column
+    margin-top: 20px
 
 .hero__actions--column > *:last-child
   +fluid-type(32px, 60px, 'margin-top')

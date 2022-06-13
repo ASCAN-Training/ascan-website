@@ -50,9 +50,10 @@ header.mobile-menu--show .burger-line3
   background-attachment: fixed
   background-color: $bg-color
   overflow: hidden
-  height: 0
+  //height: 0
   pointer-events: none
-  will-change: height
+  //will-change: height
+  opacity: 0
   +mediaSize($tablet)
     display: block
 
@@ -98,6 +99,10 @@ header.mobile-menu--show .burger-line3
   font-size: 24px
   font-weight: 500
   color: white
+  display: inline-flex
+
+.mobile-menu nav li
+  overflow: hidden
 
 .mobile-menu nav li + li
   margin-top: 16px

@@ -253,6 +253,10 @@ section + section
     width: calc(100% + #{$default-gap * 2})
     margin-left: -$default-gap
     grid-gap: 16px
+  &::-webkit-scrollbar
+    appearance: none
+    width: 0
+    display: none
 
 .scroll-snap.no-scroll .scroll-snap__indicators
   display: none
