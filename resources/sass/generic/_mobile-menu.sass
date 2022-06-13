@@ -44,11 +44,6 @@ header.mobile-menu--show .burger-line3
   left: 0
   right: 0
   top: 100%
-  background-image: url("../image/grid.jpg")
-  background-repeat: no-repeat
-  background-size: cover
-  background-attachment: fixed
-  background-color: $bg-color
   overflow: hidden
   //height: 0
   pointer-events: none
@@ -56,6 +51,19 @@ header.mobile-menu--show .burger-line3
   opacity: 0
   +mediaSize($tablet)
     display: block
+
+.mobile-menu:before
+  content: ''
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  background-image: url("../image/grid.jpg")
+  background-repeat: no-repeat
+  background-size: cover
+  pointer-events: none
+  z-index: -1
 
 .overlay
   position: fixed

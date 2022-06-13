@@ -894,15 +894,24 @@ header.mobile-menu--show .burger-line3 {
   left: 0;
   right: 0;
   top: 100%;
-  background-image: url("../image/grid.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-color: #1B1F2C;
   overflow: hidden;
   pointer-events: none;
   will-change: opacity;
   opacity: 0;
+}
+
+.mobile-menu:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url("../image/grid.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .overlay {
