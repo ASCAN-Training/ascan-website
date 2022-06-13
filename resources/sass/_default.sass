@@ -1,9 +1,16 @@
 //default styles for site
-html
+html:before
+  content: ''
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
   background-image: url("../image/grid.jpg")
   background-repeat: no-repeat
   background-size: cover
-  background-attachment: fixed
+  pointer-events: none
+  z-index: -100
 
 html, body
   font-family: $lexend-font

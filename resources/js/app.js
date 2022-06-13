@@ -368,7 +368,7 @@ createEvent(document, 'DOMContentLoaded', function () {
             const mobileMenu = document.querySelector('.mobile-menu');
             const overlay = header.querySelector('.overlay');
             const showMenuTl = gsap.timeline({paused: true});
-            const canvas = document.querySelector('.grad');
+            //const canvas = document.querySelector('.grad');
             const menuItems = mobileMenu.querySelectorAll('li a');
             showMenuTl.fromTo(mobileMenu, { opacity: 0}, { opacity: 1, duration: .2})
             //showMenuTl.set(canvas, {zIndex: 1000}, 0);

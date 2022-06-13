@@ -232,11 +232,18 @@ input::-ms-clear, ::-webkit-inner-spin-button {
   font-style: normal;
 }
 
-html {
+html:before {
+  content: '';
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   background-image: url("../image/grid.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  pointer-events: none;
+  z-index: -100;
 }
 
 html, body {
@@ -894,6 +901,7 @@ header.mobile-menu--show .burger-line3 {
   background-color: #1B1F2C;
   overflow: hidden;
   pointer-events: none;
+  will-change: opacity;
   opacity: 0;
 }
 
