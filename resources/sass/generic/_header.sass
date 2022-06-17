@@ -1,7 +1,24 @@
 header
   z-index: 100
-  position: relative
-  +mediaSize($tablet)
+  position: sticky
+  left: 0
+  top: 0
+  width: 100%
+  transform: translateY(-100%)
+  transition: transform .3s ease
+
+.header--on-top
+  transform: none
+
+.header--pinned
+  transform: none
+  background-color: rgba(35, 39, 51, .3)
+  backdrop-filter: blur(20px)
+
+.mobile-menu--show.header--on-top
+  transform: none
+  backdrop-filter: none
+  background-color: $bg-color
 
 header:before
   content: ''

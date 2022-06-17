@@ -48,6 +48,7 @@ createEvent(window, 'resize', function (e) {
 
 createEvent(document, 'DOMContentLoaded', function () {
     loadAndResize();
+
     isExist('.notepad', (notepads) => {
         notepads.forEach((notepad) => {
             const buttons = notepad.querySelectorAll('.notepad__button');
@@ -370,10 +371,42 @@ createEvent(document, 'DOMContentLoaded', function () {
             const overlay = header.querySelector('.overlay');
             const showMenuTl = gsap.timeline({paused: true});
             const menuItems = mobileMenu.querySelectorAll('li a');
-            showMenuTl.fromTo(mobileMenu, { opacity: 0}, { opacity: 1, duration: .2})
+            let lastScrollTop = 0;
+            let isPinned = true;
+            let isOpen = false;
+            let isHeaderOnTop = true;
+            showMenuTl.fromTo(mobileMenu, {opacity: 0}, {opacity: 1, duration: .2})
             showMenuTl.fromTo(menuItems, {yPercent: 100}, {yPercent: 0, duration: .1, stagger: 0.05})
+            window.addEventListener('scroll', (e) => {
+                let st = window.pageYOffset || document.documentElement.scrollTop;
+                if (st === 0 || st < 0) {
+                    isHeaderOnTop = true;
+                    header.classList.remove('header--pinned')
+                    header.classList.add('header--on-top')
+                    return;
+                } else {
+                    isHeaderOnTop = false;
+                    header.classList.remove('header--on-top')
+                }
+                if (isPinned && st > 150 && !isOpen) {
+                    header.classList.remove('header--pinned')
+                }
+                if (st > lastScrollTop) {
+                    // downscroll code
+                    if (isOpen)
+                        return
+                    isPinned = false
+                    header.classList.remove('header--pinned')
+                } else {
+                    // upscroll code
+                    isPinned = true
+                    header.classList.add('header--pinned')
+                }
+                lastScrollTop = st <= 0 ? 0 : st;
+            });
             burger.addEventListener('click', () => {
-                if (!header.classList.contains('mobile-menu--show')) {
+                isOpen = !isOpen;
+                if (isOpen) {
                     showMenuTl.play();
                     onOpenModal();
                     header.classList.toggle('mobile-menu--show');

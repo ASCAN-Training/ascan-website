@@ -348,7 +348,7 @@ h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 
-:focus:not(.no-outline) {
+:focus:not(.no-outline):not(input) {
   outline: 2px dashed #29BAAC;
 }
 
@@ -588,7 +588,42 @@ section + section {
 
 header {
   z-index: 100;
-  position: relative;
+  position: sticky;
+  left: 0;
+  top: 0;
+  width: 100%;
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  -o-transition: transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+}
+
+.header--on-top {
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+}
+
+.header--pinned {
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  background-color: rgba(35, 39, 51, 0.3);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+}
+
+.mobile-menu--show.header--on-top {
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+  background-color: #1B1F2C;
 }
 
 header:before {
@@ -2975,8 +3010,11 @@ header.mobile-menu--show .burger-line3 {
 
 .ss-content .ss-list .ss-option {
   padding: 12px 20px;
-  font-size: 16px;
   color: #878A94;
+}
+
+.ss-content .ss-list .ss-option {
+  font-size: 14px;
 }
 
 .ss-content .ss-list .ss-option:last-child {
@@ -3485,6 +3523,9 @@ label {
   .field-label {
     font-size: calc(14px + 8 * ((100vw - 600px) / 600));
   }
+  .ss-content .ss-list .ss-option {
+    font-size: calc(14px + 2 * ((100vw - 600px) / 600));
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -3903,6 +3944,9 @@ label {
   }
   .field-label {
     font-size: 22px;
+  }
+  .ss-content .ss-list .ss-option {
+    font-size: 16px;
   }
 }
 
