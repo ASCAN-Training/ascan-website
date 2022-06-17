@@ -1,5 +1,5 @@
 .get-in-touch
-  margin-top: 90px
+  +fluid-type(46px, 90px, 'margin-top')
 
 .get-in-touch__heading .section-title
   max-width: 695px
@@ -9,3 +9,47 @@
   margin: 0 auto
   text-align: center
   +fluid-type(20px, 40px, 'margin-top')
+
+.get-in-touch__main
+  display: grid
+  grid-template-columns: minmax(480px, 1fr) minmax(130px, .167fr)
+  +fluid-type(20px, 40px, 'grid-gap')
+  +fluid-type(32px, 60px, 'margin-top')
+  +mediaSize($small-tablet)
+    grid-gap: 80px
+    grid-template-columns: minmax(0, 1fr)
+
+.get-in-touch__form-wrapper
+  display: flex
+  +mediaSize($mobile)
+    flex-direction: column-reverse
+
+.get-in-touch__tab
+  width: 60px
+  height: 100%
+  margin-right: 22px
+  background-image: url("../image/backgrounds/support-tab-bg.png")
+  border-radius: 8px
+  background-repeat: no-repeat
+  background-size: 100% 100%
+  background-position: center center
+  flex-shrink: 0
+  +mediaSize($mobile)
+    background-image: url("../image/backgrounds/support-tab-bg-mobile.png")
+    height: 50px
+    width: 100%
+    margin-right: 0
+    margin-top: 12px
+
+.get-in-touch__socials
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  padding: 4px 0
+  +mediaSize($small-tablet)
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-gap: 20px
+
+.get-in-touch__socials a
+  width: 100%

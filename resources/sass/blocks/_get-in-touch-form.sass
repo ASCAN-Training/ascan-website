@@ -1,0 +1,58 @@
+.get-in-touch__form
+  position: relative
+  background-image: url("../image/backgrounds/support-form-bg.png")
+  border-radius: 8px
+  background-repeat: no-repeat
+  background-size: 100% 100%
+  background-position: center center
+  +fluid-type(32px, 60px, 'padding-top')
+  +fluid-type(32px, 60px, 'padding-bottom')
+  +fluid-type(20px, 60px, 'padding-left')
+  +fluid-type(20px, 60px, 'padding-right')
+  +mediaSize($mobile)
+    background-image: url("../image/backgrounds/support-form-bg-mobile.png")
+
+.get-in-touch__form__icon
+  position: absolute
+  right: 24px
+  bottom: 35px
+  width: 26%
+  height: 25%
+  object-fit: contain
+  pointer-events: none
+  +mediaSize($small-tablet)
+    display: none
+
+.get-in-touch__form__fields
+  +fluid-type(28px, 40px, 'margin-top')
+
+.get-in-touch__form__actions
+  display: flex
+  align-items: center
+  grid-gap: 32px
+  +fluid-type(28px, 32px, 'margin-top')
+  +mediaSize($mobile)
+    flex-direction: column-reverse
+
+.get-in-touch__form__actions .btn
+  min-width: 200px
+  flex-shrink: 0
+  +mediaSize($mobile)
+    width: 100%
+
+.get-in-touch__form__contacts
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  +fluid-type(32px, 60px, 'margin-top')
+  +mediaSize($mobile)
+    align-items: center
+
+.get-in-touch__form__contacts p
+  +fluid-type(14px, 22px)
+
+.get-in-touch__form__contacts a
+  font-weight: 500
+  font-size: 24px
+  margin-top: 16px
+  color: white

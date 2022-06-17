@@ -1,0 +1,55 @@
+.form-field
+  display: inline-flex
+  align-items: center
+  position: relative
+  color: white
+  +fluid-type(16px, 18px, 'font-size')
+
+.form-field:not(.form-field__checkbox)
+  +mediaSize($mobile)
+    flex-direction: column
+    align-items: flex-start
+
+.form-field + .form-field
+  +fluid-type(28px, 32px, 'margin-top')
+
+.field-label
+  +fluid-type(14px, 22px)
+  margin-right: 20px
+  flex-shrink: 0
+
+.form-field input
+  background: none
+  font-weight: 300
+  display: inline-block
+  height: 100%
+  width: 100%
+  position: relative
+  +placeholder
+    color: $text-color
+
+.form-field__wrapper
+  position: relative
+  flex-grow: 1
+  height: 2em
+  border-bottom: 1px solid $text-color
+  +mediaSize($mobile)
+    width: 100%
+
+.form-field__wrapper:before
+  content: ''
+  position: absolute
+  left: 0
+  width: 0
+  bottom: -1px
+  height: 1px
+  background-color: white
+  transition: width .2s ease-out
+  pointer-events: none
+
+.form-field__wrapper:hover:before,
+.form-field__wrapper:focus-within:before
+  width: 100%
+
+.form-field input:focus
+  border-color: white

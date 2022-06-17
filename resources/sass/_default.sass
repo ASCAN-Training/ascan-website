@@ -1,4 +1,7 @@
 //default styles for site
+html
+  background-color: $bg-color
+
 html:before
   content: ''
   position: fixed
@@ -33,6 +36,9 @@ a
   text-decoration: none
   color: inherit
   transition: color .3s ease, opacity .3s ease
+
+a:not(.btn):hover
+  color: $green
 
 .svg-container
   position: absolute
@@ -82,9 +88,11 @@ button
 h1, h2, h3, h4, h5, h6, p
   margin: 0
 
-a:focus,
-.btn:focus
-  outline: 2px dashed $orange
+\:focus:not(.no-outline)
+  outline: 2px dashed $green
+
+\:focus:not(:focus-visible)
+  outline: none
 
 \:root
   --vh: 1vh
@@ -146,30 +154,6 @@ section + section
 
 .tile-bg--no-border
   border: 0
-
-//.notepad__rings
-//  position: absolute
-//  top: 24px
-//  bottom: 24px
-//  right: 0
-//  display: flex
-//  flex-direction: column-reverse
-//  justify-content: space-between
-//  overflow: hidden
-//
-//.notepad__rings--left
-//  right: auto
-//  left: 0
-//  transform: scaleX(-1)
-//
-//.notepad__rings .ring
-//  width: 40px
-//  height: 14px
-//  border-radius: 50px
-//  border: 2px solid rgba(59, 62, 72, 0.5)
-//  background-color: $bg-color
-//  flex-shrink: 0
-//  transform: translateX(28px)
 
 .ordered-list
   margin: 0
@@ -286,3 +270,9 @@ section + section
 .scroll-snap__indicator:focus,
 .scroll-snap__indicator.active
   background-color: $green
+
+.blue
+  color: $blue
+
+.green
+  color: $green

@@ -1,0 +1,37 @@
+.form-field__checkbox
+  display: flex
+  align-items: center
+  cursor: pointer
+  +mediaSize($mobile)
+    align-items: flex-start
+
+.form-field__checkbox input
+  position: absolute
+  left: 0
+  top: 0
+  visibility: hidden
+  opacity: 0
+  width: 0
+  height: 0
+  pointer-events: none
+
+.form-field__checkbox input:checked + .fake-checkbox
+  background-color: $green
+  border-color: white
+
+.fake-checkbox
+  width: 20px
+  height: 20px
+  border: 1px solid $text-color
+  border-radius: 4px
+  position: relative
+  flex-shrink: 0
+
+.form-field__checkbox .field-label
+  margin-left: 16px
+  font-size: 14px
+  color: $text-color
+  line-height: 1
+  flex-shrink: 1
+  +mediaSize($mobile)
+    line-height: inherit

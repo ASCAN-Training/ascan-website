@@ -18,6 +18,7 @@ gsap.registerPlugin(SplitText);
 gsap.registerPlugin(MotionPathPlugin);
 
 const _debounce = require('lodash.debounce');
+import SlimSelect from "slim-select";
 
 let screenWidth = 0;
 let vh = 0;
@@ -368,10 +369,8 @@ createEvent(document, 'DOMContentLoaded', function () {
             const mobileMenu = document.querySelector('.mobile-menu');
             const overlay = header.querySelector('.overlay');
             const showMenuTl = gsap.timeline({paused: true});
-            //const canvas = document.querySelector('.grad');
             const menuItems = mobileMenu.querySelectorAll('li a');
             showMenuTl.fromTo(mobileMenu, { opacity: 0}, { opacity: 1, duration: .2})
-            //showMenuTl.set(canvas, {zIndex: 1000}, 0);
             showMenuTl.fromTo(menuItems, {yPercent: 100}, {yPercent: 0, duration: .1, stagger: 0.05})
             burger.addEventListener('click', () => {
                 if (!header.classList.contains('mobile-menu--show')) {
@@ -456,6 +455,17 @@ createEvent(document, 'DOMContentLoaded', function () {
                 //elems.forEach((el) => observer.observe(el));
             }, 100)
             window.addEventListener('resize', debounceReobserve);
+        })
+    });
+
+    isExist('.form-field__select', (fields) => {
+        fields.forEach((field) => {
+            const select = field.querySelector('select');
+            new SlimSelect({
+                select: select,
+                showSearch: false,
+                placeholder: 'Placeholder Text Here'
+            })
         })
     })
 

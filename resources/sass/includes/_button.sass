@@ -27,9 +27,22 @@
   border: 2px solid $border-color
   transition: border-color .2s linear
 
+.btn-secondary--filled .value
+  background-color: white
+  color: $bg-color
+  border-color: white
+  transition: background-color .1s linear
+
 .btn-secondary:hover .value,
 .btn-secondary:focus .value
   border-color: white
+  background: none
+
+.btn-secondary--filled:hover .value,
+.btn-secondary--filled:focus .value
+  border-color: white
+  background-color: transparent
+  color: white
 
 .btn-primary
   position: relative

@@ -1,3 +1,27 @@
+<?php
+$socials = array(
+    (object)[
+        'link' => 'http://google.com',
+        'img_url' => '/image/socials/fb.svg',
+        'img_alt' => 'Facebook'
+    ],
+    (object)[
+        'link' => 'http://google.com',
+        'img_url' => '/image/socials/twitter.svg',
+        'img_alt' => 'Twitter'
+    ],
+    (object)[
+        'link' => 'http://google.com',
+        'img_url' => '/image/socials/tg.svg',
+        'img_alt' => 'Telegram'
+    ],
+    (object)[
+        'link' => 'http://google.com',
+        'img_url' => '/image/socials/insta.svg',
+        'img_alt' => 'Instagram'
+    ]
+);
+?>
 <section>
     <div class="container-main">
         <div class="get-in-touch">
@@ -17,39 +41,92 @@
                 </p>
             </div>
             <div class="get-in-touch__main">
-                <form action="#" class="get-in-touch__form">
-                    <h3 class="get-in-touch__form__title fz-36-24">Get in touch</h3>
-                    <div class="get-in-touch__form__fields">
-                        <?php
-                        $label = '<span class="green">Hey!</span> My first name is';
-                        $placeholder = 'Name';
-                        $type = 'text';
-                        $required = true;
-                        include(__DIR__ . '/../includes/inputs/input.php')
-                        ?>
-                        <?php
-                        $label = 'Get in touch with me at ';
-                        $placeholder = 'Your email';
-                        $type = 'email';
-                        $required = true;
-                        include(__DIR__ . '/../includes/inputs/input.php')
-                        ?>
-                        <?php
-                        $label = 'Add comment';
-                        $placeholder = 'Add comment';
-                        $type = 'text';
-                        $required = true;
-                        include(__DIR__ . '/../includes/inputs/input.php')
-                        ?>
-                        <?php
-                        $label = 'By the way, how was your day? 😜';
-                        $placeholder = 'Add comment';
-                        $type = 'text';
-                        $required = true;
-                        include(__DIR__ . '/../includes/inputs/input.php')
-                        ?>
-                    </div>
-                </form>
+                <div class="get-in-touch__form-wrapper">
+                    <div class="get-in-touch__tab"></div>
+                    <form action="#" class="get-in-touch__form">
+                        <img src="/image/icons/email-icon.svg" alt="Email icon" class="get-in-touch__form__icon">
+                        <h3 class="get-in-touch__form__title fz-36-24">Get in touch</h3>
+                        <div class="get-in-touch__form__fields">
+                            <?php
+                            $label = '<span class="green">Hey!</span> My first name is';
+                            $placeholder = 'Name';
+                            $name = 'name';
+                            $type = 'text';
+                            $required = true;
+                            include(__DIR__ . '/../includes/inputs/input.php')
+                            ?>
+                            <?php
+                            $label = 'I am interested in';
+                            $placeholder = 'Select right point';
+                            $name = 'interested_in';
+                            $required = true;
+                            $options = array(
+                                (object)[
+                                    'title' => 'Education',
+                                    'value' => 'Education',
+                                ],
+                                (object)[
+                                    'title' => 'Work Proposal',
+                                    'value' => 'Work Proposal',
+                                ],
+                                (object)[
+                                    'title' => 'Partner Offer',
+                                    'value' => 'Partner Offer',
+                                ]
+                            );
+                            include(__DIR__ . '/../includes/inputs/select.php');
+                            ?>
+                            <?php
+                            $label = 'Get in touch with me at ';
+                            $placeholder = 'Your email';
+                            $name = 'email';
+                            $type = 'email';
+                            $required = true;
+                            include(__DIR__ . '/../includes/inputs/input.php')
+                            ?>
+                            <?php
+                            $label = 'Add comment';
+                            $placeholder = 'Add comment';
+                            $name = 'comment';
+                            $type = 'text';
+                            $required = true;
+                            include(__DIR__ . '/../includes/inputs/input.php')
+                            ?>
+                            <?php
+                            $label = 'By the way, how was your day? 😜';
+                            $placeholder = 'Add comment';
+                            $name = 'yourday';
+                            $type = 'text';
+                            $required = true;
+                            include(__DIR__ . '/../includes/inputs/input.php')
+                            ?>
+                        </div>
+                        <div class="get-in-touch__form__actions">
+                            <button type="submit" class="btn btn-secondary btn-secondary--filled">
+                                <span class="value"> Get in Touch</span>
+                            </button>
+                            <?php
+                            $label = 'I here by accept all terms and conditions';
+                            $name = 'yourday';
+                            $type = 'text';
+                            $required = true;
+                            include(__DIR__ . '/../includes/inputs/checkbox.php')
+                            ?>
+                        </div>
+                        <div class="get-in-touch__form__contacts">
+                            <p class="block-title">Or use our email:</p>
+                            <a href="mailto:Ascanmxka@mail.ru" class="block-content">Ascanmxka@mail.ru</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="get-in-touch__socials">
+                    <?php foreach ($socials as $social) {
+                        $link = $social->link;
+                        $img_url = $social->img_url;
+                        $img_alt = $social->img_alt;
+                        include(__DIR__ . '/../includes/big-social-tab.php');
+                    } ?>
+                </div>
             </div>
         </div>
     </div>
