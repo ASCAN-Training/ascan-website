@@ -420,11 +420,15 @@ createEvent(document, 'DOMContentLoaded', function () {
             burger.addEventListener('click', () => {
                 isOpen = !isOpen;
                 if (isOpen) {
-                    showMenuTl.play();
                     onOpenModal();
+                    setTimeout(() => {
+                    }, 0)
+                    showMenuTl.play();
                 } else {
-                    showMenuTl.reverse();
                     onCloseModal();
+                    setTimeout(() => {
+                    }, 0)
+                    showMenuTl.reverse();
                 }
                 header.classList.toggle('mobile-menu--show');
             })
