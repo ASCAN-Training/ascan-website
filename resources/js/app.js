@@ -18,6 +18,7 @@ gsap.registerPlugin(SplitText);
 gsap.registerPlugin(MotionPathPlugin);
 
 const _debounce = require('lodash.debounce');
+const _throttle = require('lodash.throttle');
 import SlimSelect from "slim-select";
 import axios from "axios";
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
@@ -355,7 +356,6 @@ createEvent(document, 'DOMContentLoaded', function () {
                     blinkTl.pause();
                     oldProps.opacity = gsap.getProperty(card, 'opacity');
                     oldProps.scale = gsap.getProperty(card, 'scale');
-                    console.log(oldProps.scale)
                     gsap.to(card, {
                         scale: 1,
                         opacity: 1,
@@ -388,9 +388,9 @@ createEvent(document, 'DOMContentLoaded', function () {
             let isPinned = true;
             let isOpen = false;
             let isHeaderOnTop = true;
-            showMenuTl.fromTo(mobileMenu, {autoAlpha: 0}, {autoAlpha: 1, duration: .5})
-            showMenuTl.fromTo(menuItems, {yPercent: 100}, {yPercent: 0, duration: .1, stagger: 0.05})
-            window.addEventListener('scroll', (e) => {
+            showMenuTl.fromTo(mobileMenu, {opacity: 0}, {opacity: 1, duration: .25});
+            showMenuTl.fromTo(menuItems, {yPercent: 100}, {yPercent: 0, duration: .1, stagger: 0.05});
+            const headerScrollHandler = () => {
                 let st = window.pageYOffset || document.documentElement.scrollTop;
                 if (st === 0 || st < 0) {
                     isHeaderOnTop = true;
@@ -416,7 +416,8 @@ createEvent(document, 'DOMContentLoaded', function () {
                     header.classList.add('header--pinned')
                 }
                 lastScrollTop = st <= 0 ? 0 : st;
-            });
+            }
+            window.addEventListener('scroll', _throttle(headerScrollHandler, 100), {passive: true});
             burger.addEventListener('click', () => {
                 isOpen = !isOpen;
                 if (isOpen) {
@@ -463,10 +464,9 @@ createEvent(document, 'DOMContentLoaded', function () {
                 allVisible ? slider.classList.add('no-scroll') : slider.classList.remove('no-scroll');
             }
             updateIndicators();
-            carousel.addEventListener('scroll', _debounce(updateIndicators, 15));
+            carousel.addEventListener('scroll', _debounce(updateIndicators, 15), {passive: true});
             const observer = new IntersectionObserver(function (entries, observer) {
                 if (entries.length === elems.length && !entries.find((entry) => entry.intersectionRatio < 1)) {
-                    console.log(entries, entries.length === elems.length)
                     slider.classList.add('no-scroll')
                 } else {
                     slider.classList.remove('no-scroll')
@@ -559,7 +559,6 @@ function handleMailchimpForm(evt, form, submitBtn, defaultSuccess, defaultError,
             if (res && res.data) {
                 const message = res.data.message;
                 form.reset();
-                console.log(message);
                 if (defaultSuccess) {
                     fireSwal(message, 'success');
                 } else {
@@ -571,7 +570,6 @@ function handleMailchimpForm(evt, form, submitBtn, defaultSuccess, defaultError,
         .catch((err) => {
             if (err && err.response && err.response.data) {
                 const message = err.response.data.message;
-                console.log(message);
                 if (defaultError) {
                     fireSwal(message, 'error');
                 } else {
@@ -584,30 +582,20 @@ function handleMailchimpForm(evt, form, submitBtn, defaultSuccess, defaultError,
         });
 }
 
-function preventDefault(e){
-    e.preventDefault();
-}
-
 function onOpenModal() {
-    //document.body.addEventListener('touchmove', (e) => {
-    //    e.preventDefault();
-    //    alert(e)
-    //});
-    //document.body.ontouchmove = (e) => e.preventDefault();
-    document.body.addEventListener('touchmove', preventDefault, { passive: false });
-    //document.body.style.overflow = 'hidden';
-    //document.body.style.position = 'fixed';
-    //document.body.style.top = `-${scrollPosition}px`;
-    //document.body.style.width = '100%';
+    scrollPosition = window.pageYOffset;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = '100%';
 }
 
 function onCloseModal() {
-    document.body.removeEventListener('touchmove', preventDefault);
-    //document.body.style.removeProperty('overflow');
-    //document.body.style.removeProperty('position');
-    //document.body.style.removeProperty('top');
-    //document.body.style.removeProperty('width');
-    //window.scrollTo(0, scrollPosition);
+    document.body.style.removeProperty('overflow');
+    document.body.style.removeProperty('position');
+    document.body.style.removeProperty('top');
+    document.body.style.removeProperty('width');
+    window.scrollTo(0, scrollPosition);
 }
 
 function isElementInViewport(el) {

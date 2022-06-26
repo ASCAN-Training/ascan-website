@@ -40,6 +40,7 @@
   "dependencies": {
     "gsap": "^3.8.0",
     "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
     "slim-select": "^1.27.1",
     "axios": "^0.27.2",
     "sweetalert2": "^11.4.18"
