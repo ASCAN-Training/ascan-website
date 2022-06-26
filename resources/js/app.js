@@ -203,7 +203,8 @@ createEvent(document, 'DOMContentLoaded', function () {
                     stagger: 0.05,
                     scrollTrigger: {
                         trigger: title,
-                        start: "top 80%"
+                        start: "top 80%",
+                        once: true
                     },
                     onStart: () => title.style.visibility = 'visible',
                     onComplete: () => onAnimComplete()
@@ -225,7 +226,8 @@ createEvent(document, 'DOMContentLoaded', function () {
                     duration: .5,
                     scrollTrigger: {
                         trigger: title,
-                        start: "top 80%"
+                        start: "top 80%",
+                        once: true
                     },
                 });
             }
@@ -233,7 +235,8 @@ createEvent(document, 'DOMContentLoaded', function () {
                 gsap.to(underline, {
                     strokeDashoffset: 0, duration: .3, ease: "none", scrollTrigger: {
                         trigger: title,
-                        start: "top 80%"
+                        start: "top 80%",
+                        once: true
                     },
                 })
             }
@@ -241,7 +244,8 @@ createEvent(document, 'DOMContentLoaded', function () {
                 gsap.to(highlightEllipse, {
                     strokeDashoffset: 0, duration: .3, ease: "none", scrollTrigger: {
                         trigger: title,
-                        start: "top 80%"
+                        start: "top 80%",
+                        once: true
                     },
                 })
             }
@@ -526,9 +530,6 @@ function animateValue(target, start, end, duration) {
     window.requestAnimationFrame(step);
 }
 
-function showTitleParts(underlines, attentions, ellipses, isWithScrollTrigger) {
-
-}
 
 // function getRandomDigit(min, max) {
 //     return Math.random() * (max - min) + min;
