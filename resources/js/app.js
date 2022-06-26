@@ -256,7 +256,7 @@ createEvent(document, 'DOMContentLoaded', function () {
             if (mobileBreakPoint.matches) {
                 return
             }
-            const ctx = canvas.getContext('2d', {alpha: false})
+            const ctx = canvas.getContext('2d')
             const colors = ["rgba(165, 171, 190, 0.12)"]
 
             function randomIntFromRange(min, max) {
