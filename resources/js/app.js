@@ -421,10 +421,10 @@ createEvent(document, 'DOMContentLoaded', function () {
                 isOpen = !isOpen;
                 if (isOpen) {
                     showMenuTl.play();
-                    //onOpenModal();
+                    onOpenModal();
                 } else {
                     showMenuTl.reverse();
-                    //onCloseModal();
+                    onCloseModal();
                 }
                 header.classList.toggle('mobile-menu--show');
             })
