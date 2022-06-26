@@ -1,7 +1,7 @@
 <footer>
     <div class="container-main">
         <div class="footer__menu">
-            <a href="/" class="header__logo">
+            <a href="/" class="header__logo default-outline">
                 <img src="/image/logo.svg" alt="Logo">
             </a>
             <?php include('navigation.php') ?>

@@ -37,8 +37,15 @@ a
   color: inherit
   transition: color .3s ease, opacity .3s ease
 
-a:not(.btn):hover
+a.hover-link:hover
   color: $green
+
+.default-outline:focus
+  outline: 2px dashed $green
+  border-radius: inherit
+
+.default-outline:focus:not(:focus-visible)
+  outline: none
 
 .svg-container
   position: absolute

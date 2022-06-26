@@ -55,7 +55,7 @@
     <header class="header--on-top">
     <div class="container-main">
         <div class="header-inner">
-            <a href="/" class="header__logo">
+            <a href="/" class="header__logo default-outline">
                 <img src="/image/logo.svg" alt="Logo">
             </a>
             <nav>
@@ -251,49 +251,57 @@
                         <img src="/image/icons/email-icon.svg" alt="Email icon" class="get-in-touch__form__icon">
                         <h3 class="get-in-touch__form__title fz-36-24">Get in touch</h3>
                         <div class="get-in-touch__form__fields">
-                            <label class="form-field form-field__input">
-    <span class="field-label"><span class="green">Hey!</span> My first name is</span>
+                            <input hidden type="text" name="tag" value="support">                            <label class="form-field form-field__input">
+    <span class="field-label"><span class="green">Hey!</span> My first name is*</span>
     <span class="form-field__wrapper">
         <input
                 type="text"
-                name="name"
+                name="fname"
         required           placeholder="Name">
     </span>
-</label>                            <label class="form-field form-field__select">
-    <span class="field-label">I am interested in</span>
+</label>                            <label class="form-field form-field__input">
+    <span class="field-label">My last name is*</span>
     <span class="form-field__wrapper">
-        <select
-                name="interested_in"
-                required        >
-            <option data-placeholder="true">Select right point</option>
-                            <option value="Education">Education</option>
-                            <option value="Work Proposal">Work Proposal</option>
-                            <option value="Partner Offer">Partner Offer</option>
-                    </select>
+        <input
+                type="text"
+                name="lname"
+        required           placeholder="Last name">
     </span>
 </label>                            <label class="form-field form-field__input">
-    <span class="field-label">Get in touch with me at </span>
+    <span class="field-label">Get in touch with me at*</span>
     <span class="form-field__wrapper">
         <input
                 type="email"
                 name="email"
         required           placeholder="Your email">
     </span>
-</label>                            <label class="form-field form-field__input">
-    <span class="field-label">Add comment</span>
+</label>                            <label class="form-field form-field__select">
+    <span class="field-label">Subject*</span>
     <span class="form-field__wrapper">
-        <input
-                type="text"
-                name="comment"
-        required           placeholder="Add comment">
+        <select
+                name="subject"
+                required        >
+            <option data-placeholder="true" data-placeholderText="Select right point"></option>
+                            <option value="Education">Education</option>
+                            <option value="Work Proposal">Work Proposal</option>
+                            <option value="Partner Offer">Partner Offer</option>
+                    </select>
     </span>
 </label>                            <label class="form-field form-field__input">
-    <span class="field-label">By the way, how was your day? 😜</span>
+    <span class="field-label">Message*</span>
     <span class="form-field__wrapper">
         <input
                 type="text"
-                name="yourday"
-        required           placeholder="Add comment">
+                name="message"
+        required           placeholder="Add message">
+    </span>
+</label>                            <label class="form-field form-field__input">
+    <span class="field-label">Additional Details</span>
+    <span class="form-field__wrapper">
+        <input
+                type="text"
+                name="adddet"
+                   placeholder="Add comment">
     </span>
 </label>                        </div>
                         <div class="get-in-touch__form__actions">
@@ -301,7 +309,7 @@
                                 <span class="value"> Get in Touch</span>
                             </button>
                             <label tabindex="0" class="form-field form-field__checkbox">
-    <input type="checkbox" name="yourday" required>
+    <input type="checkbox" name="terms" required>
     <span class="fake-checkbox"></span>
     <span class="field-label">I here by accept all terms and conditions</span>
 </label>                        </div>
@@ -329,7 +337,7 @@
     <footer>
     <div class="container-main">
         <div class="footer__menu">
-            <a href="/" class="header__logo">
+            <a href="/" class="header__logo default-outline">
                 <img src="/image/logo.svg" alt="Logo">
             </a>
             <nav>
@@ -440,8 +448,8 @@
                 Sign up to our newsletter and receive our new research, portfolio news and content direct to your inbox.
             </p>
             <form action="#" class="subscribe-form">
-                <label class="default-input">
-                    <input type="email" required placeholder="Enter your email">
+                <input hidden type="text" name="tag" value="newsletter">                <label class="default-input">
+                    <input type="email" name="email" required placeholder="Enter your email">
                 </label>
                 <button type="submit" class="btn btn-primary btn-primary--simple">
                     <span class="value">Send</span>
