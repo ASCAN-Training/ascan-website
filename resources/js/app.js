@@ -420,15 +420,11 @@ createEvent(document, 'DOMContentLoaded', function () {
             burger.addEventListener('click', () => {
                 isOpen = !isOpen;
                 if (isOpen) {
-                    onOpenModal();
-                    setTimeout(() => {
-                    }, 0)
                     showMenuTl.play();
+                    onOpenModal();
                 } else {
-                    onCloseModal();
-                    setTimeout(() => {
-                    }, 0)
                     showMenuTl.reverse();
+                    onCloseModal();
                 }
                 header.classList.toggle('mobile-menu--show');
             })
@@ -589,11 +585,16 @@ function handleMailchimpForm(evt, form, submitBtn, defaultSuccess, defaultError,
 }
 
 function onOpenModal() {
+    document.body.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        alert(e)
+    })
+    //document.body.ontouchmove = (e) => e.preventDefault();
     scrollPosition = window.pageYOffset;
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollPosition}px`;
-    document.body.style.width = '100%';
+    //document.body.style.overflow = 'hidden';
+    //document.body.style.position = 'fixed';
+    //document.body.style.top = `-${scrollPosition}px`;
+    //document.body.style.width = '100%';
 }
 
 function onCloseModal() {
