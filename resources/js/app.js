@@ -584,13 +584,17 @@ function handleMailchimpForm(evt, form, submitBtn, defaultSuccess, defaultError,
         });
 }
 
+function preventDefault(e){
+    e.preventDefault();
+}
+
 function onOpenModal() {
-    document.body.addEventListener('touchmove', (e) => {
-        e.preventDefault();
-        alert(e)
-    })
+    //document.body.addEventListener('touchmove', (e) => {
+    //    e.preventDefault();
+    //    alert(e)
+    //});
     //document.body.ontouchmove = (e) => e.preventDefault();
-    scrollPosition = window.pageYOffset;
+    document.body.addEventListener('touchmove', preventDefault, { passive: false });
     //document.body.style.overflow = 'hidden';
     //document.body.style.position = 'fixed';
     //document.body.style.top = `-${scrollPosition}px`;
@@ -598,11 +602,12 @@ function onOpenModal() {
 }
 
 function onCloseModal() {
-    document.body.style.removeProperty('overflow');
-    document.body.style.removeProperty('position');
-    document.body.style.removeProperty('top');
-    document.body.style.removeProperty('width');
-    window.scrollTo(0, scrollPosition);
+    document.body.removeEventListener('touchmove', preventDefault);
+    //document.body.style.removeProperty('overflow');
+    //document.body.style.removeProperty('position');
+    //document.body.style.removeProperty('top');
+    //document.body.style.removeProperty('width');
+    //window.scrollTo(0, scrollPosition);
 }
 
 function isElementInViewport(el) {
