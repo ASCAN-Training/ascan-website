@@ -27,8 +27,14 @@
                 Sign up to our newsletter and receive our new research, portfolio news and content direct to your inbox.
             </p>
             <form action="#" class="subscribe-form">
+                <?php
+                $value = 'newsletter';
+                $name = 'tag';
+                $type = 'text';
+                include(__DIR__ . '/../includes/inputs/hidden-input.php')
+                ?>
                 <label class="default-input">
-                    <input type="email" required placeholder="Enter your email">
+                    <input type="email" name="email" required placeholder="Enter your email">
                 </label>
                 <button type="submit" class="btn btn-primary btn-primary--simple">
                     <span class="value">Send</span>

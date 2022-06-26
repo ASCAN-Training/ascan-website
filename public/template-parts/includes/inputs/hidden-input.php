@@ -1,0 +1,1 @@
+<input hidden type="<?php echo $type ?>" name="<?php echo $name ?>" value="<?php echo $value ?>">

@@ -19,6 +19,8 @@ gsap.registerPlugin(MotionPathPlugin);
 
 const _debounce = require('lodash.debounce');
 import SlimSelect from "slim-select";
+import axios from "axios";
+import Swal from "sweetalert2/dist/sweetalert2.min.js";
 
 let screenWidth = 0;
 let vh = 0;
@@ -128,6 +130,7 @@ createEvent(document, 'DOMContentLoaded', function () {
             const loader = successBox.querySelector('svg .orange')
             const counter = subscribe.querySelector('.counter .value');
             const form = subscribe.querySelector('form');
+            const submitBtn = subscribe.querySelector('button[type="submit"]');
             const tl = gsap.timeline({paused: true});
             tl.to(initialBox, {y: 30, autoAlpha: 0, duration: .3});
             tl.fromTo(successBox, {y: 30, autoAlpha: 0}, {
@@ -143,11 +146,16 @@ createEvent(document, 'DOMContentLoaded', function () {
                     counter.textContent = '0'
                 }
             });
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
+            const onSuccess = () => {
                 form.reset();
                 tl.play();
-                setTimeout(() => tl.reverse(), 10000)
+                setTimeout(() => tl.reverse(), 10000);
+            };
+            form.addEventListener('submit', (e) => {
+                //e.preventDefault();
+                //form.reset();
+                //tl.play();
+                handleMailchimpForm(e, form, submitBtn, false, true, onSuccess)
             });
         });
     });
@@ -437,7 +445,6 @@ createEvent(document, 'DOMContentLoaded', function () {
                     carousel.scrollTo(elPos, null);
                 });
             });
-            let isIndicatorsShown = true;
 
             const updateIndicators = () => {
                 let allVisible = true;
@@ -453,17 +460,6 @@ createEvent(document, 'DOMContentLoaded', function () {
             }
             updateIndicators();
             carousel.addEventListener('scroll', _debounce(updateIndicators, 15));
-
-            // const setActive = (entry) => {
-            //     Object.values(objects).forEach((object) => {
-            //         if (object.element === entry.target && !object.isActive) {
-            //             const prevActive = Object.values(objects).find((object) => object.isActive);
-            //             prevActive.isActive = false;
-            //             object.isActive = true;
-            //         }
-            //     });
-            // };
-
             const observer = new IntersectionObserver(function (entries, observer) {
                 if (entries.length === elems.length && !entries.find((entry) => entry.intersectionRatio < 1)) {
                     console.log(entries, entries.length === elems.length)
@@ -471,21 +467,12 @@ createEvent(document, 'DOMContentLoaded', function () {
                 } else {
                     slider.classList.remove('no-scroll')
                 }
-                // let activated = entries.reduce(function (max, entry) {
-                //     return (entry.intersectionRatio > max.intersectionRatio) ? entry : max;
-                // });
-                // if (activated.intersectionRatio > 0) {
-                //     setActive(activated)
-                // }
             }, {
                 root: carousel, threshold: 0.9
             });
-            //elems.forEach((el) => observer.observe(el));
 
             const debounceReobserve = _debounce(() => {
                 updateIndicators();
-                //elems.forEach((el) => observer.unobserve(el));
-                //elems.forEach((el) => observer.observe(el));
             }, 100)
             window.addEventListener('resize', debounceReobserve);
         })
@@ -494,11 +481,22 @@ createEvent(document, 'DOMContentLoaded', function () {
     isExist('.form-field__select', (fields) => {
         fields.forEach((field) => {
             const select = field.querySelector('select');
+            const placeholderOptions = field.querySelector('[data-placeholder]');
             new SlimSelect({
                 select: select,
                 showSearch: false,
-                placeholder: 'Placeholder Text Here'
+                placeholder: placeholderOptions.getAttribute('data-placeholderText')
             })
+        })
+    });
+
+    isExist('.get-in-touch__form', (forms) => {
+        forms.forEach((form) => {
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            form.addEventListener('submit', (e) => {
+                handleMailchimpForm(e, form, submitBtn, true, true)
+            });
         })
     })
 
@@ -537,6 +535,53 @@ function showTitleParts(underlines, attentions, ellipses, isWithScrollTrigger) {
 // }
 //
 let scrollPosition = 0;
+
+function handleMailchimpForm(evt, form, submitBtn, defaultSuccess, defaultError, onSuccess, onError) {
+    evt.preventDefault();
+    submitBtn.classList.add('disabled');
+    const fireSwal = (message, type) => {
+        Swal.fire({
+            title: message,
+            icon: type,
+            timer: 2000,
+            timerProgressBar: true,
+            showConfirmButton: false
+        });
+    }
+    const data = new FormData(form);
+    axios({
+        method: 'POST',
+        url: '/../send',
+        data: data,
+    })
+        .then((res) => {
+            if (res && res.data) {
+                const message = res.data.message;
+                form.reset();
+                console.log(message);
+                if (defaultSuccess) {
+                    fireSwal(message, 'success');
+                } else {
+                    onSuccess();
+                }
+
+            }
+        })
+        .catch((err) => {
+            if (err && err.response && err.response.data) {
+                const message = err.response.data.message;
+                console.log(message);
+                if (defaultError) {
+                    fireSwal(message, 'error');
+                } else {
+                    onError();
+                }
+            }
+        })
+        .finally(() => {
+            submitBtn.classList.remove('disabled');
+        });
+}
 
 function onOpenModal() {
     scrollPosition = window.pageYOffset;

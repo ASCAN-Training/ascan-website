@@ -48,17 +48,39 @@ $socials = array(
                         <h3 class="get-in-touch__form__title fz-36-24">Get in touch</h3>
                         <div class="get-in-touch__form__fields">
                             <?php
-                            $label = '<span class="green">Hey!</span> My first name is';
+                            $value = 'support';
+                            $name = 'tag';
+                            $type = 'text';
+                            include(__DIR__ . '/../includes/inputs/hidden-input.php')
+                            ?>
+                            <?php
+                            $label = '<span class="green">Hey!</span> My first name is*';
                             $placeholder = 'Name';
-                            $name = 'name';
+                            $name = 'fname';
                             $type = 'text';
                             $required = true;
                             include(__DIR__ . '/../includes/inputs/input.php')
                             ?>
                             <?php
-                            $label = 'I am interested in';
+                            $label = 'My last name is*';
+                            $placeholder = 'Last name';
+                            $name = 'lname';
+                            $type = 'text';
+                            $required = true;
+                            include(__DIR__ . '/../includes/inputs/input.php')
+                            ?>
+                            <?php
+                            $label = 'Get in touch with me at*';
+                            $placeholder = 'Your email';
+                            $name = 'email';
+                            $type = 'email';
+                            $required = true;
+                            include(__DIR__ . '/../includes/inputs/input.php')
+                            ?>
+                            <?php
+                            $label = 'Subject*';
                             $placeholder = 'Select right point';
-                            $name = 'interested_in';
+                            $name = 'subject';
                             $required = true;
                             $options = array(
                                 (object)[
@@ -77,27 +99,19 @@ $socials = array(
                             include(__DIR__ . '/../includes/inputs/select.php');
                             ?>
                             <?php
-                            $label = 'Get in touch with me at ';
-                            $placeholder = 'Your email';
-                            $name = 'email';
-                            $type = 'email';
-                            $required = true;
-                            include(__DIR__ . '/../includes/inputs/input.php')
-                            ?>
-                            <?php
-                            $label = 'Add comment';
-                            $placeholder = 'Add comment';
-                            $name = 'comment';
+                            $label = 'Message*';
+                            $placeholder = 'Add message';
+                            $name = 'message';
                             $type = 'text';
                             $required = true;
                             include(__DIR__ . '/../includes/inputs/input.php')
                             ?>
                             <?php
-                            $label = 'By the way, how was your day? 😜';
+                            $label = 'Additional Details';
                             $placeholder = 'Add comment';
-                            $name = 'yourday';
+                            $name = 'adddet';
                             $type = 'text';
-                            $required = true;
+                            $required = false;
                             include(__DIR__ . '/../includes/inputs/input.php')
                             ?>
                         </div>
@@ -107,7 +121,7 @@ $socials = array(
                             </button>
                             <?php
                             $label = 'I here by accept all terms and conditions';
-                            $name = 'yourday';
+                            $name = 'terms';
                             $type = 'text';
                             $required = true;
                             include(__DIR__ . '/../includes/inputs/checkbox.php')
