@@ -73,7 +73,6 @@ createEvent(document, 'DOMContentLoaded', function () {
                             }, 100)
                         }
                     });
-                    tl.play();
                     tl.fromTo(
                         target,
                         {y: 100, opacity: 0,},
@@ -81,12 +80,10 @@ createEvent(document, 'DOMContentLoaded', function () {
                             y: 0,
                             opacity: 1,
                             duration: .5,
-                            onComplete: () => {
-                                if (mobileBreakPoint.matches) {
-                                    gsap.to(window, {scrollTo: {y: notepad, offsetY: 0}, duration: .5})
-                                }
-                            }
                         });
+                    if (mobileBreakPoint.matches) {
+                        gsap.to(window, {scrollTo: {y: notepad, offsetY: 0}, duration: .25})
+                    }
                     activeButton.classList.remove('active');
                     button.classList.add('active');
                 });
