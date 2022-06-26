@@ -251,7 +251,11 @@ createEvent(document, 'DOMContentLoaded', function () {
 
     isExist('.grad', (canvases) => {
         canvases.forEach((canvas) => {
-            const ctx = canvas.getContext('2d')
+            const mobileBreakPoint = window.matchMedia('(max-width: 600px)');
+            if (mobileBreakPoint.matches) {
+                return
+            }
+            const ctx = canvas.getContext('2d', {alpha: false})
             const colors = ["rgba(165, 171, 190, 0.12)"]
 
             function randomIntFromRange(min, max) {
@@ -384,7 +388,7 @@ createEvent(document, 'DOMContentLoaded', function () {
             let isPinned = true;
             let isOpen = false;
             let isHeaderOnTop = true;
-            showMenuTl.fromTo(mobileMenu, {opacity: 0}, {opacity: 1, duration: .2})
+            showMenuTl.fromTo(mobileMenu, {autoAlpha: 0}, {autoAlpha: 1, duration: .5})
             showMenuTl.fromTo(menuItems, {yPercent: 100}, {yPercent: 0, duration: .1, stagger: 0.05})
             window.addEventListener('scroll', (e) => {
                 let st = window.pageYOffset || document.documentElement.scrollTop;
@@ -417,13 +421,12 @@ createEvent(document, 'DOMContentLoaded', function () {
                 isOpen = !isOpen;
                 if (isOpen) {
                     showMenuTl.play();
-                    onOpenModal();
-                    header.classList.toggle('mobile-menu--show');
+                    //onOpenModal();
                 } else {
                     showMenuTl.reverse();
-                    onCloseModal();
-                    header.classList.toggle('mobile-menu--show');
+                    //onCloseModal();
                 }
+                header.classList.toggle('mobile-menu--show');
             })
             overlay.addEventListener('click', () => burger.click())
         })
