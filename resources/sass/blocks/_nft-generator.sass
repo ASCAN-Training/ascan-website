@@ -1,0 +1,97 @@
+.nft-generator
+  +fluid-type(26px, 36px, 'margin-top')
+
+.nft-generator__controls
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.nft-generator__controls__arrow
+  +fluid-type(20px, 28px, 'height')
+  +fluid-type(20px, 28px, 'width')
+  flex-shrink: 0
+  color: white
+  transition: color .2s ease
+
+.nft-generator__controls__arrow:hover,
+.nft-generator__controls__arrow:focus
+  color: $green
+
+.nft-generator__controls__arrow.right
+  transform: rotate(180deg)
+
+.nft-generator__controls__pagination
+  +fluid-type(16px, 36px, 'margin-left')
+  +fluid-type(16px, 36px, 'margin-right')
+  display: flex
+  justify-content: space-between
+  +fluid-type(8px, 12px, 'gap')
+  flex-grow: 1
+
+.pagination-pip
+  flex-grow: 1
+  flex-shrink: 1
+  height: 6px
+  border-radius: 8px
+  background-color: rgba(59, 62, 72, 0.5)
+  position: relative
+
+.pagination-pip:before
+  content: ''
+  position: absolute
+  left: -3px
+  top: -3px
+  right: -3px
+  bottom: -3px
+  border-radius: inherit
+  border: 1px solid rgba(59, 62, 72, 0.5)
+  opacity: 0
+  transition: opacity .2s ease
+
+.pagination-pip .progress
+  position: absolute
+  left: 0
+  top: 0
+  bottom: 0
+  border-radius: inherit
+  background-color: $green
+  width: 0
+
+.pagination-pip.active:before
+  opacity: 1
+
+.nft-generator__heading
+  +fluid-type(26px, 36px, 'margin-top')
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.nft-generator__state span:not(.active)
+  display: none
+
+.nft-generator__state
+  padding: 6px 16px
+  border-radius: 50px
+  background-color: rgba(255,255,255, .04)
+
+.nft-generator__shuttle
+  margin-top: 20px
+  position: relative
+
+.nft-generator__shuttle img
+  position: absolute
+  left: 0
+  top: 0
+  +fluid-type(280px, 456px, 'width')
+  +fluid-type(280px, 456px, 'height')
+
+.nft-generator__shuttle .skeleton img,
+.nft-generator__shuttle .colored img
+  opacity: 0
+  transition: opacity .2s linear
+
+.nft-generator__shuttle img.active
+  opacity: 1
+
+.nft-generator__shuttle img.hidden
+  opacity: 0

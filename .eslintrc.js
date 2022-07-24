@@ -6,8 +6,10 @@ module.exports = {
         node: true,
         es6: true,
     },
+    parser: '@babel/eslint-parser',
     parserOptions: {
-        sourceType: 'module',
+        //sourceType: 'module',
+        requireConfigFile: false,
     },
     ignorePatterns: ['**/js/libs/*.js'],
     rules: {

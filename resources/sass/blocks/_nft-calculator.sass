@@ -1,0 +1,84 @@
+.nft-calculator
+  display: flex
+  +fluid-type(20px, 40px, 'margin-top')
+  border: 2px solid $border-color
+  border-radius: 16px
+  background-color: $tile-bg
+  min-height: 180px
+
+.nft-calculator > *
+  flex-shrink: 0
+  padding: 30px 60px
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: flex-start
+
+.nft-calculator__action .btn
+  min-width: 265px
+
+.nft-calculator__heading span
+  +fluid-type(4px, 12px, 'margin-top')
+
+.nft-calculator__body
+  flex-grow: 1
+  border-left: 2px solid $border-color
+  border-right: 2px solid $border-color
+  display: flex
+  align-items: center
+
+.nft-calculator__slider,
+.nft-calculator__slider .noUi-handle
+  box-shadow: none
+
+
+.nft-calculator__slider .noUi-handle::before,
+.nft-calculator__slider .noUi-handle::after
+  display: none
+
+.nft-calculator__slider
+  height: 6px
+  background-color: $border-color
+  border: none
+  width: 100%
+
+.nft-calculator__slider .noUi-connect
+  background: $green
+
+
+.nft-calculator__slider .noUi-handle
+  height: 16px
+  width: 16px
+  top: -5px
+  right: -8px
+  border-radius: 50%
+  border: none
+
+.nft-calculator__slider__values
+  display: flex
+  width: 100%
+  justify-content: space-between
+  font-weight: 600
+  +fluid-type(6px, 14px, 'margin-bottom')
+
+.noUi-tooltip
+  border-radius: 20px
+  background: $tile-bg
+  padding: 7px 12px
+  border: 2px solid $green
+  color: $green
+  font-weight: 600
+
+.noUi-horizontal .noUi-tooltip
+  bottom: calc(100% + 6px)
+
+.mint-sticky .nft-calculator
+  position: sticky
+  bottom: 20px
+  left: 0
+  width: 100%
+
+.mint-top main section .container-main
+  display: flex
+  flex-direction: column-reverse
+  

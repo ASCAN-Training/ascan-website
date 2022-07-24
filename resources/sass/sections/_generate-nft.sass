@@ -1,0 +1,63 @@
+.generate-nft-heading p
+  +fluid-type(16px, 18px)
+  +fluid-type(12px, 24px, 'margin-top')
+
+.generate-nft-heading .generate-nft-illustration
+  +fluid-type(30px, 74px, 'margin-top')
+
+.generate-nft-illustration
+  +fluid-type(220px, 352px, 'width')
+  +fluid-type(220px, 396px, 'height')
+  display: flex
+  align-items: flex-end
+  justify-content: center
+  position: relative
+  margin: 0 auto
+
+.generate-nft-illustration img
+  max-width: 100%
+  max-height: 100%
+  object-fit: contain
+  z-index: 0
+
+.generate-nft-illustration svg
+  width: 100%
+  height: auto
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  z-index: -1
+  overflow: visible
+
+.generate-nft-illustration .stars > *
+  animation: starsAnimation 3s linear infinite alternate
+
+@keyframes starsAnimation
+  0%
+    opacity: 1
+  50%
+    opacity: .2
+  100%
+    opacity: 1
+
+@for $i from 1 through 3
+  .generate-nft-illustration .stars > *:nth-child(#{$i})
+    animation-delay: random(6) - 3 + s
+
+.generate-nft-illustration .details > *
+  animation: detailsAnimation 2s linear infinite
+  animation-direction: normal
+  transform: translate(-150%, -50%)
+
+@keyframes detailsAnimation
+  0%
+    transform: translate(-150%, -50%)
+  50%
+    transform: translate(0, 0)
+  100%
+    transform: translate(150%, 50%)
+
+@for $i from 1 through 9
+  .generate-nft-illustration .details > *:nth-child(#{$i})
+    animation-delay: random(6) - 3 + s

@@ -20,7 +20,7 @@ header
   backdrop-filter: none
   background-color: $bg-color
 
-header:before
+header:not(.header-simple):before
   content: ''
   position: absolute
   height: 2px
@@ -45,6 +45,8 @@ header:before
 .header__logo
   width: 136px
   height: 36px
+
+.header__logo img
   object-fit: contain
 
 .header-inner > nav ul,
@@ -115,3 +117,7 @@ footer nav li a .icon
 .header__cta:hover .icon,
 .header__cta:focus .icon
   color: white
+
+.header-simple .header__logo
+  +fluid-type(125px, 204px, 'width')
+  +fluid-type(33px, 63px, 'height')
