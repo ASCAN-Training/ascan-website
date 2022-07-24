@@ -1816,18 +1816,18 @@ header.mobile-menu--show .burger-line3 {
 }
 
 .generate-nft-illustration .stars > *:nth-child(1) {
-  -webkit-animation-delay: -2s;
-          animation-delay: -2s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 
 .generate-nft-illustration .stars > *:nth-child(2) {
-  -webkit-animation-delay: -2s;
-          animation-delay: -2s;
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s;
 }
 
 .generate-nft-illustration .stars > *:nth-child(3) {
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 
 .generate-nft-illustration .details > * {
@@ -1871,8 +1871,8 @@ header.mobile-menu--show .burger-line3 {
 }
 
 .generate-nft-illustration .details > *:nth-child(1) {
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 
 .generate-nft-illustration .details > *:nth-child(2) {
@@ -1881,8 +1881,8 @@ header.mobile-menu--show .burger-line3 {
 }
 
 .generate-nft-illustration .details > *:nth-child(3) {
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 
 .generate-nft-illustration .details > *:nth-child(4) {
@@ -1891,28 +1891,28 @@ header.mobile-menu--show .burger-line3 {
 }
 
 .generate-nft-illustration .details > *:nth-child(5) {
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: -2s;
+          animation-delay: -2s;
 }
 
 .generate-nft-illustration .details > *:nth-child(6) {
-  -webkit-animation-delay: -2s;
-          animation-delay: -2s;
-}
-
-.generate-nft-illustration .details > *:nth-child(7) {
-  -webkit-animation-delay: -2s;
-          animation-delay: -2s;
-}
-
-.generate-nft-illustration .details > *:nth-child(8) {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 }
 
+.generate-nft-illustration .details > *:nth-child(7) {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
+.generate-nft-illustration .details > *:nth-child(8) {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
 .generate-nft-illustration .details > *:nth-child(9) {
-  -webkit-animation-delay: -2s;
-          animation-delay: -2s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 
 .notepad {
