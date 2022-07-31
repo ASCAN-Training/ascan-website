@@ -5,6 +5,9 @@
   border-radius: 16px
   background-color: $tile-bg
   min-height: 180px
+  +mediaSize($tablet)
+    flex-direction: column
+    align-items: flex-start
 
 .nft-calculator > *
   flex-shrink: 0
@@ -13,6 +16,11 @@
   flex-direction: column
   justify-content: center
   align-items: flex-start
+  +mediaSize($tablet)
+    width: 100%
+    padding: 32px 20px
+    text-align: center
+    align-items: center
 
 .nft-calculator__action .btn
   min-width: 265px
@@ -26,6 +34,11 @@
   border-right: 2px solid $border-color
   display: flex
   align-items: center
+  +mediaSize($tablet)
+    border-left: 0
+    border-right: 0
+    border-top: 2px solid $border-color
+    border-bottom: 2px solid $border-color
 
 .nft-calculator__slider,
 .nft-calculator__slider .noUi-handle
@@ -68,6 +81,9 @@
   border: 2px solid $green
   color: $green
   font-weight: 600
+  +mediaSize($mobile)
+    font-size: 14px
+    padding: 4px 12px
 
 .noUi-horizontal .noUi-tooltip
   bottom: calc(100% + 6px)

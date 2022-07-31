@@ -1,6 +1,6 @@
 <section>
     <div class="container-main">
-        <div class="notepad">
+        <div class="notepad notepad--mint">
             <div class="notepad-page notepad-left">
                 <div class="notepad-circles"></div>
                 <div class="generate-nft-heading">

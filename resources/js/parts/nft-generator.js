@@ -10,6 +10,7 @@ export function nftGenerator(isExist, gsap) {
                 arrowLeft: generator.querySelector('.nft-generator__controls__arrow.left'),
                 arrowRight: generator.querySelector('.nft-generator__controls__arrow.right'),
                 paginationPips: [],
+                labels: [],
             };
             const shuttleParts = {
                 skeleton: generator.querySelectorAll('.nft-generator__shuttle .skeleton img'),
@@ -35,6 +36,40 @@ export function nftGenerator(isExist, gsap) {
                     isActive: idx === 0,
                 });
             });
+            [...generator.querySelectorAll('.nft-generator__state span')].forEach((label, idx) => {
+                const animIn = () => {
+                    return gsap.fromTo(
+                        label,
+                        {
+                            yPercent: -100,
+                            opacity: 0,
+                        },
+                        {
+                            yPercent: 0,
+                            opacity: 1,
+                        },
+                    );
+                };
+                const animOut = () => {
+                    return gsap.fromTo(
+                        label,
+                        {
+                            yPercent: 0,
+                            opacity: 1,
+                        },
+                        {
+                            yPercent: 100,
+                            opacity: 0,
+                        },
+                    );
+                };
+                controls.labels.push({
+                    elem: label,
+                    animationIn: animIn,
+                    animationOut: animOut,
+                    isActive: idx === 0,
+                });
+            });
             const intervalHandler = () => {
                 changeCurrentStage(currentStage + 1);
             };
@@ -47,9 +82,13 @@ export function nftGenerator(isExist, gsap) {
             };
             const updateStage = () => {
                 currentStageNumber.textContent = `0${currentStage}`;
-                currentStageLabels.find((label) => label.classList.contains('active')).classList.remove('active');
                 const normalizedCurrentStage = currentStage - 1;
-                currentStageLabels[normalizedCurrentStage].classList.add('active');
+                const oldLabel = controls.labels.find((label) => label.isActive);
+                const newLabel = controls.labels[normalizedCurrentStage];
+                oldLabel.isActive = false;
+                oldLabel.animationOut().play();
+                newLabel.animationIn().play();
+                newLabel.isActive = true;
                 [...shuttleParts.colored].forEach((img) => img.classList.remove('active'));
                 [...shuttleParts.colored]
                     .slice(0, normalizedCurrentStage)

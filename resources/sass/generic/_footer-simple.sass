@@ -9,20 +9,39 @@
   border-top: 2px solid $border-color
   +fluid-type(32px, 40px, 'padding-top')
   +fluid-type(32px, 40px, 'padding-bottom')
+  +mediaSize($tablet)
+    flex-direction: column
+    justify-content: flex-start
+    align-items: flex-start
+
+.footer-simple__main > *
+  +mediaSize($tablet)
+    width: 100%
 
 .footer-simple__socials__list
   display: flex
   +fluid-type(16px, 20px, 'gap')
   margin-top: 20px
 
+.footer-simple__nav
+  +mediaSize($tablet)
+    margin-top: 32px
+    padding-top: 32px
+    border-top: 2px solid $border-color
+
 .footer-simple__nav ul
   display: flex
   grid-row-gap: 20px
   grid-column-gap: 32px
+  +mediaSize($mobile)
+    display: grid
+    grid-template-columns: 1fr 1fr
 
 .footer-simple__nav ul a
   color: white
   text-decoration: underline
+  +mediaSize($tablet)
+    color: $text-color
 
 .footer-simple__nav ul a:hover,
 .footer-simple__nav ul a:focus

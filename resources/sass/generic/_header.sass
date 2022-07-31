@@ -48,6 +48,8 @@ header:not(.header-simple):before
 
 .header__logo img
   object-fit: contain
+  width: 100%
+  height: 100%
 
 .header-inner > nav ul,
 .footer__menu > nav ul
@@ -97,6 +99,8 @@ footer nav li a .icon
   color: white
   position: relative
   margin-right: 16px
+
+header:not(.header-simple) .header__cta
   +mediaSize($tablet)
     display: none
 
@@ -121,3 +125,20 @@ footer nav li a .icon
 .header-simple .header__logo
   +fluid-type(125px, 204px, 'width')
   +fluid-type(33px, 63px, 'height')
+  margin-right: 10px
+
+.header-simple .header__logo .desktop-logo
+  +mediaSize($mobile)
+    display: none
+
+.header-simple .header__logo .mobile-logo
+  display: none
+  +mediaSize($mobile)
+    display: flex
+
+.header-simple .header__cta .btn-key
+  +mediaSize($mobile)
+    padding: 4px 12px
+
+.header-simple .header__cta
+  margin-right: 0

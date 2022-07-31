@@ -4,6 +4,9 @@
 
 .generate-nft-heading .generate-nft-illustration
   +fluid-type(30px, 74px, 'margin-top')
+  +mediaSize($mobile)
+    margin-top: 0
+    margin-bottom: 30px
 
 .generate-nft-illustration
   +fluid-type(220px, 352px, 'width')
@@ -14,11 +17,16 @@
   position: relative
   margin: 0 auto
 
+.generate-nft-illustration > .parallax-scene
+  height: 100%
+  width: 100%
+
 .generate-nft-illustration img
   max-width: 100%
   max-height: 100%
   object-fit: contain
   z-index: 0
+  margin: 0 auto
 
 .generate-nft-illustration svg
   width: 100%
@@ -61,3 +69,16 @@
 @for $i from 1 through 9
   .generate-nft-illustration .details > *:nth-child(#{$i})
     animation-delay: random(6) - 3 + s
+
+.notepad--mint .generate-nft-heading .generate-nft-illustration
+  +mediaSize($mobile)
+    order: -1
+
+.notepad--mint .generate-nft-heading
+  +mediaSize($mobile)
+    text-align: center
+    display: flex
+    flex-direction: column
+    align-items: center
+
+
