@@ -17,12 +17,14 @@
   position: absolute
   left: 0
   top: 0
-  background-color: red
   bottom: 0
   +mediaSize($small-tablet)
     height: 320px
     margin-top: 20px
     position: static
+    display: flex
+    justify-content: center
+    width: 100%
   +mediaSize($mobile)
     width: 100%
 
@@ -40,3 +42,42 @@
 
 .why-get-block__listing li::before
   margin-bottom: 20px
+
+.why-get-block .benefit-item
+  animation: benefit-item-animation 5s infinite
+
+@keyframes benefit-item-animation
+  50%
+    transform: translateY(10px)
+
+@for $i from 1 through 3
+  .why-get-block .benefit-item:nth-child(#{$i})
+    animation-delay: random(6) - 3 + s
+
+.why-get-block .benefit-person
+  animation: hero-person-animation infinite 10s linear
+
+.why-get-block .benefit-person__arm-right
+  animation: benefit-arm-right infinite 5s
+  transform-origin: 50% 35%
+
+
+.why-get-block .benefit-person__arm-left
+  animation: benefit-arm-right infinite 5s
+  animation-delay: -2.5s
+  transform-origin: 50% 35%
+
+@keyframes benefit-arm-right
+  50%
+    transform: rotate(-15deg)
+
+.blinking-eye
+  animation: eye-blink 5s infinite
+  transform-box: fill-box
+  transform-origin: bottom
+
+@keyframes eye-blink
+  90%
+    transform: scaleY(1)
+  93%
+    transform: scaleY(0)

@@ -1,6 +1,15 @@
 .hero__content
-  max-width: 640px
   +fluid-type(44px, 80px, 'margin-top')
+
+.hero
+  display: grid
+  grid-template-columns: minmax(200px, 640px) minmax(300px, 1fr)
+  +mediaSize($small-tablet)
+    display: block
+
+.hero__illustration
+  +mediaSize($small-tablet)
+    display: none
 
 .hero-texted .hero__content
   max-width: 960px
@@ -65,4 +74,41 @@
 .hero__actions--column > *:last-child
   +fluid-type(32px, 60px, 'margin-top')
 
+
+.hero-person
+  animation: hero-person-animation infinite 5s
+
+@keyframes hero-person-animation
+  50%
+    transform: translateY(30px)
+
+.hero-person__arm
+  animation: hero-person-arm-animation infinite 5s
+  transform-origin: 50% 65%
+
+@keyframes hero-person-arm-animation
+  50%
+    transform: rotate(15deg)
+
+.hero-person__bottle
+  animation: hero-person-bottle-animation infinite 5s
+
+@keyframes hero-person-bottle-animation
+  50%
+    transform: translateY(-20px)
+
+//.hero-planet
+//  animation: hero-planet-animation infinite 5s
+//
+//@keyframes hero-planet-animation
+//  50%
+//    transform: translateY(-30px)
+
+//.hero-rocket
+//  animation: hero-rocket-animation infinite 5s
+//  animation-delay: 1s
+//
+//@keyframes hero-rocket-animation
+//  50%
+//    transform: translateY(-30px) translateX(30px)
 

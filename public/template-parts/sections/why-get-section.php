@@ -43,7 +43,9 @@
                     </ol>
                 </div>
             </div>
-            <div class="why-get-block__decor"></div>
+            <div class="why-get-block__decor">
+                <?php  include(__DIR__ . '/../svg/illustrations/benefits-illustration.php') ?>
+            </div>
         </div>
     </div>
 </section>

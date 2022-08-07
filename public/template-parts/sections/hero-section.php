@@ -46,6 +46,9 @@
                     ?>
                 </div>
             </div>
+            <div class="hero__illustration">
+                <?php  include(__DIR__ . '/../svg/illustrations/hero-illustration.php') ?>
+            </div>
         </div>
     </div>
 </section>
