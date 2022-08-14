@@ -585,7 +585,7 @@ createEvent(document, 'DOMContentLoaded', function () {
     boxAnimation(isExist, gsap);
     nftCalculator(isExist);
     whatIsAnimations(isExist, lottie);
-    // footerLottie(isExist, lottie);
+    footerLottie(isExist, lottie);
 });
 createEvent(document, 'DOMContentLoaded', function () {});
 

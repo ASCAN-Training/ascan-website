@@ -7,7 +7,7 @@ export function whatIsAnimations(isExist, lottie) {
             const animationData = require(`../lotties/${lottieName}.json`);
             const anim = lottie.loadAnimation({
                 container: lottieHolder, // the dom element that will contain the animation
-                renderer: 'svg',
+                renderer: 'canvas',
                 loop: !isAlternate,
                 autoplay: true,
                 animationData: animationData, // the path to the animation json
@@ -18,7 +18,6 @@ export function whatIsAnimations(isExist, lottie) {
                     anim.setDirection(!isAlternated ? -1 : 1);
                     isAlternated = !isAlternated;
                     anim.play();
-                    console.log('comptle');
                 };
             }
         });
