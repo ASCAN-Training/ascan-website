@@ -582,10 +582,10 @@ createEvent(document, 'DOMContentLoaded', function () {
         });
     });
     nftGenerator(isExist, gsap);
-    boxAnimation(isExist, gsap);
-    nftCalculator(isExist);
-    whatIsAnimations(isExist, lottie);
-    footerLottie(isExist, lottie);
+    // boxAnimation(isExist, gsap);
+    // nftCalculator(isExist);
+    // whatIsAnimations(isExist, lottie);
+    // footerLottie(isExist, lottie);
 });
 createEvent(document, 'DOMContentLoaded', function () {});
 
