@@ -19,6 +19,12 @@
             $title = 'Launch the ASCAN Training';
             include(__DIR__ . '/../includes/button.php')
             ?>
+            <div class="decorated-cta__decor">
+                <?php  include(__DIR__ . '/../svg/illustrations/sit-illustration.php') ?>
+            </div>
+            <div class="decorated-cta__rocks">
+                <?php  include(__DIR__ . '/../svg/illustrations/rocks.php') ?>
+            </div>
         </div>
     </div>
 </section>

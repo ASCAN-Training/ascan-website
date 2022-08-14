@@ -9,7 +9,9 @@
                     ?>
                     is to make Web3/NFT accessible
                     to everyone
-                    <span class="img-in-text"><img src="image/simple-cta/simple-cta3.svg" alt="than just"></span>
+                    <span class="parallax-scene bubble-w-image bubble-w-image--green bubble-w-image--200">
+                    <img data-depth="1.5" src="image/simple-cta/simple-cta4.svg" alt="much more">
+                </span>
                 </h1>
                 <div class="hero__actions hero__actions--column">
                     <p>We are Web3/NFT enthusiasts with the strong belief that NFTs will immensely re-shape the world as we know it, and change the way people interact with - and operate in - the internet</p>

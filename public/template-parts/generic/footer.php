@@ -32,4 +32,7 @@
             </nav>
         </div>
     </div>
+    <div class="footer-lottie">
+
+    </div>
 </footer>

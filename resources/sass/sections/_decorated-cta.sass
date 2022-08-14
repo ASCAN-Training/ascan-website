@@ -1,9 +1,13 @@
 .decorated-cta
   padding-left: 20px
   padding-right: 20px
+  position: relative
   +fluid-type(36px, 80px, 'padding-top')
   +fluid-type(36px, 60px, 'padding-bottom')
   text-align: center
+  overflow: hidden
+  +mediaSize($small-tablet)
+    padding-bottom: 50%
 
 .decorated-cta > *
   max-width: 640px
@@ -13,4 +17,34 @@
   +fluid-type(235px, 286px, 'min-width')
   +fluid-type(32px, 60px, 'margin-top')
 
+.decorated-cta__decor
+  position: absolute
+  left: -210px
+  bottom: -250px
+  z-index: -1
+  width: 653px
+  height: 653px
+  pointer-events: none
+  +mediaSize($small-tablet)
+    height: auto
+    top: calc(100% - 70%)
+    left: 0
+    width: 100%
 
+.decorated-cta__decor .nft
+  animation: flickering 3s linear infinite
+
+.decorated-cta__rocks
+  position: absolute
+  left: 42px
+  top: 85px
+  right: 94px
+  bottom: 50px
+  z-index: -2
+  max-width: 100%
+  pointer-events: none
+  +mediaSize($small-tablet)
+    display: none
+
+.decorated-cta__rocks svg
+  overflow: visible

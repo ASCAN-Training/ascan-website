@@ -6,3 +6,31 @@
 
 .how-to-start .steps-block
   +fluid-type(32px, 60px, 'margin-top')
+
+.how-to-start__decor
+  +mediaSize($small-tablet)
+    display: none
+
+.how-to-start__decor .arrows > *
+  animation: arrowsAnimation 2s linear infinite
+
+@keyframes arrowsAnimation
+  0%
+    transform: translate(-90%, -100%)
+  100%
+    transform: translate(100%, 90%)
+
+.how-to-start__decor .person
+  animation: floatingPerson 10s linear infinite
+
+@keyframes floatingPerson
+  50%
+    transform: translate(-20px, -10px)
+
+.how-to-start__decor .person-arm
+  animation: wavingArm 7s linear infinite
+  transform-origin: 35%
+
+@keyframes wavingArm
+  50%
+    transform: rotate(-5deg) translateX(5px)

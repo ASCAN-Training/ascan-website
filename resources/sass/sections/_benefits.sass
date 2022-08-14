@@ -20,3 +20,26 @@
 
 .benefits__actions .btn-primary
   +fluid-type(180px, 220px, 'min-width')
+
+.benefits__decor
+  +mediaSize($small-tablet)
+    display: none
+
+.benefits__decor .rocket
+  animation: rocketAnimation 10s ease infinite
+
+@keyframes rocketAnimation
+  50%
+    transform: translate(30px, 20px)
+
+.benefits__decor .smoke
+  animation: smokeAnimation 10s ease infinite
+  transform-origin: 50%
+
+@keyframes smokeAnimation
+  50%
+    transform: translate(30px, 20px) scale(.9)
+
+.benefits__decor .light
+  animation: flickering 3s linear infinite
+

@@ -25,6 +25,10 @@ import SlimSelect from 'slim-select';
 import axios from 'axios';
 import Swal from 'sweetalert2/dist/sweetalert2.min.js';
 import Parallax from 'parallax-js';
+import { boxAnimation } from './parts/box-animation.js';
+import lottie from 'lottie-web';
+import { whatIsAnimations } from './parts/what-is-animations.js';
+import { footerLottie } from './parts/footer-lottie.js';
 
 let screenWidth = 0;
 let vh = 0;
@@ -178,6 +182,7 @@ createEvent(document, 'DOMContentLoaded', function () {
                     const attentions = title.querySelectorAll('.attention .icon');
                     const underlines = title.querySelectorAll('.draw-underline .icon');
                     const highlightEllipses = title.querySelectorAll('.highlight-ellipse .icon');
+                    const parallaxedParts = title.querySelectorAll('.parallax-scene');
                     if (attentions.length) {
                         gsap.fromTo(
                             attentions,
@@ -196,10 +201,22 @@ createEvent(document, 'DOMContentLoaded', function () {
                     if (highlightEllipses.length) {
                         gsap.to(highlightEllipses, { strokeDashoffset: 0, duration: 0.3, ease: 'none' });
                     }
+                    if (parallaxedParts.length) {
+                        parallaxedParts.forEach((scene) => {
+                            [...scene.children].forEach((el) => {
+                                if (el.getAttribute('data-depth')) return;
+                                el.setAttribute('data-depth', getRandomDigit(0.2, 0.8));
+                            });
+                            new Parallax(scene);
+                        });
+                    }
                 };
                 const splittedArray = mySplitText.words;
                 splittedArray.forEach((word, idx) => {
-                    if (word.nextElementSibling?.classList.contains('img-in-text')) {
+                    if (
+                        word.nextElementSibling?.classList.contains('img-in-text') ||
+                        word.nextElementSibling?.classList.contains('bubble-w-image')
+                    ) {
                         splittedArray.splice(idx + 1, 0, word.nextElementSibling);
                     }
                 });
@@ -558,13 +575,17 @@ createEvent(document, 'DOMContentLoaded', function () {
     isExist('.parallax-scene', (scenes) => {
         scenes.forEach((scene) => {
             [...scene.children].forEach((el) => {
+                if (el.getAttribute('data-depth')) return;
                 el.setAttribute('data-depth', getRandomDigit(0.2, 0.8));
             });
             new Parallax(scene);
         });
     });
     nftGenerator(isExist, gsap);
+    boxAnimation(isExist, gsap);
     nftCalculator(isExist);
+    whatIsAnimations(isExist, lottie);
+    footerLottie(isExist, lottie);
 });
 createEvent(document, 'DOMContentLoaded', function () {});
 

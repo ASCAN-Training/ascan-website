@@ -28,7 +28,9 @@
                     ?>
                 </div>
             </div>
-            <div class="benefits__decor"></div>
+            <div class="benefits__decor">
+                <?php  include(__DIR__ . '/../svg/illustrations/rocket-illustration.php') ?>
+            </div>
         </div>
     </div>
 </section>

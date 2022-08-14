@@ -214,12 +214,42 @@ section + section
   height: 0!important
   pointer-events: none
 
-.img-in-text
+.img-in-text,
+.bubble-w-image
   display: inline-block
+
+.bubble-w-image--green
+  background-color: $green
+
+.bubble-w-image--blue
+  background-color: $blue
 
 .img-in-text img
   pointer-events: none
   max-height: 0.8em
+
+.bubble-w-image
+  border-radius: 40px
+  overflow: hidden
+  position: relative
+  +fluid-type(40px, 68px, 'height')
+
+.bubble-w-image--200
+  +fluid-type(100px, 200px, 'width')
+
+.bubble-w-image--140
+  +fluid-type(90px, 120px, 'width')
+
+.bubble-w-image--120
+  +fluid-type(70px, 140px, 'width')
+
+.bubble-w-image img
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  max-height: 2em
+  display: inline-block!important
 
 .scroll-snap__elements:before,
 .scroll-snap__elements:after
@@ -286,3 +316,9 @@ section + section
 
 .animated-stars > *
   animation: starsAnimation 3s linear infinite alternate
+
+@keyframes flickering
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%
+    opacity: .99
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999%
+    opacity: 0.4

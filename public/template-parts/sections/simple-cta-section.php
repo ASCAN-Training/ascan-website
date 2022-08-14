@@ -8,15 +8,21 @@
                 include(__DIR__ . '/../includes/attention.php')
                 ?>
                 are
-                <span class="img-in-text"><img src="image/simple-cta/simple-cta1.svg" alt="nft are"></span>
+                <span class="parallax-scene bubble-w-image bubble-w-image--blue bubble-w-image--120">
+                    <img data-depth="1.5" src="image/simple-cta/simple-cta1.svg" alt="nft are">
+                </span>
                 <br>
                 <?php
                 $value = 'much more';
                 include(__DIR__ . '/../includes/draw-underline.php')
                 ?>
-                <span class="img-in-text"><img src="image/simple-cta/simple-cta2.svg" alt="much more"></span>
+                <span class="parallax-scene bubble-w-image bubble-w-image--green bubble-w-image--200">
+                    <img data-depth="1.5" src="image/simple-cta/simple-cta2.svg" alt="much more">
+                </span>
                 than just
-                <span class="img-in-text"><img src="image/simple-cta/simple-cta3.svg" alt="than just"></span>
+                <span class="parallax-scene bubble-w-image bubble-w-image--blue bubble-w-image--140">
+                    <img data-depth="1.5" src="image/simple-cta/simple-cta3.svg" alt="than just">
+                </span>
                 pictures
             </h3>
             <?php

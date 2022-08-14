@@ -1,18 +1,27 @@
 .faq-block
-  +fluid-type(32px, 60px, 'padding-top')
-  +fluid-type(32px, 60px, 'padding-bottom')
-  +fluid-type(20px, 100px, 'padding-left')
   +fluid-type(20px, 100px, 'padding-right')
 
 .faq-block
   display: grid
-  grid-template-columns: 1fr 58.6%
+  grid-template-columns: 1fr 52.8%
+  position: relative
   +mediaSize($small-tablet)
     grid-template-columns: minmax(0, 1fr)
+    +fluid-type(20px, 100px, 'padding-left')
+
+.faq__main
+  +fluid-type(32px, 60px, 'padding-top')
+  +fluid-type(32px, 60px, 'padding-bottom')
 
 .faq-block .faq
   +fluid-type(20px, 64px, 'margin-top')
 
+.faq__decor__inner
+  position: absolute
+  left: 0
+  top: 0
+
 .faq__decor
+  position: relative
   +mediaSize($small-tablet)
     display: none

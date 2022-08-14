@@ -1,6 +1,7 @@
 footer
   +fluid-type(80px, 160px, 'margin-top')
   +fluid-type(40px, 140px, 'padding-bottom')
+  position: relative
 
 .footer__menu
   display: flex
@@ -98,3 +99,13 @@ footer
   grid-gap: 16px
   +mediaSize($mobile)
     grid-template-columns: 1fr 1fr
+
+.footer-lottie
+  position: absolute
+  left: 0
+  bottom: 0
+  height: 228px
+  width: 100%
+  pointer-events: none
+  +mediaSize($small-tablet)
+    display: none

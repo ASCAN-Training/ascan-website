@@ -1,7 +1,9 @@
 <section>
     <div class="container-main">
         <div class="how-to-start">
-            <div class="how-to-start__decor"></div>
+            <div class="how-to-start__decor">
+                <?php  include(__DIR__ . '/../svg/illustrations/how-to-start-illustration.php') ?>
+            </div>
             <div class="how-to-start__main">
                 <h2 class="section-title section-title--left title-animation">How to start?</h2>
                 <p class="section-subtitle">
