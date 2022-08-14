@@ -1,5 +1,5 @@
 <div class="what-is-card">
-    <div class="what-is-card__image" data-lottie-alternate="<?php echo $lottie_alternate ?>"  data-lottie-name="<?php echo $lottie_name ?>">
+    <div class="what-is-card__image" data-lottie-renderer="<?php echo $lottie_renderer ?>" data-lottie-alternate="<?php echo $lottie_alternate ?>"  data-lottie-name="<?php echo $lottie_name ?>">
         <!--<img src="<?php /*echo $img_url */?>" alt="<?php /*echo $img_alt */?>">-->
     </div>
     <h4 class="what-is-card__title"><?php echo $title ?></h4>

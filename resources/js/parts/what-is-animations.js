@@ -4,10 +4,11 @@ export function whatIsAnimations(isExist, lottie) {
             const lottieHolder = card.querySelector('.what-is-card__image');
             const lottieName = lottieHolder.getAttribute('data-lottie-name');
             const isAlternate = lottieHolder.getAttribute('data-lottie-alternate') === 'true';
+            const renderer = lottieHolder.getAttribute('data-lottie-renderer');
             const animationData = require(`../lotties/${lottieName}.json`);
             const anim = lottie.loadAnimation({
                 container: lottieHolder, // the dom element that will contain the animation
-                renderer: 'canvas',
+                renderer: renderer,
                 loop: !isAlternate,
                 autoplay: true,
                 animationData: animationData, // the path to the animation json

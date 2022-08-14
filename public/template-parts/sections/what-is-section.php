@@ -11,6 +11,7 @@
                         $content = $card->content;
                         $lottie_name = $card->lottie_name;
                         $lottie_alternate = $card->lottie_alternate ? 'true' : 'false';
+                        $lottie_renderer = isset($card->lottie_renderer) ? $card->lottie_renderer : 'canvas';
                         include(__DIR__ . '/../cards/what-is-card.php');
                     }
                     ?>

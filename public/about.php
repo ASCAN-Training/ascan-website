@@ -23,6 +23,7 @@
             ],
             (object)[
                 'lottie_name' => 'hands',
+                'lottie_renderer' => 'svg',
                 'lottie_alternate' => false,
                 'title' => 'Inclusivity',
                 'content' => 'We want to give everyone interested a fair opportunity to take part in Web3 and NFTs',
