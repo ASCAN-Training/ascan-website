@@ -1,4 +1,4 @@
-<section>
+<section class="hero-texted-section">
     <div class="container-main">
         <div class="hero hero-texted">
             <div class="hero__content">
@@ -23,5 +23,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="hero-texted__decor">
+        <?php  include(__DIR__ . '/../svg/illustrations/about-us-illustration.php') ?>
+    </div>
+    <div class="hero-texted__rocks">
+        <?php  include(__DIR__ . '/../svg/illustrations/about-us-rocks.php') ?>
     </div>
 </section>

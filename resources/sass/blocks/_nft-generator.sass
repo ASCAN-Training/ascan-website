@@ -93,27 +93,85 @@
 .nft-generator__shuttle
   margin-top: 20px
   position: relative
+  display: flex
+  justify-content: center
 
 .nft-generator__shuttle img
   position: absolute
-  left: 0
+  left: 50%
+  transform: translateX(-50%)
   top: 0
   +fluid-type(280px, 456px, 'width')
   +fluid-type(280px, 456px, 'height')
   max-width: 100%
   max-height: 100%
   object-fit: contain
+  pointer-events: none
+  user-select: none
 
 .nft-generator__shuttle > img
   position: static
+  transform: none
 
-.nft-generator__shuttle .skeleton img,
+.nft-generator__shuttle .pointers
+  pointer-events: none
+
 .nft-generator__shuttle .colored img
   opacity: 0
+
+.nft-generator__shuttle .skeleton img
+  opacity: .2
   transition: opacity .2s linear
 
 .nft-generator__shuttle img.active
   opacity: 1
 
+.nft-generator__shuttle .skeleton img
+  z-index: 1
+
 .nft-generator__shuttle img.hidden
   opacity: 0
+
+.parts-selector
+  position: absolute
+  left: 0
+  right: 0
+  top: 80%
+  transform: translateY(-50%)
+  display: flex
+  justify-content: space-between
+  transition: top .2s ease-in-out, opacity .2s ease
+
+[data-current-stage="1"] .parts-selector
+  opacity: 0
+
+[data-current-stage="3"] .parts-selector
+  top: 50%
+
+[data-current-stage="4"] .parts-selector
+  top: 5%
+
+[data-current-stage="5"] .parts-selector
+  top: 20%
+
+
+.parts-selector__button
+  border-radius: 50%
+  background-color: white
+  color: $bg-color
+  +fluid-type(32px, 44px, 'width')
+  +fluid-type(32px, 44px, 'height')
+  display: flex
+  align-items: center
+  justify-content: center
+  transition: opacity .2s ease
+
+.parts-selector__button svg
+  width: 16px
+  height: 16px
+  +mediaSize($small-tablet)
+    width: 12px
+    height: 12px
+
+.parts-selector__button--prev
+  transform: rotate(-180deg)

@@ -10,7 +10,9 @@
                 include(__DIR__ . '/../includes/button.php');
                 ?>
             </div>
-
+            <div class="cta-litepaper__decor">
+                <?php  include(__DIR__ . '/../svg/illustrations/litepaper-illustration.php') ?>
+            </div>
         </div>
     </div>
 </section>

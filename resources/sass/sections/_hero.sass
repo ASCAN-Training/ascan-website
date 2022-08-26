@@ -97,18 +97,32 @@
   50%
     transform: translateY(-20px)
 
-//.hero-planet
-//  animation: hero-planet-animation infinite 5s
-//
-//@keyframes hero-planet-animation
-//  50%
-//    transform: translateY(-30px)
 
-//.hero-rocket
-//  animation: hero-rocket-animation infinite 5s
-//  animation-delay: 1s
-//
-//@keyframes hero-rocket-animation
-//  50%
-//    transform: translateY(-30px) translateX(30px)
+.hero-texted__decor
+  position: absolute
+  left: 0
+  +fluid-type(40px, 80px, 'top')
+  z-index: -1
+  pointer-events: none
+  +mediaSize($small-tablet)
+    display: none
 
+.hero-texted__decor .person
+  animation: floating-person 10s infinite linear alternate
+
+
+@keyframes floating-person
+  50%
+    transform: translateY(15px)
+
+
+.hero-texted__rocks
+  position: absolute
+  left: 0
+  top: 0
+  bottom: 0
+  right: 0
+  z-index: -1
+  pointer-events: none
+  +mediaSize($small-tablet)
+    display: none

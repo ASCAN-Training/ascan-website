@@ -31,6 +31,9 @@ $list_items = array(
         <div class="discover-web3">
             <div class="discover-web3__decor">
                 <h2 class="section-title section-title--left title-animation">Discover Web3</h2>
+                <div class="discover-web3__illustration">
+                    <?php  include(__DIR__ . '/../svg/illustrations/discover-illustration.php') ?>
+                </div>
             </div>
             <div class="discover-web3__content">
                 <ol class="ordered-list">

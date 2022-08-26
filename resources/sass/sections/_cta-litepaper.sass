@@ -3,8 +3,7 @@
   +fluid-type(32px, 60px, 'padding-bottom')
   +fluid-type(20px, 60px, 'padding-left')
   +fluid-type(20px, 60px, 'padding-right')
-  +mediaSize($small-tablet)
-    padding-bottom: 240px
+  overflow: hidden
 
 .cta-litepaper__content
   max-width: 400px
@@ -22,3 +21,17 @@
 .cta-litepaper__content .btn
   margin-top: 32px
   min-width: 200px
+
+.cta-litepaper__decor
+  position: absolute
+  right: 0
+  bottom: 0
+  z-index: -1
+  +fluid-type(320px, 628px, 'width')
+  +mediaSize($small-tablet)
+    position: static
+    width: 100%
+    margin-top: 16px
+
+.cta-litepaper__decor svg
+  overflow: visible

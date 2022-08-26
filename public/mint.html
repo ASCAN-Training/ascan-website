@@ -211,36 +211,71 @@
         <div class="skeleton">
                                                                             <img data-stage="1"
                          src="./image/shuttle/skeleton/flame.png"
-                         class="active"
+                         class=""
+                         data-colored-folder="flame"
                          alt="Shuttle prototype part">
                                                                 <img data-stage="2"
                          src="./image/shuttle/skeleton/fins.png"
-                         class="active"
+                         class=""
+                         data-colored-folder="fins"
                          alt="Shuttle prototype part">
                                                                 <img data-stage="3"
                          src="./image/shuttle/skeleton/nosecone.png"
-                         class="active"
+                         class=""
+                         data-colored-folder="nosecone"
                          alt="Shuttle prototype part">
                                                                 <img data-stage="4"
                          src="./image/shuttle/skeleton/window.png"
-                         class="active"
+                         class=""
+                         data-colored-folder="window"
                          alt="Shuttle prototype part">
                                     </div>
-        <div class="colored">
-                                                                            <img data-stage="1"
-                         src="./image/shuttle/colored/flame.png"
-                         alt="Shuttle colored part">
-                                                                <img data-stage="2"
-                         src="./image/shuttle/colored/fins.png"
-                         alt="Shuttle colored part">
-                                                                <img data-stage="3"
-                         src="./image/shuttle/colored/nosecone.png"
-                         alt="Shuttle colored part">
-                                                                <img data-stage="4"
-                         src="./image/shuttle/colored/window.png"
-                         alt="Shuttle colored part">
-                                    </div>
+        <div class="colored" data-base-url="./image/shuttle/colored">
+                            <img
+                        src=""
+                        data-colored-parts=""
+                        alt="Shuttle colored part 0">
+                            <img
+                        src=""
+                        data-colored-parts="3"
+                        alt="Shuttle colored part 1">
+                            <img
+                        src=""
+                        data-colored-parts="4"
+                        alt="Shuttle colored part 2">
+                            <img
+                        src=""
+                        data-colored-parts="4"
+                        alt="Shuttle colored part 3">
+                            <img
+                        src=""
+                        data-colored-parts="4"
+                        alt="Shuttle colored part 4">
+                    </div>
+        <div class="pointers">
+            <img src="./image/shuttle/skeleton/pointers/1.png" alt="Shuttle pointer">
+            <img src="./image/shuttle/skeleton/pointers/2.png" alt="Shuttle pointer">
+            <img src="./image/shuttle/skeleton/pointers/3.png" alt="Shuttle pointer">
+            <img src="./image/shuttle/skeleton/pointers/fins.png" alt="Shuttle pointer">
+            <img src="./image/shuttle/skeleton/pointers/flame.png" alt="Shuttle pointer">
+            <img src="./image/shuttle/skeleton/pointers/nosecone.png" alt="Shuttle pointer">
+            <img src="./image/shuttle/skeleton/pointers/window.png" alt="Shuttle pointer">
+        </div>
         <img src="./image/shuttle/shuttle-skeleton.png" alt="Shuttle skeleton">
+        <div class="parts-selector">
+            <button aria-label="Select part variation" type="button"
+                    class="parts-selector__button parts-selector__button--prev disabled icon">
+                <svg>
+                    <use xlink:href="#arrow-short"></use>
+                </svg>
+            </button>
+            <button aria-label="Select part variation" type="button"
+                    class="parts-selector__button parts-selector__button--next icon">
+                <svg>
+                    <use xlink:href="#arrow-short"></use>
+                </svg>
+            </button>
+        </div>
     </div>
 </div>            </div>
         </div>
@@ -320,6 +355,11 @@
 
     <symbol id="arrow" viewBox="0 0 28 16" fill="none">
         <path d="M0.292891 7.29289C-0.0976333 7.68342 -0.0976334 8.31658 0.29289 8.7071L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34314C8.46159 1.95262 8.46159 1.31945 8.07107 0.92893C7.68054 0.538406 7.04738 0.538406 6.65685 0.92893L0.292891 7.29289ZM28 7L0.999998 7L0.999998 9L28 9L28 7Z"
+              fill="currentColor"/>
+    </symbol>
+
+    <symbol id="arrow-short" viewBox="0 0 17 16" fill="none">
+        <path d="M16.7071 8.70711C17.0976 8.31658 17.0976 7.68342 16.7071 7.29289L10.3431 0.928933C9.95262 0.538409 9.31946 0.538409 8.92893 0.928933C8.53841 1.31946 8.53841 1.95262 8.92893 2.34315L14.5858 8L8.92893 13.6569C8.53841 14.0474 8.53841 14.6805 8.92893 15.0711C9.31946 15.4616 9.95262 15.4616 10.3431 15.0711L16.7071 8.70711ZM-8.74228e-08 9L16 9L16 7L8.74228e-08 7L-8.74228e-08 9Z"
               fill="currentColor"/>
     </symbol>
 
