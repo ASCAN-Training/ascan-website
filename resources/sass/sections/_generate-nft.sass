@@ -1,6 +1,11 @@
-.generate-nft-heading p
-  +fluid-type(16px, 18px)
+.generate-nft-heading h2 + .content
   +fluid-type(12px, 24px, 'margin-top')
+
+.generate-nft-heading .content
+  +fluid-type(16px, 18px)
+
+.generate-nft-heading .content p + p
+  margin-top: 20px
 
 .generate-nft-heading .generate-nft-illustration
   +fluid-type(30px, 74px, 'margin-top')
@@ -74,11 +79,56 @@
   +mediaSize($mobile)
     order: -1
 
-.notepad--mint .generate-nft-heading
-  +mediaSize($mobile)
-    text-align: center
-    display: flex
-    flex-direction: column
-    align-items: center
+.generate-nft-heading .steps-block
+  +fluid-type(30px, 60px, 'margin-top')
 
+.generate-nft-heading .steps-block li
+  align-items: center
+  font-weight: 500
+  color: white
+  +fluid-type(16px, 20px)
 
+.notepad-left__initial,
+.notepad-left__success,
+.notepad-right__success
+  height: 100%
+
+.notepad-left__success .generate-nft-heading
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  height: 100%
+
+.notepad-left__success .generate-nft-heading .content
+  +fluid-type(60px, 200px, 'margin-bottom')
+
+.generate-nft-heading__actions
+  margin-top: auto
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  gap: 12px
+
+.notepad-right__success
+  display: flex
+  align-items: center
+
+.notepad-right__success .generate-nft-illustration
+  height: auto
+  width: 100%
+
+//.notepad-left__initial,
+//.notepad-right__initial
+//  display: none
+
+.notepad-left__success,
+.notepad-right__success
+  display: none
+
+.notepad--success .notepad-left__success,
+.notepad--success .notepad-right__success
+  display: flex
+
+.notepad--success .notepad-left__initial,
+.notepad--success .notepad-right__initial
+  display: none
