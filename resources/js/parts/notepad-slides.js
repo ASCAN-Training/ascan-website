@@ -1,5 +1,3 @@
-import { SplitText } from '../libs/SplitText.js';
-
 export function notepadSlides(isExist, gsap, SplitText) {
     isExist('.notepad-slides', (notepads) => {
         notepads.forEach((notepad) => {

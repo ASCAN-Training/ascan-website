@@ -30,6 +30,7 @@ import lottie from 'lottie-web';
 import { whatIsAnimations } from './parts/what-is-animations.js';
 import { footerLottie } from './parts/footer-lottie.js';
 import { notepadSlides } from './parts/notepad-slides.js';
+import { scrollWatcher } from './parts/scrollWatcher.js';
 
 let screenWidth = 0;
 let vh = 0;
@@ -585,9 +586,10 @@ createEvent(document, 'DOMContentLoaded', function () {
     nftGenerator(isExist, gsap);
     boxAnimation(isExist, gsap);
     nftCalculator(isExist);
-    whatIsAnimations(isExist, lottie);
-    footerLottie(isExist, lottie);
+    whatIsAnimations(isExist, lottie, ScrollTrigger);
+    footerLottie(isExist, lottie, ScrollTrigger);
     notepadSlides(isExist, gsap, SplitText);
+    scrollWatcher(isExist, ScrollTrigger);
 });
 createEvent(document, 'DOMContentLoaded', function () {});
 
