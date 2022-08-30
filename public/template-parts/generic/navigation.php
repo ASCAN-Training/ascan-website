@@ -7,7 +7,7 @@ $menu_items = array(
     ],
     (object)[
         'title' => 'About',
-        'url' => '/about.html',
+        'url' => '/about',
         'target' => ''
     ],
     (object)[
@@ -27,7 +27,7 @@ $menu_items = array(
     ],
     (object)[
         'title' => 'Support or Contact',
-        'url' => '/support.html',
+        'url' => '/support',
         'target' => ''
     ]
 )
