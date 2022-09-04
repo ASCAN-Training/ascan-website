@@ -28,9 +28,9 @@
             </div>
             <nav class="footer__tech-links">
                 <ul>
-                    <li><a href="/copyright-notice.html">Copyright Notice</a></li>
-                    <li><a href="/terms-of-service.html">Terms of Service</a></li>
-                    <li><a href="/privacy-police.html">Privacy Policy</a></li>
+                    <li><a href="/copyright-notice">Copyright Notice</a></li>
+                    <li><a href="/terms-of-service">Terms of Service</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
                 </ul>
             </nav>
         </div>
