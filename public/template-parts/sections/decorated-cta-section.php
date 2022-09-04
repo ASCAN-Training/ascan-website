@@ -15,9 +15,11 @@
                 space? Start your journey now!
             </h2>
             <?php
-            $btn_type = 'primary';
-            $title = 'Launch the ASCAN Training';
-            include(__DIR__ . '/../includes/button.php')
+            //$btn_type = 'primary';
+            //$title = 'Join the Waitlist';
+            //include(__DIR__ . '/../includes/button.php')
+            $title = null;
+            include(__DIR__ . '/../includes/button-typeform.php')
             ?>
             <div class="decorated-cta__decor">
                 <?php  include(__DIR__ . '/../svg/illustrations/sit-illustration.php') ?>

@@ -1,4 +1,4 @@
-<section>
+<section id="FAQ">
     <div class="container-main">
         <div class="faq-block tile-bg">
             <div class="faq__decor">

@@ -1,20 +1,26 @@
 <div class="footer-subscribe">
-    <h3 class="footer-subscribe__title section-title section-title--no-center section-title--left title-animation">
-        <?php
-        $value = 'Subscribe';
-        $class = 'attention--left';
-        include(__DIR__ . '/../includes/attention.php')
-        ?>
-        and be the first who knows about
-        <?php
-        $value = 'our updates!';
-        include(__DIR__ . '/../includes/draw-underline.php')
-        ?>
-    </h3>
+    <div class="footer-subscribe__description">
+        <h2 class="footer-subscribe__title section-title section-title--no-center section-title--left title-animation">
+            <?php
+            $value = "Let's";
+            $class = 'attention--left';
+            include(__DIR__ . '/../includes/attention.php')
+            ?>
+            Stay
+            <?php
+            $value = 'in Touch!';
+            include(__DIR__ . '/../includes/draw-underline.php')
+            ?>
+        </h2>
+        <p>
+            There is still a lot to learn about web3 after completing our course! If you’re interested in getting involved and finding a path in this sprawling ecosystem, how about you join our community?
+        </p>
+    </div>
+
     <div class="footer-subscribe__main">
         <div class="subscribe-success">
             <h5>Congratulations!</h5>
-            <p>You have successfully subscribed for PRIVE Societe updates</p>
+            <p>You have successfully subscribed for ASCAN updates</p>
             <div class="subscribe-progress" >
                 <div class="counter" data-target="100">
                     <span class="value">0</span>%
@@ -24,7 +30,7 @@
         </div>
         <div class="subscribe-initial">
             <p>
-                Sign up to our newsletter and receive our new research, portfolio news and content direct to your inbox.
+                Sign up to our newsletter to receive ASCAN updates, new learning resources and exclusive content straight to your inbox.
             </p>
             <form action="#" class="subscribe-form">
                 <?php

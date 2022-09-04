@@ -3,22 +3,7 @@ $socials = array(
     (object)[
         'icon' => 'image/socials/twitter.svg',
         'alt' => 'Twitter',
-        'link' => 'https://google.com/'
-    ],
-    (object)[
-        'icon' => 'image/socials/fb.svg',
-        'alt' => 'Facebook',
-        'link' => 'https://google.com/'
-    ],
-    (object)[
-        'icon' => 'image/socials/insta.svg',
-        'alt' => 'Instagram',
-        'link' => 'https://google.com/'
-    ],
-    (object)[
-        'icon' => 'image/socials/tg.svg',
-        'alt' => 'Telegram',
-        'link' => 'https://google.com/'
+        'link' => 'https://twitter.com/ascantraining'
     ]
 );
 foreach ($socials as $social) { ?>

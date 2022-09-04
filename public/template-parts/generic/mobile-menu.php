@@ -3,9 +3,10 @@
         <?php include('navigation.php') ?>
         <div class="mobile-menu__actions">
             <?php
-            $btn_type = 'primary';
-            $title = 'Try for free';
-            include(__DIR__ . '/../includes/button.php')
+            //$btn_type = 'primary';
+            //$title = 'Join the Waitlist';
+            //include(__DIR__ . '/../includes/button.php')
+            include(__DIR__ . '/../includes/button-typeform.php')
             ?>
         </div>
         <div class="mobile-menu__socials">

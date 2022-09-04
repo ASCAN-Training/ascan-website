@@ -16,7 +16,8 @@
         $btn_target = '_blank';
         $btn_color = 'orange';
         $title = 'Mint now';
-        include(__DIR__ . '/../includes/button-key.php')
+        include(__DIR__ . '/../includes/button-key.php');
+        $title = null;
         ?>
     </div>
 </div>

@@ -1,16 +1,16 @@
 <?php
 $questions = array(
     (object)[
-        'title' => 'Is the ASCAN Training really completely free?',
-        'content' => "Description of the number. People always pay attention to numbers. They are a powerful visual anchor.  Description of the number. People always pay attention to numbers. Description of the number. People always pay attention to numbers. They are a powerful visual anchor."
+        'title' => 'Is ASCAN Training really free?',
+        'content' => "We’re proud to offer you an entirely free educational experience as well as complimentary material to find your place in the web3 community. You can complete the course in its entirety without spending a single cent, though you will need to cover what’s known as a “gas fee” to mint your graduation NFT (more on this during the course)."
     ],
     (object)[
-        'title' => 'What can I do with the free NFT after completing the ASCAN Training?',
-        'content' => "Description of the number. People always pay attention to numbers. They are a powerful visual anchor.  Description of the number. People always pay attention to numbers. Description of the number. People always pay attention to numbers. They are a powerful visual anchor."
+        'title' => 'What can I do with my NFT after completing the course?',
+        'content' => "Our NFT is what’s known as a soul-bound token. This means you won’t be able to sell it, though you will be able to use it to gain access to our community, as well as several other perks from allied projects down the line."
     ],
     (object)[
-        'title' => 'What are the mentors on course?',
-        'content' => "DescriptDescription of the number. People always pay attention to numbers. They are a powerful visual anchor.  Description of the number. People always pay attention to numbers. Description of the number. People always pay attention to numbers. They are a powerful visual anchor.ion of the number. People always pay attention to numbers. They are a powerful visual anchor.  Description of the number. People always pay attention to numbers. Description of the number. People always pay attention to numbers. They are a powerful visual anchor."
+        'title' => 'Where can I learn more about web3 when I’m done with ASCAN?',
+        'content' => "We’re constantly working on expanding our knowledge resources for our community, and working on partnerships with other educational projects. Besides that, we’ll also offer some useful pointers to explore each of our lessons further with trusted curated resources to your heart’s content."
     ]
 )
 ?>

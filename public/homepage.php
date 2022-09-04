@@ -20,30 +20,30 @@
             (object)[
                 'lottie_name' => 'chest',
                 'lottie_alternate' => true,
-                'title' => 'Get into NFT’s Easy',
-                'content' => 'No more endless videos, blogs and scrolling through information on loaded and complicated websites',
+                'title' => 'Get into NFTs Quickly',
+                'content' => 'No more techy videos, long blog posts or scrolling through complex information on maze-like websites.',
             ],
             (object)[
                 'lottie_name' => 'rocket',
                 'lottie_alternate' => false,
-                'title' => 'Step by Step Guide',
-                'content' => 'Our training is designed to guide you safely through every step to be prepared for getting your first NFT',
+                'title' => 'Step-by-Step Learning',
+                'content' => 'Our training is designed to help you navigate each stage of your journey to be prepared to mint your first NFT.',
             ],
             (object)[
                 'lottie_name' => 'flag',
                 'lottie_alternate' => false,
-                'title' => 'NFT as Reward',
-                'content' => 'You will receive a beautiful and free NFT as a reward to always have a great memory of your first minting experience',
+                'title' => 'Your First NFT, for Free!',
+                'content' => 'What better reward for completing this journey than your very first NFT? This free token will represent your very first steps towards contribution.',
             ]
         );
         include('template-parts/sections/what-is-section.php')
         ?>
-        <?php include('template-parts/sections/why-get-section.php') ?>
+        <?php /*include('template-parts/sections/why-get-section.php')*/ ?>
         <?php include('template-parts/sections/simple-cta-section.php') ?>
-        <?php include('template-parts/sections/our-training-section.php') ?>
+        <?php /*include('template-parts/sections/our-training-section.php')*/ ?>
         <?php include('template-parts/sections/how-to-start-section.php') ?>
-        <?php include('template-parts/sections/benefits-section.php') ?>
-        <?php include('template-parts/sections/safe-start-section.php') ?>
+        <?php /*include('template-parts/sections/benefits-section.php')*/ ?>
+        <?php /*include('template-parts/sections/safe-start-section.php')*/ ?>
         <?php include('template-parts/sections/faq-section.php') ?>
         <?php include('template-parts/sections/decorated-cta-section.php') ?>
     </main>
@@ -57,6 +57,7 @@
 
 
 <script defer src="js/app.js" type="text/javascript"></script>
+<script defer async src="//embed.typeform.com/next/embed.js"></script>
 
 </body>
 
