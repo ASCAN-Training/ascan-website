@@ -1,0 +1,133 @@
+.editor-content
+  line-height: 1.5
+  font-size: 16px
+
+.editor-content a
+  text-decoration: underline
+  color: $green
+
+.editor-content a:hover
+  opacity: .6
+
+.editor-content > div,
+.editor-content p + p,
+.editor-content ul,
+.editor-content ol,
+.editor-content ul li + li,
+.editor-content ol li + li,
+.editor-content h1,
+.editor-content h2,
+.editor-content h3,
+.editor-content h4,
+.editor-content h5,
+.editor-content h6,
+.editor-content table
+  +fluid-type(18px, 26px, 'margin-top')
+  +fluid-type(18px, 26px, 'margin-bottom')
+
+.editor-content iframe
+  max-width: 100%
+  max-height: 100%
+
+.editor-content ul,
+.editor-content ol
+  padding: 0
+  counter-reset: custom-counter
+  list-style-position: inside
+
+.editor-content ul li,
+.editor-content ol li
+  list-style: none
+  position: relative
+  counter-increment: custom-counter
+
+.editor-content ul li:before
+  content: ''
+  background: $green
+  border-radius: 50%
+  display: inline-block
+  width: 6px
+  height: 6px
+  margin-right: 16px
+  transform: translateY(-3px)
+
+.editor-content ol li:before
+  content: counter(custom-counter) ". "
+  display: inline-block
+  font-weight: 700
+  min-width: 30px
+
+h1
+  +fluid-type(24px, 46px)
+
+h2
+  +fluid-type(24px, 46px)
+
+h3
+  +fluid-type(20px, 40px)
+
+h4
+  +fluid-type(18px, 34px)
+
+h5
+  +fluid-type(16px, 28px)
+
+.editor-content table
+  display: block
+  overflow: auto
+  width: auto
+
+.editor-content table td
+  background: #E8E8E8
+  +fluid-type(10px, 16px, 'padding')
+
+.editor-content table th
+  background: $green
+  color: white
+  padding: 20px 16px
+
+.editor-content table tr:nth-child(odd) td
+  background: #F8F8F8
+
+.editor-content .alignright
+  float: right
+  +fluid-type(10px, 16px, 'margin-left')
+  +fluid-type(10px, 16px, 'margin-bottom')
+  height: auto
+
+.editor-content .alignleft
+  float: left
+  +fluid-type(10px, 16px, 'margin-right')
+  +fluid-type(10px, 16px, 'margin-bottom')
+  height: auto
+
+.editor-content .aligncenter
+  display: block
+  height: auto
+  +fluid-type(10px, 20px, 'margin-top')
+  +fluid-type(10px, 20px, 'margin-bottom')
+  margin-left: auto
+  margin-right: auto
+
+.editor-content table.aligncenter
+  text-align: center
+
+.editor-content table.aligncenter tbody
+  display: inline-block
+
+.fb_iframe_widget_fluid span
+  max-width: 100%
+
+.editor-content video
+  max-width: 100%
+  height: auto
+
+.editor-content img
+  max-width: 100%
+  max-height: 100%
+
+.editor-content > *:first-child
+  margin-top: 0
+
+.text-page .get-in-touch__heading + .editor-content
+  +fluid-type(32px, 60px, 'margin-top')
