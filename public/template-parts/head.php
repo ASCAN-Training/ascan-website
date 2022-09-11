@@ -51,6 +51,11 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/app.css">
 
+    <!--Third party CSS > START-->
+    <link rel="stylesheet" type="text/css"
+          href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"/>
+    <!--Third party CSS > END -->
+
     <!-- from back end -->
     <script type="text/javascript">
         window.site = {

@@ -57,7 +57,32 @@
 
 
 <script defer src="js/app.js" type="text/javascript"></script>
+
+<!--Third party scripts START-->
 <script defer async src="//embed.typeform.com/next/embed.js"></script>
+<script defer async src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+    window.addEventListener("load", function () {
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#818BD5",
+                    "text": "#fff"
+                },
+                "button": {
+                    "background": "#1B1F2C"
+                }
+            },
+            "showLink": false,
+            "content": {
+                "message": "This website uses cookies. By continuing to use the website, you consent to the use of cookies.",
+                "dismiss": "Ok!"
+            }
+        })
+    });
+</script>
+<!--Third party scripts END-->
+
 
 </body>
 
