@@ -7,8 +7,8 @@
     $dotenv->load();
     ?>
     <meta charset="UTF-8">
-    <title>Ascan</title>
-    <meta name="description" content="">
+    <title>ASCAN Training</title>
+    <meta name="description" content="What better reward for completing this journey than your very first NFT? This free token will represent your very first steps towards contribution.">
 
     <base src="/">
     <meta name="viewport"
