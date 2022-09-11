@@ -30,6 +30,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
 
     <!-- from back end -->
     <script type="text/javascript">
