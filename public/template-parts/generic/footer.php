@@ -2,7 +2,7 @@
     <div class="container-main">
         <div class="footer__menu">
             <a href="/" class="header__logo default-outline">
-                <img src="/image/logo.svg" alt="Logo">
+                <img src="/image/ascan-training-logo.svg" alt="Logo">
             </a>
             <!-- Temporary commented START -->
             <?php //include('navigation.php') ?>

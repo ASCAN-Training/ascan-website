@@ -27,14 +27,14 @@
                     <?php
                     $img_url = 'image/notepad-cards/notepad-img1.svg';
                     $img_alt = 'img';
-                    $title = '1,023';
+                    $title = '0';
                     $content = 'Candidates<br>in training';
                     include(__DIR__ . '/../cards/notepad-card.php')
                     ?>
                     <?php
                     $img_url = 'image/notepad-cards/notepad-img2.svg';
                     $img_alt = 'img';
-                    $title = '349';
+                    $title = '0';
                     $content = 'Spaceships launched';
                     include(__DIR__ . '/../cards/notepad-card.php')
                     ?>
