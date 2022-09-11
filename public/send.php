@@ -1,6 +1,12 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $api_key = '084ed717dae7c267623d645335105ba2-us20';
+    if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+        require_once(__DIR__ . '/vendor/autoload.php');
+    }
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+    $api_key = $_ENV['MAILCHIMP_API'];
+    $api_gateway = $_ENV['MAILCHIMP_GATEWAY'];
     $merge_vars = array(
         'FNAME' => isset($_POST['fname']) ? $_POST['fname'] : '',
         'LNAME' => isset($_POST['lname']) ? $_POST['lname'] : '',
@@ -9,12 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         "ADDDET" => isset($_POST['adddet']) ? $_POST['adddet'] : '',
     );
     $tag = $_POST['tag'] ?? '';
-    require_once 'vendor/autoload.php';
 
     $client = new MailchimpMarketing\ApiClient();
     $client->setConfig([
-        'apiKey' => '6c1cea6b59664eb51f04f299fc557b26-us10',
-        'server' => 'us10',
+        'apiKey' => $api_key,
+        'server' => $api_gateway,
     ]);
     try {
         $response = $client->lists->addListMember("370c366bb0", [

@@ -1,7 +1,14 @@
 <head>
+    <?php
+    if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+        require_once(__DIR__ . '/../vendor/autoload.php');
+    }
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+    $dotenv->load();
+    ?>
     <meta charset="UTF-8">
-    <title>Ascan</title>
-    <meta name="description" content="">
+    <title>ASCAN Training</title>
+    <meta name="description" content="What better reward for completing this journey than your very first NFT? This free token will represent your very first steps towards contribution.">
 
     <base src="/">
     <meta name="viewport"
@@ -24,8 +31,20 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <!--Open graph things-->
+    <meta property="og:locale" content="en_UK"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="ASCAN Training"/>
+    <meta property="og:description"
+          content="What better reward for completing this journey than your very first NFT? This free token will represent your very first steps towards contribution."/>
+    <meta property="og:url" content="https://ascantraining.com/"/>
+    <meta property="og:site_name" content="ASCAN Training"/>
+    <meta property="og:image" content="<?php echo $_ENV['DOMAIN_URL']; ?>image/og-image.jpg"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+
     <!-- Custom Browsers Color Start -->
-    <!-- TODO color -->
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-tap-highlight" content="no">
 
