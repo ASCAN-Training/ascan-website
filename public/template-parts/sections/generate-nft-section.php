@@ -1,10 +1,11 @@
 <section>
     <div class="container-main">
+        <?php include(__DIR__ . '/../blocks/nft-calculator.php') ?>
         <div class="notepad notepad--mint">
             <div class="notepad-page notepad-left">
                 <div class="notepad-circles"></div>
                 <div class="notepad-left__initial">
-                    <div class="notepad-slides">
+                    <div class="notepad-slides first-slide">
                         <div class="notepad-slides__listing">
                             <div class="notepad-slide notepad-slide--initial">
                                 <div class="generate-nft-heading">
@@ -61,8 +62,11 @@
                             </div>
                         </div>
                         <div class="notepad-slides__controls">
-                            <button aria-label="Next slide" type="button" style="display: none;"
-                                    class="btn-prev btn btn-key btn-key--grey">
+                            <a href="/" class="btn-final btn btn-key btn-key--green btn-key--green--c-white">
+                                Mint now
+                            </a>
+                            <button aria-label="Previous slide" type="button"
+                                    class="btn-prev btn btn-tertiary">
                                 Previous Step
                             </button>
                             <button aria-label="Next slide" type="button" class="btn-next btn btn-key btn-key--orange">
@@ -105,7 +109,6 @@
                 </div>
             </div>
         </div>
-        <?php include(__DIR__ . '/../blocks/nft-calculator.php') ?>
         <div class="notepad notepad--mint notepad--success">
             <div class="notepad-page notepad-left">
                 <div class="notepad-circles"></div>

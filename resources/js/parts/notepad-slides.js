@@ -11,14 +11,14 @@ export function notepadSlides(isExist, gsap, SplitText) {
                 prevSlide.style.display = 'none';
                 currentSlide.style.display = 'block';
                 if (activeSlide + 1 === slides.length) {
-                    controls.nextButton.style.display = 'none';
+                    notepad.classList.add('last-slide');
                 } else {
-                    controls.nextButton.style.display = 'inline-block';
+                    notepad.classList.remove('last-slide');
                 }
                 if (activeSlide === 0) {
-                    controls.prevButton.style.display = 'none';
+                    notepad.classList.add('first-slide');
                 } else {
-                    controls.prevButton.style.display = 'inline-block';
+                    notepad.classList.remove('first-slide');
                 }
                 const heading = currentSlide.querySelector('h2');
                 const paragraphs = currentSlide.querySelectorAll('.content p, h2');

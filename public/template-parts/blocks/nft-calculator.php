@@ -10,14 +10,14 @@
         </div>
         <div class="nft-calculator__slider"></div>
     </div>
-    <div class="nft-calculator__action">
+    <!--<div class="nft-calculator__action">
         <?php
-        $btn_url = '/';
+/*        $btn_url = '/';
         $btn_target = '_blank';
         $btn_color = 'orange';
         $title = 'Mint now';
         include(__DIR__ . '/../includes/button-key.php');
         $title = null;
-        ?>
-    </div>
+        */?>
+    </div>-->
 </div>
