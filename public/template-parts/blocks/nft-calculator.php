@@ -4,11 +4,12 @@
         <span>#1 — #10 000</span>
     </div>
     <div class="nft-calculator__body">
-        <div class="nft-calculator__slider__values">
+        <?php include(__DIR__ . '/../blocks/progress-bar.php') ?>
+        <!--<div class="nft-calculator__slider__values">
             <span class="min">0</span>
             <span class="max">10.000</span>
         </div>
-        <div class="nft-calculator__slider"></div>
+        <div class="nft-calculator__slider"></div>-->
     </div>
     <!--<div class="nft-calculator__action">
         <?php

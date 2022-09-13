@@ -62,9 +62,11 @@
                             </div>
                         </div>
                         <div class="notepad-slides__controls">
-                            <a href="/" class="btn-final btn btn-key btn-key--green btn-key--green--c-white">
-                                Mint now
-                            </a>
+                            <div class="btn-final">
+                                <a href="/" class="btn btn-key btn-key--green btn-key--green--c-white">
+                                    Mint now
+                                </a>
+                            </div>
                             <button aria-label="Previous slide" type="button"
                                     class="btn-prev btn btn-tertiary">
                                 Previous Step

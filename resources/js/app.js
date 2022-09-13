@@ -31,6 +31,7 @@ import { whatIsAnimations } from './parts/what-is-animations.js';
 import { footerLottie } from './parts/footer-lottie.js';
 import { notepadSlides } from './parts/notepad-slides.js';
 import { scrollWatcher } from './parts/scrollWatcher.js';
+import { progressBar } from './parts/progress-bar.js';
 
 let screenWidth = 0;
 let vh = 0;
@@ -590,6 +591,7 @@ createEvent(document, 'DOMContentLoaded', function () {
     footerLottie(isExist, lottie, ScrollTrigger);
     notepadSlides(isExist, gsap, SplitText);
     scrollWatcher(isExist, ScrollTrigger);
+    progressBar(isExist, gsap);
 });
 createEvent(document, 'DOMContentLoaded', function () {});
 

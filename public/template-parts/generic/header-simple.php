@@ -2,8 +2,7 @@
     <div class="container-main">
         <div class="header-inner">
             <a href="/" class="header__logo default-outline">
-                <img src="/image/ascan-training-logo.svg" alt="Logo" class="desktop-logo">
-                <img src="/image/logo.svg" alt="Logo" class="mobile-logo">
+                <img src="/image/ascan-training-logo.svg" alt="Logo">
             </a>
             <div class="header__cta">
                 <?php

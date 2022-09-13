@@ -152,6 +152,15 @@
 .notepad-slides .btn-final
   width: 100%
   display: none
+  position: relative
+  padding: 20px
+  border-radius: 20px
+  border: 2px dashed $text-color
+  +mediaSize($mobile)
+    padding: 10px
+
+.notepad-slides .btn-final .btn
+  width: 100%
 
 .notepad-slides.first-slide .btn-prev
   display: none
