@@ -5,3 +5,5 @@ public/fonts
 public/.env
 public/css
 public/js
+# Local Netlify folder
+.netlify
