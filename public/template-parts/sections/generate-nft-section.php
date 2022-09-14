@@ -68,7 +68,7 @@
                                 </a>
                             </div>
                             <button aria-label="Previous slide" type="button"
-                                    class="btn-prev btn btn-tertiary">
+                                    class="btn-prev btn btn-key btn-key--grey">
                                 Previous Step
                             </button>
                             <button aria-label="Next slide" type="button" class="btn-next btn btn-key btn-key--orange">

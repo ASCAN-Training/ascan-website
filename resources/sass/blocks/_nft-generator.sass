@@ -117,13 +117,13 @@
   pointer-events: none
 
 .nft-generator__shuttle .colored img
-  opacity: 0
-
-.nft-generator__shuttle .skeleton img
   opacity: .2
   transition: opacity .2s linear
 
-.nft-generator__shuttle img.active
+.nft-generator__shuttle .colored img:not(.visible)
+  opacity: 0
+
+.nft-generator__shuttle .colored .part-container.active .visible
   opacity: 1
 
 .nft-generator__shuttle .skeleton img
@@ -142,16 +142,13 @@
   justify-content: space-between
   transition: top .2s ease-in-out, opacity .2s ease
 
-[data-current-stage="1"] .parts-selector
-  opacity: 0
-
-[data-current-stage="3"] .parts-selector
+[data-current-stage="2"] .parts-selector
   top: 50%
 
-[data-current-stage="4"] .parts-selector
+[data-current-stage="3"] .parts-selector
   top: 5%
 
-[data-current-stage="5"] .parts-selector
+[data-current-stage="4"] .parts-selector
   top: 20%
 
 

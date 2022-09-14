@@ -15,20 +15,16 @@ export function nftGenerator(isExist, gsap) {
             };
             const shuttleParts = {
                 skeleton: generator.querySelectorAll('.nft-generator__shuttle .skeleton img'),
-                coloredFolderName: '',
                 coloredParts: [],
-                baseColoredPath: generator
-                    .querySelector('.nft-generator__shuttle .colored')
-                    .getAttribute('data-base-url'),
-                //colored: generator.querySelectorAll('.nft-generator__shuttle .colored img'),
             };
-            [...generator.querySelectorAll('.nft-generator__shuttle .colored img')].forEach((img) => {
-                const obj = {
-                    coloredPartsCount: Number(img.getAttribute('data-colored-parts')),
-                    selectedColoredPart: 0,
-                    imageElement: img,
-                };
-                shuttleParts.coloredParts.push(obj);
+            const coloredContainer = generator.querySelectorAll(
+                '.nft-generator__shuttle .colored [data-part-container]',
+            );
+            [...coloredContainer].forEach((container) => {
+                shuttleParts.coloredParts.push({
+                    container: container,
+                    parts: [...container.children],
+                });
             });
             [...generator.querySelectorAll('.pagination-pip')].forEach((pip, idx) => {
                 const progressBar = pip.querySelector('.progress');
@@ -95,10 +91,11 @@ export function nftGenerator(isExist, gsap) {
                 updateStage();
             };
             const highlightSelectedSkeletonPart = (idx) => {
-                const images = [...shuttleParts.skeleton];
-                images.forEach((img) => img.classList.remove('active'));
-                images[idx]?.classList.add('active');
-                shuttleParts.coloredFolderName = images[idx]?.getAttribute('data-colored-folder');
+                const selectedContainer = shuttleParts.coloredParts[idx];
+                shuttleParts.coloredParts.forEach((container) => {
+                    container.container.classList.remove('active');
+                });
+                selectedContainer.container.classList.add('active');
             };
             const resetTimer = () => {
                 clearInterval(intervalId);
@@ -106,13 +103,12 @@ export function nftGenerator(isExist, gsap) {
             };
             const updateVariationControls = () => {
                 const selectedPartObject = shuttleParts.coloredParts[currentStage - 1];
-                console.log(selectedPartObject);
-                if (selectedPartObject.selectedColoredPart === selectedPartObject.coloredPartsCount) {
+                if (selectedPartObject.parts[selectedPartObject.parts.length - 1].classList.contains('visible')) {
                     controls.partsSelectorNext.classList.add('disabled');
                 } else {
                     controls.partsSelectorNext.classList.remove('disabled');
                 }
-                if (selectedPartObject.selectedColoredPart <= 0) {
+                if (selectedPartObject.parts[0].classList.contains('visible')) {
                     controls.partsSelectorPrev.classList.add('disabled');
                 } else {
                     controls.partsSelectorPrev.classList.remove('disabled');
@@ -148,18 +144,7 @@ export function nftGenerator(isExist, gsap) {
                 oldLabel.animationOut().play();
                 newLabel.animationIn().play();
                 newLabel.isActive = true;
-                // [...shuttleParts.colored].forEach((img) => img.classList.remove('active'));
-                // [...shuttleParts.colored]
-                //     .slice(0, normalizedCurrentStage)
-                //     .forEach((img) => img.classList.add('active'));
-                highlightSelectedSkeletonPart(normalizedCurrentStage - 1);
-
-                // if (normalizedCurrentStage === 1) {
-                //     shuttleParts.skeleton[0].classList.add('hidden');
-                // }
-                // if (normalizedCurrentStage === 0) {
-                //     shuttleParts.skeleton[0].classList.remove('hidden');
-                // }
+                highlightSelectedSkeletonPart(normalizedCurrentStage);
                 updateNftNavigation(normalizedCurrentStage);
                 updateVariationControls();
             };
@@ -173,36 +158,26 @@ export function nftGenerator(isExist, gsap) {
             });
             controls.partsSelectorNext.addEventListener('click', () => {
                 const selectedPartObject = shuttleParts.coloredParts[currentStage - 1];
-                if (selectedPartObject.selectedColoredPart < selectedPartObject.coloredPartsCount) {
-                    shuttleParts.skeleton[currentStage - 2].classList.add('hidden');
-                    resetTimer();
-                    updateNftNavigation(currentStage - 1);
-                    const generatedPath = `${shuttleParts.baseColoredPath}/${shuttleParts.coloredFolderName}/${
-                        selectedPartObject.selectedColoredPart + 1
-                    }.png`;
-                    selectedPartObject.imageElement.src = generatedPath;
-                    selectedPartObject.imageElement.classList.add('active');
-                    selectedPartObject.selectedColoredPart++;
-                    updateVariationControls();
-                }
+                const currentVisiblePartIdx = selectedPartObject.parts.findIndex((part) =>
+                    part.classList.contains('visible'),
+                );
+                if (currentVisiblePartIdx === -1) return;
+                selectedPartObject.parts[currentVisiblePartIdx].classList.remove('visible');
+                selectedPartObject.parts[currentVisiblePartIdx + 1].classList.add('visible');
+                resetTimer();
+                updateNftNavigation(currentStage - 1);
+                updateVariationControls();
             });
             controls.partsSelectorPrev.addEventListener('click', () => {
                 const selectedPartObject = shuttleParts.coloredParts[currentStage - 1];
-                if (selectedPartObject.selectedColoredPart > 1) {
-                    resetTimer();
-                    updateNftNavigation(currentStage - 1);
-                    const generatedPath = `${shuttleParts.baseColoredPath}/${shuttleParts.coloredFolderName}/${
-                        selectedPartObject.selectedColoredPart - 1
-                    }.png`;
-                    selectedPartObject.imageElement.src = generatedPath;
-                    selectedPartObject.imageElement.classList.add('active');
-                    selectedPartObject.selectedColoredPart--;
-                } else {
-                    selectedPartObject.imageElement.classList.remove('active');
-                    selectedPartObject.imageElement.src = '';
-                    selectedPartObject.selectedColoredPart = 0;
-                    shuttleParts.skeleton[currentStage - 2].classList.remove('hidden');
-                }
+                const currentVisiblePartIdx = selectedPartObject.parts.findIndex((part) =>
+                    part.classList.contains('visible'),
+                );
+                if (currentVisiblePartIdx === -1 || currentVisiblePartIdx === 0) return;
+                selectedPartObject.parts[currentVisiblePartIdx].classList.remove('visible');
+                selectedPartObject.parts[currentVisiblePartIdx - 1].classList.add('visible');
+                resetTimer();
+                updateNftNavigation(currentStage - 1);
                 updateVariationControls();
             });
             updateStage();

@@ -1,12 +1,6 @@
 <?php
 $stages = array(
     (object)[
-        'title' => 'Prototype',
-        'part_name' => null,
-        'folder_name' => '',
-        'parts_count' => null
-    ],
-    (object)[
         'title' => 'Flame',
         'part_name' => 'flame.png',
         'folder_name' => 'flame',
@@ -65,33 +59,22 @@ $stages = array(
         </div>
     </div>
     <div class="nft-generator__shuttle">
-        <div class="skeleton">
-            <?php foreach ($stages as $key => $stage) { ?>
-                <?php if ($stage->part_name) { ?>
-                    <img data-stage="<?php echo $key ?>"
-                         src="./image/shuttle/skeleton/<?php echo $stage->part_name ?>"
-                         class=""
-                         data-colored-folder="<?php echo $stage->folder_name ?>"
-                         alt="Shuttle prototype part">
-                <?php } ?>
-            <?php } ?>
-        </div>
         <div class="colored" data-base-url="./image/shuttle/colored">
-            <?php foreach ($stages as $key => $stage) { ?>
-                <img
-                        src=""
-                        data-colored-parts="<?php echo $stage->parts_count ?>"
-                        alt="Shuttle colored part <?php echo $key ?>">
+            <?php foreach ($stages as $stage) { ?>
+                <div class="part-container" data-part-container="<?php echo $stage->title ?>">
+                    <?php for ($i = 0; $i < $stage->parts_count; $i++) { ?>
+                        <img
+                                src="./image/shuttle/colored/<?php echo $stage->title ?>/<?php echo $i + 1 ?>.png"
+                                data-colored-parts="<?php /*echo $stage->parts_count */ ?>"
+                                alt="Shuttle colored part <?php echo $i+1 ?>"
+                                class="<?php echo $i === 0 ? 'visible' : '' ?>"
+                        >
+                    <?php } ?>
+                </div>
             <?php } ?>
         </div>
         <div class="pointers">
-            <img src="./image/shuttle/skeleton/pointers/1.png" alt="Shuttle pointer">
-            <img src="./image/shuttle/skeleton/pointers/2.png" alt="Shuttle pointer">
-            <img src="./image/shuttle/skeleton/pointers/3.png" alt="Shuttle pointer">
-            <img src="./image/shuttle/skeleton/pointers/fins.png" alt="Shuttle pointer">
-            <img src="./image/shuttle/skeleton/pointers/flame.png" alt="Shuttle pointer">
-            <img src="./image/shuttle/skeleton/pointers/nosecone.png" alt="Shuttle pointer">
-            <img src="./image/shuttle/skeleton/pointers/window.png" alt="Shuttle pointer">
+            <img src="./image/shuttle/skeleton/pointers/pointers.png" alt="Shuttle pointer">
         </div>
         <img src="./image/shuttle/shuttle-skeleton.png" alt="Shuttle skeleton">
         <div class="parts-selector">
